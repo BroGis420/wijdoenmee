@@ -1200,10 +1200,15 @@ function ExportPanel() {
 
   return (
     <div>
-      <h1 style={{ marginTop: 0, color: '#116296' }}>Import / Export</h1>
+      <h1 style={{ marginTop: 0, color: '#116296' }}>Backup</h1>
+      <p style={{ color: '#595959', maxWidth: 560, lineHeight: 1.5 }}>
+        Exporteer eerst een backup vóór je iets importeert. Een volledige import vervangt de content in deze browser.
+        Het bestand <code>wijdoenmee-content-goedgekeurd.json</code> in de repository is de standaard goedgekeurde
+        content (handmatige import is geen publicatie voor alle bezoekers).
+      </p>
       <div style={card}>
-        <h3>Export</h3>
-        <p>Download alle content als JSON-backup.</p>
+        <h3 style={{ marginTop: 0 }}>Export</h3>
+        <p style={{ color: '#595959' }}>Download alle content als JSON-backup.</p>
         <button
           type="button"
           style={btnPrimary}
@@ -1221,7 +1226,10 @@ function ExportPanel() {
         </button>
       </div>
       <div style={card}>
-        <h3>Import</h3>
+        <h3 style={{ marginTop: 0 }}>Import</h3>
+        <p style={{ color: '#595959' }}>
+          Plak JSON hier. Dit overschrijft de data in deze browser. Maak eerst een export-backup.
+        </p>
         <TextArea value={raw} onChange={(e) => setRaw(e.target.value)} placeholder="Plak JSON hier…" style={{ minHeight: 160 }} />
         <Row>
           <button
@@ -1229,7 +1237,7 @@ function ExportPanel() {
             style={btnPrimary}
             onClick={() => {
               const ok = importJson(raw)
-              setMsg(ok ? 'Import geslaagd.' : 'Ongeldige JSON.')
+              setMsg(ok ? 'Import geslaagd. Herlaad de pagina om te controleren.' : 'Ongeldige JSON.')
             }}
           >
             Importeren
@@ -1238,7 +1246,7 @@ function ExportPanel() {
             type="button"
             style={btnDanger}
             onClick={() => {
-              if (confirm('Alle CMS-data terugzetten naar de standaard content?')) {
+              if (confirm('Alle CMS-data terugzetten naar de standaard goedgekeurde content?')) {
                 resetToSeed()
                 setMsg('Teruggezet naar standaard.')
               }
