@@ -180,13 +180,13 @@ ul.tabs { margin: 0px 0px 0.5em; padding: 0px; list-style: none; }
 @media (width >= 64rem) {
   .layout-with-sidebar__sidebar { margin-right: 2rem; }
 }
-@font-face { font-family: font-regular; src: url("/fonts/7c8bfd9f-a067-4b55-991a-71aaa1cc62d3.woff2") format("woff2"); font-weight: 400; font-style: normal; }
-@font-face { font-family: font-italic; src: url("/fonts/9e0341c0-3a0c-4a3d-8964-6b5d67c7aab7.woff2") format("woff2"); font-weight: 400; font-style: italic; }
-@font-face { font-family: font-medium; src: url("/fonts/b95aa398-1ed4-468c-ba2d-e055707bd69a.woff2") format("woff2"); font-weight: 500; font-style: normal; }
-@font-face { font-family: font-medium-italic; src: url("/fonts/dc6b89a8-04ad-4d41-9522-1452f0e59023.woff2") format("woff2"); font-weight: 500; font-style: italic; }
-@font-face { font-family: font-bold; src: url("/fonts/0efba84e-5ef2-4456-bca5-afc5829b54b2.woff2") format("woff2"); font-weight: 700; font-style: normal; }
-@font-face { font-family: font-bold-italic; src: url("/fonts/2b878841-49d8-47a8-a110-ee2b8b42b433.woff2") format("woff2"); font-weight: 700; font-style: italic; }
-@font-face { font-family: font-black; src: url("/fonts/89d5338c-cfbf-422f-89a6-324263dd6b13.woff2") format("woff2"); font-weight: 900; font-style: normal; }
+@font-face { font-family: font-regular; src: url("/fonts/7c8bfd9f-a067-4b55-991a-71aaa1cc62d3.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: font-italic; src: url("/fonts/9e0341c0-3a0c-4a3d-8964-6b5d67c7aab7.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: font-medium; src: url("/fonts/b95aa398-1ed4-468c-ba2d-e055707bd69a.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: font-medium-italic; src: url("/fonts/dc6b89a8-04ad-4d41-9522-1452f0e59023.woff2") format("woff2"); font-weight: 500; font-style: italic; font-display: swap; }
+@font-face { font-family: font-bold; src: url("/fonts/0efba84e-5ef2-4456-bca5-afc5829b54b2.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: font-bold-italic; src: url("/fonts/2b878841-49d8-47a8-a110-ee2b8b42b433.woff2") format("woff2"); font-weight: 700; font-style: italic; font-display: swap; }
+@font-face { font-family: font-black; src: url("/fonts/89d5338c-cfbf-422f-89a6-324263dd6b13.woff2") format("woff2"); font-weight: 900; font-style: normal; font-display: swap; }
 footer { border-top: 1px solid rgb(238, 238, 238); padding: 2rem 0px; }
 footer .content { flex-direction: column; gap: 2rem; display: flex; }
 @media (width >= 64rem) {
