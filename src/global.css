@@ -328,21 +328,261 @@ h1, h2, h3, h4, h5, h6,
   }
 }
 
-/* Navigation */
-.nav__main ul {
-  font-family: var(--font-medium);
-  font-weight: 500;
+/* Header above hero decoration that used to cover the navbar */
+header.content,
+.dialog-off-canvas-main-canvas > header {
+  position: relative;
+  z-index: 40;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 
+.banner__home::after {
+  z-index: 0 !important;
+  /* Do not extend upward over the header */
+  inset: 0 -200px -200px -200px !important;
+}
+
+.banner__home {
+  z-index: 1;
+}
+
+/* Nav pills — always visible (not white-on-white) */
 .dialog-off-canvas-main-canvas .nav__main ul a {
-  color: var(--brand-ink);
-  background-color: var(--brand-white);
+  color: var(--brand-ink) !important;
+  background-color: transparent !important;
+  border: 1.5px solid rgba(23, 23, 23, 0.12);
+  font-weight: 600;
+  box-shadow: none;
 }
 
 .dialog-off-canvas-main-canvas .nav__main ul a:hover,
 .dialog-off-canvas-main-canvas .nav__main ul .menu-item--active-trail a {
-  background-color: var(--color-pink);
+  background-color: var(--brand-yellow) !important;
+  border-color: var(--brand-yellow);
+  color: var(--brand-ink) !important;
+}
+
+.dialog-off-canvas-main-canvas .nav__main ul .search a {
+  border-style: dashed;
+}
+
+/* Custom theme filter (replaces native select look) */
+.theme-filter {
+  position: relative;
+  display: inline-block;
+  z-index: 5;
+}
+
+.theme-filter__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1.5px solid rgba(23, 23, 23, 0.15);
+  background: var(--brand-white);
   color: var(--brand-ink);
+  font-family: var(--font-medium);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 999px;
+  padding: 0.55rem 1.1rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(17, 98, 150, 0.06);
+  transition:
+    transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1),
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.theme-filter__btn:hover,
+.theme-filter__btn[aria-expanded="true"] {
+  background: var(--brand-yellow);
+  border-color: var(--brand-yellow);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(254, 203, 1, 0.35);
+}
+
+.theme-filter__chevron {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg) translateY(-2px);
+  transition: transform 0.25s ease;
+}
+
+.theme-filter__btn[aria-expanded="true"] .theme-filter__chevron {
+  transform: rotate(225deg) translateY(-2px);
+}
+
+.theme-filter__menu {
+  position: absolute;
+  top: calc(100% + 0.45rem);
+  left: 0;
+  min-width: max(100%, 14rem);
+  margin: 0;
+  padding: 0.4rem;
+  list-style: none;
+  background: var(--brand-white);
+  border: 1px solid rgba(24, 138, 209, 0.12);
+  border-radius: 1rem;
+  box-shadow: 0 16px 40px rgba(17, 98, 150, 0.16);
+  z-index: 30;
+}
+
+.theme-filter__option {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: 0;
+  background: transparent;
+  color: var(--brand-ink);
+  font-family: var(--font-medium);
+  font-size: 0.92rem;
+  font-weight: 500;
+  padding: 0.6rem 0.85rem;
+  border-radius: 0.65rem;
+  cursor: pointer;
+  transition: background-color 0.15s ease, transform 0.15s ease;
+}
+
+.theme-filter__option:hover {
+  background: var(--brand-blue-soft);
+}
+
+.theme-filter__option.is-active {
+  background: var(--brand-yellow);
+  font-weight: 700;
+}
+
+/* Search overlay */
+.search-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(17, 98, 150, 0.35);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 12vh 1rem 2rem;
+}
+
+.search-overlay__panel {
+  width: min(36rem, 100%);
+  background: var(--brand-white);
+  border-radius: 1.25rem;
+  box-shadow: 0 24px 60px rgba(17, 98, 150, 0.25);
+  overflow: hidden;
+  border: 1px solid rgba(24, 138, 209, 0.12);
+}
+
+.search-overlay__bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.1rem;
+  border-bottom: 1px solid rgba(23, 23, 23, 0.08);
+}
+
+.search-overlay__input {
+  flex: 1;
+  border: 0;
+  outline: none;
+  font-family: var(--font-medium);
+  font-size: 1.1rem;
+  color: var(--brand-ink);
+  background: transparent;
+}
+
+.search-overlay__input::placeholder {
+  color: var(--brand-muted);
+}
+
+.search-overlay__close {
+  border: 0;
+  background: var(--brand-blue-soft);
+  color: var(--brand-blue-dark);
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 0.4rem 0.85rem;
+  cursor: pointer;
+  font-family: var(--font-medium);
+}
+
+.search-overlay__close:hover {
+  background: var(--brand-yellow);
+}
+
+.search-overlay__results {
+  max-height: min(50vh, 24rem);
+  overflow: auto;
+  padding: 0.5rem;
+}
+
+.search-overlay__hit {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: 0;
+  background: transparent;
+  padding: 0.85rem 1rem;
+  border-radius: 0.85rem;
+  cursor: pointer;
+  color: var(--brand-ink);
+  font-family: inherit;
+  transition: background-color 0.15s ease;
+}
+
+.search-overlay__hit:hover,
+.search-overlay__hit:focus-visible {
+  background: var(--brand-blue-soft);
+  outline: none;
+}
+
+.search-overlay__hit-type {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--brand-blue-dark);
+  background: var(--brand-yellow);
+  border-radius: 999px;
+  padding: 0.15rem 0.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.search-overlay__hit-title {
+  display: block;
+  font-family: var(--font-bold);
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 0.2rem;
+}
+
+.search-overlay__hit-desc {
+  display: block;
+  font-size: 0.88rem;
+  color: var(--brand-muted);
+  line-height: 1.35;
+}
+
+.search-overlay__empty {
+  padding: 1.5rem 1rem;
+  text-align: center;
+  color: var(--brand-muted);
+  font-family: var(--font-medium);
+}
+
+/* Navigation */
+.nav__main ul {
+  font-family: var(--font-medium);
+  font-weight: 500;
 }
 
 .menu__toggle {

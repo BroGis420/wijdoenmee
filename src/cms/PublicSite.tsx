@@ -54,62 +54,292 @@ function BrandLoop({ variant = 'hero' }: { variant?: 'hero' | 'footer' }) {
   )
 }
 
+function goTo(path: string) {
+  window.history.pushState(null, '', path)
+  window.dispatchEvent(new PopStateEvent('popstate'))
+}
+
+function ThemeFilter({
+  value,
+  options,
+  onChange,
+  label = "Alle thema's",
+}: {
+  value: string
+  options: string[]
+  onChange: (v: string) => void
+  label?: string
+}) {
+  const [open, setOpen] = useState(false)
+  const ref = React.useRef<HTMLDivElement>(null)
+  const current = value === 'all' ? label : value
+
+  useEffect(() => {
+    if (!open) return
+    const onDoc = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false)
+    }
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setOpen(false)
+    }
+    document.addEventListener('mousedown', onDoc)
+    document.addEventListener('keydown', onKey)
+    return () => {
+      document.removeEventListener('mousedown', onDoc)
+      document.removeEventListener('keydown', onKey)
+    }
+  }, [open])
+
+  return (
+    <div className="theme-filter" ref={ref}>
+      <button
+        type="button"
+        className="theme-filter__btn"
+        aria-haspopup="listbox"
+        aria-expanded={open}
+        onClick={() => setOpen((v) => !v)}
+      >
+        <span>{current}</span>
+        <span className="theme-filter__chevron" aria-hidden="true" />
+      </button>
+      {open ? (
+        <ul className="theme-filter__menu" role="listbox">
+          <li>
+            <button
+              type="button"
+              role="option"
+              aria-selected={value === 'all'}
+              className={`theme-filter__option${value === 'all' ? ' is-active' : ''}`}
+              onClick={() => {
+                onChange('all')
+                setOpen(false)
+              }}
+            >
+              {label}
+            </button>
+          </li>
+          {options.map((opt) => (
+            <li key={opt}>
+              <button
+                type="button"
+                role="option"
+                aria-selected={value === opt}
+                className={`theme-filter__option${value === opt ? ' is-active' : ''}`}
+                onClick={() => {
+                  onChange(opt)
+                  setOpen(false)
+                }}
+              >
+                {opt}
+              </button>
+            </li>
+          ))}
+        </ul>
+      ) : null}
+    </div>
+  )
+}
+
+type SearchHit = { type: 'Artikel' | 'Tool' | 'Thema' | 'Pagina'; title: string; description: string; route: string }
+
+function SearchOverlay({ onClose }: { onClose: () => void }) {
+  const { data } = useCms()
+  const [q, setQ] = useState('')
+  const inputRef = React.useRef<HTMLInputElement>(null)
+
+  useEffect(() => {
+    inputRef.current?.focus()
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose()
+    }
+    document.addEventListener('keydown', onKey)
+    return () => document.removeEventListener('keydown', onKey)
+  }, [onClose])
+
+  const hits = useMemo(() => {
+    const needle = q.trim().toLowerCase()
+    if (needle.length < 2) return [] as SearchHit[]
+    const out: SearchHit[] = []
+    for (const a of data.articles.filter((x) => x.published)) {
+      const hay = `${a.title} ${a.description} ${a.themes.join(' ')} ${a.source || ''}`.toLowerCase()
+      if (hay.includes(needle)) {
+        out.push({
+          type: 'Artikel',
+          title: a.title,
+          description: a.description,
+          route: `/inspiratie/${a.slug}`,
+        })
+      }
+    }
+    for (const t of data.tools.filter((x) => x.published)) {
+      const hay = `${t.title} ${t.description} ${t.themes.join(' ')}`.toLowerCase()
+      if (hay.includes(needle)) {
+        out.push({
+          type: 'Tool',
+          title: t.title,
+          description: t.description,
+          route: `/tools/${t.slug}`,
+        })
+      }
+    }
+    for (const th of data.themes.filter((x) => x.published)) {
+      const hay = `${th.title} ${th.intro || ''}`.toLowerCase()
+      if (hay.includes(needle)) {
+        out.push({
+          type: 'Thema',
+          title: th.title,
+          description: th.intro || '',
+          route: `/themas/${th.slug}`,
+        })
+      }
+    }
+    for (const p of data.pages.filter((x) => x.published)) {
+      const hay = `${p.title} ${p.body || ''}`.toLowerCase()
+      if (hay.includes(needle)) {
+        out.push({
+          type: 'Pagina',
+          title: p.title,
+          description: (p.body || '').replace(/<[^>]+>/g, ' ').slice(0, 120),
+          route: `/pagina/${p.slug}`,
+        })
+      }
+    }
+    return out.slice(0, 20)
+  }, [q, data])
+
+  return (
+    <div
+      className="search-overlay"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Zoeken"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose()
+      }}
+    >
+      <div className="search-overlay__panel">
+        <div className="search-overlay__bar">
+          <input
+            ref={inputRef}
+            className="search-overlay__input"
+            type="search"
+            placeholder="Zoek artikels, tools, thema's…"
+            value={q}
+            onChange={(e) => setQ(e.target.value)}
+            aria-label="Zoekterm"
+          />
+          <button type="button" className="search-overlay__close" onClick={onClose}>
+            Sluiten
+          </button>
+        </div>
+        <div className="search-overlay__results">
+          {q.trim().length < 2 ? (
+            <p className="search-overlay__empty">Typ minstens 2 letters om te zoeken.</p>
+          ) : hits.length === 0 ? (
+            <p className="search-overlay__empty">Geen resultaten voor “{q.trim()}”.</p>
+          ) : (
+            hits.map((h) => (
+              <button
+                key={`${h.type}-${h.route}`}
+                type="button"
+                className="search-overlay__hit"
+                onClick={() => {
+                  goTo(h.route)
+                  onClose()
+                }}
+              >
+                <span className="search-overlay__hit-type">{h.type}</span>
+                <span className="search-overlay__hit-title">{h.title}</span>
+                {h.description ? <span className="search-overlay__hit-desc">{h.description}</span> : null}
+              </button>
+            ))
+          )}
+        </div>
+      </div>
+    </div>
+  )
+}
+
 function SiteHeader({ activePath }: { activePath: string }) {
   const { data } = useCms()
   const nav = [...data.nav].sort((a, b) => a.order - b.order)
   const path = activePath.split('?')[0]
   const [menuOpen, setMenuOpen] = useState(false)
+  const [searchOpen, setSearchOpen] = useState(false)
 
   return (
-    <header className="content">
-      <div className="header--large large-only">
-        <div className="header__top">
-          <div className="logo">
-            <Logo />
+    <>
+      <header className="content site-header">
+        <div className="header--large large-only">
+          <div className="header__top">
+            <div className="logo">
+              <Logo />
+            </div>
           </div>
+          <nav className="nav__main" aria-label="Hoofdmenu">
+            <ul className="menu">
+              {nav.map((item) => {
+                const active = path === item.route || (item.route !== '/' && path.startsWith(item.route))
+                return (
+                  <li key={item.id} className={`menu-item${active ? ' menu-item--active-trail' : ''}`}>
+                    <NavLink to={item.route}>
+                      <span>{item.label}</span>
+                    </NavLink>
+                  </li>
+                )
+              })}
+              <li className="search menu-item">
+                <a
+                  href="#zoek"
+                  role="button"
+                  onClick={(e) => {
+                    e.preventDefault()
+                    setSearchOpen(true)
+                  }}
+                >
+                  <span>Zoek</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
         </div>
-        <nav className="nav__main">
-          <ul className="menu">
-            {nav.map((item) => {
-              const active = path === item.route || (item.route !== '/' && path.startsWith(item.route))
-              return (
-                <li key={item.id} className={`menu-item${active ? ' menu-item--active-trail' : ''}`}>
+        <div className="header--small small-only">
+          <div className="header__top">
+            <div className="logo">
+              <Logo />
+            </div>
+          </div>
+          <button type="button" className="menu__toggle" onClick={() => setMenuOpen((v) => !v)}>
+            Menu
+          </button>
+          <nav className="nav__main nav__main--small" style={{ display: menuOpen ? 'flex' : 'none' }} aria-label="Mobiel menu">
+            <ul className="menu">
+              {nav.map((item) => (
+                <li key={item.id} className="menu-item">
                   <NavLink to={item.route}>
                     <span>{item.label}</span>
                   </NavLink>
                 </li>
-              )
-            })}
-            <li className="search menu-item">
-              <a>
-                <span>Zoek</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-      <div className="header--small small-only">
-        <div className="header__top">
-          <div className="logo">
-            <Logo />
-          </div>
-        </div>
-        <button type="button" className="menu__toggle" onClick={() => setMenuOpen((v) => !v)}>
-          Menu
-        </button>
-        <nav className="nav__main nav__main--small" style={{ display: menuOpen ? 'flex' : 'none' }}>
-          <ul className="menu">
-            {nav.map((item) => (
-              <li key={item.id} className="menu-item">
-                <NavLink to={item.route}>
-                  <span>{item.label}</span>
-                </NavLink>
+              ))}
+              <li className="search menu-item">
+                <a
+                  href="#zoek"
+                  role="button"
+                  onClick={(e) => {
+                    e.preventDefault()
+                    setMenuOpen(false)
+                    setSearchOpen(true)
+                  }}
+                >
+                  <span>Zoek</span>
+                </a>
               </li>
-            ))}
-          </ul>
-        </nav>
-      </div>
-    </header>
+            </ul>
+          </nav>
+        </div>
+      </header>
+      {searchOpen ? <SearchOverlay onClose={() => setSearchOpen(false)} /> : null}
+    </>
   )
 }
 
@@ -380,24 +610,7 @@ function ToolsPage() {
                 <h1 className="section__title" style={{ margin: 0 }}>
                   Tools
                 </h1>
-                <select
-                  value={filter}
-                  onChange={(e) => setFilter(e.target.value)}
-                  style={{
-                    borderRadius: 50,
-                    border: '1px solid #000',
-                    padding: '0.5rem 1rem',
-                    background: '#fff',
-                    fontFamily: 'inherit',
-                  }}
-                >
-                  <option value="all">Alle thema&apos;s</option>
-                  {themeOptions.map((t) => (
-                    <option key={t} value={t}>
-                      {t}
-                    </option>
-                  ))}
-                </select>
+                <ThemeFilter value={filter} options={themeOptions} onChange={setFilter} />
               </div>
               <div className="teaser__container teaser__container--3">
                 {filtered.map((t) => (
@@ -430,24 +643,7 @@ function InspiratiePage() {
                 <h1 className="section__title" style={{ margin: 0 }}>
                   Inspiratie
                 </h1>
-                <select
-                  value={filter}
-                  onChange={(e) => setFilter(e.target.value)}
-                  style={{
-                    borderRadius: 50,
-                    border: '1px solid #000',
-                    padding: '0.5rem 1rem',
-                    background: '#fff',
-                    fontFamily: 'inherit',
-                  }}
-                >
-                  <option value="all">Alle thema&apos;s</option>
-                  {themeOptions.map((t) => (
-                    <option key={t} value={t}>
-                      {t}
-                    </option>
-                  ))}
-                </select>
+                <ThemeFilter value={filter} options={themeOptions} onChange={setFilter} />
               </div>
               <div className="teaser__container teaser__container--3">
                 {filtered.map((a) => (
