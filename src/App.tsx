@@ -7,6 +7,9 @@ import Admin from './cms/Admin.tsx'
 function pushPath(path: string) {
   window.history.pushState(null, '', '' + path)
   window.dispatchEvent(new PopStateEvent('popstate'))
+  window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+  document.documentElement.scrollTop = 0
+  document.body.scrollTop = 0
 }
 
 function nextInCycle(curr: string, arr: readonly string[]): string {

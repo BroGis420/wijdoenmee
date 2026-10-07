@@ -57,6 +57,9 @@ function BrandLoop({ variant = 'hero' }: { variant?: 'hero' | 'footer' }) {
 function goTo(path: string) {
   window.history.pushState(null, '', path)
   window.dispatchEvent(new PopStateEvent('popstate'))
+  window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+  document.documentElement.scrollTop = 0
+  document.body.scrollTop = 0
 }
 
 function ThemeFilter({
@@ -997,6 +1000,13 @@ export default function PublicSite() {
   }, [data.settings.siteName])
 
   const pathname = resolvePath(path)
+
+  // Always start at top when the route changes (article/tool/theme/page)
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+    document.documentElement.scrollTop = 0
+    document.body.scrollTop = 0
+  }, [pathname])
 
   const content = useMemo(() => {
     if (pathname === '/' || pathname === '') return <HomePage />
