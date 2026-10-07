@@ -1512,6 +1512,24 @@ a.button:active,
 @font-face { font-family: font-bold-italic; src: url("/fonts/2b878841-49d8-47a8-a110-ee2b8b42b433.woff2") format("woff2"); font-weight: 700; font-style: italic; font-display: swap; }
 @font-face { font-family: font-black; src: url("/fonts/89d5338c-cfbf-422f-89a6-324263dd6b13.woff2") format("woff2"); font-weight: 800; font-style: normal; font-display: swap; }
 
+
+/* Neutral brand gradient when no photo (approved content has no images) */
+.dialog-off-canvas-main-canvas .teaser__placeholder {
+  display: block;
+  width: 100%;
+  aspect-ratio: 9 / 6;
+  background: linear-gradient(145deg, #EAF5FC 0%, #188AD1 55%, #116296 100%);
+  border-radius: inherit;
+}
+.dialog-off-canvas-main-canvas .teaser:nth-child(3n+2) .teaser__placeholder,
+.dialog-off-canvas-main-canvas .views-row:nth-child(3n+2) .teaser__placeholder {
+  background: linear-gradient(145deg, #FFF8DB 0%, #FECB01 70%, #e6b800 100%);
+}
+.dialog-off-canvas-main-canvas .teaser:nth-child(3n+3) .teaser__placeholder,
+.dialog-off-canvas-main-canvas .views-row:nth-child(3n+3) .teaser__placeholder {
+  background: linear-gradient(160deg, #116296 0%, #188AD1 50%, #EAF5FC 100%);
+}
+
 /* Legacy thema breakup overrides (kommaaraf stylesheet) */
 .dialog-off-canvas-main-canvas .thema:hover,
 .dialog-off-canvas-main-canvas .thema {

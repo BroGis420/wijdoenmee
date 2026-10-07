@@ -441,7 +441,9 @@ function ArticleCard({ article }: { article: Article }) {
       <div className="teaser__img">
         {article.imageUrl ? (
           <img loading="lazy" alt={article.imageAlt || article.title} src={article.imageUrl} width={357} height={238} />
-        ) : null}
+        ) : (
+          <div className="teaser__placeholder" aria-hidden="true" />
+        )}
       </div>
       <div className="teaser__body">
         <div>
@@ -467,7 +469,9 @@ function ToolCard({ tool }: { tool: Tool }) {
       <div className="teaser__img">
         {tool.imageUrl ? (
           <img loading="lazy" alt={tool.imageAlt || tool.title} src={tool.imageUrl} width={357} height={238} />
-        ) : null}
+        ) : (
+          <div className="teaser__placeholder" aria-hidden="true" />
+        )}
       </div>
       <div className="teaser__body">
         <div>
@@ -478,7 +482,7 @@ function ToolCard({ tool }: { tool: Tool }) {
           {tool.themes?.length ? <p className="teaser__tag theme">{tool.themes.join(', ')}</p> : null}
         </div>
         <p className="teaser__cta button button--primary">
-          <NavLink to={route}>Lees meer</NavLink>
+          <NavLink to={route}>Bekijk tool</NavLink>
         </p>
       </div>
     </div>

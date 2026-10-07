@@ -122,6 +122,8 @@ export interface MediaItem {
 
 export interface CmsData {
   version: number
+  /** Tracks approved CONTENT.md integration; independent of schema version */
+  contentMigration?: number
   settings: SiteSettings
   nav: NavItem[]
   footerLinks: NavItem[]

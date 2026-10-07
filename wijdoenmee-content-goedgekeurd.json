@@ -1,0 +1,1079 @@
+{
+  "version": 3,
+  "contentMigration": 3,
+  "settings": {
+    "siteName": "Wij doen mee, rond Gent",
+    "logoLine1": "Wij doen",
+    "logoLine2": "mee,",
+    "logoLine3": "rond Gent",
+    "homeTitle": "Meer deelnemers voor jullie activiteiten?",
+    "homeIntro": "Laat anderstalige nieuwkomers makkelijk deelnemen aan jouw vrijetijdsactiviteiten.\nOntdek tips, tools en inspiratie over hoe anderen het aanpakken.",
+    "homeSectionTitle": "Laat je inspireren",
+    "homeSectionCta": "Bekijk meer inspiraties",
+    "homeSectionCtaRoute": "/inspiratie",
+    "footerCopyright": "© 2026",
+    "footerCredit": "gemaakt door Lieven :)",
+    "colors": {
+      "primary": "#188AD1",
+      "primaryDark": "#116296",
+      "accent": "#FECB01",
+      "secondary": "#FFF8DB",
+      "link": "#116296"
+    }
+  },
+  "nav": [
+    {
+      "id": "nav_home",
+      "label": "Home",
+      "route": "/",
+      "order": 0
+    },
+    {
+      "id": "nav_tools",
+      "label": "Tools",
+      "route": "/tools",
+      "order": 1
+    },
+    {
+      "id": "nav_inspiratie",
+      "label": "Inspiratie",
+      "route": "/inspiratie",
+      "order": 2
+    }
+  ],
+  "footerLinks": [
+    {
+      "id": "ft_contact",
+      "label": "Contact",
+      "route": "/pagina/contact",
+      "order": 0
+    },
+    {
+      "id": "ft_over",
+      "label": "Over ons",
+      "route": "/pagina/over-ons",
+      "order": 1
+    },
+    {
+      "id": "ft_disclaimer",
+      "label": "Disclaimer",
+      "route": "/pagina/disclaimer",
+      "order": 2
+    },
+    {
+      "id": "ft_toegankelijk",
+      "label": "Toegankelijkheidsverklaring",
+      "route": "/pagina/toegankelijkheid",
+      "order": 3
+    }
+  ],
+  "themes": [
+    {
+      "id": "theme_promotie",
+      "title": "Promotie en werving",
+      "slug": "promotie-en-werving",
+      "intro": "Het concept vrije tijd is voor anderstalige nieuwkomers soms onbekend. Hoe krijg je ze dan toch bij jouw organisatie? Hou je communicatie eenvoudig en breng je boodschap rechtstreeks naar de mensen.",
+      "imageUrl": "/images/9e9b4e51-a717-4587-9957-06d19d265a2d.jpg",
+      "imageAlt": "groep mensen in sporthal",
+      "published": true,
+      "order": 0,
+      "faqs": [
+        {
+          "id": "faq_84w6z525xx6p",
+          "question": "Via welke kanalen bereik je nieuwkomers?",
+          "answer": "Anderstalige nieuwkomers bereik je, zoals andere doelgroepen, via een combinatie van verschillende kanalen.\n\n## Flyers\n\nEen flyer kan je rustig thuis bekijken, eventueel met de hulp van een ondersteuner of een vertaalapp. Het is bovendien een geheugensteun op het moment van de activiteit zelf.\n\nEen flyer bereikt ook mensen die beperkte digitale vaardigheden hebben en zij die minder toegang hebben tot een internetconnectie.\n\nWat zijn goede plaatsen om jouw flyers te verspreiden? Bijvoorbeeld bij de lokale supermarkt, het buurthuis, scholen …\n\nMaak een goede flyer met onze tools!\n\n## Digitaal\n\nRegistreer je activiteit op de website ikdoemee.be. Het werd speciaal ontwikkeld om anderstalige nieuwkomers het vrijetijdsaanbod te laten ontdekken.\nZet jij je activiteiten al in de UITdatabank? Goed nieuws, je kan ze automatisch publiceren op ikdoemee.be door taaliconen toe te voegen.\n\n## Toeleiders\n\nOmdat anderstalige nieuwkomers het vrijetijdsveld nog niet zo goed kennen, spelen toeleiders een belangrijke rol. Dat zijn medewerkers van het Agentschap Integratie en Inburgering, brugfiguren op school of medewerkers van je gemeente. Zij geven nieuwkomers meer context dan enkel een flyer. Ze beantwoorden ook algemene vragen rond vrije tijd. Betrek dus gerust gemeenteloketten en scholen in de buurt om je promotiemateriaal te verspreiden.\n\n## Snuffelmomenten\n\nToeleiders kunnen anderstalige nieuwkomers ook meenemen om jullie werking (ter plaatse) te leren kennen. Dat is voor deze doelgroep bijzonder interessant om te weten te komen hoe het er echt aan toe gaat in je organisatie."
+        },
+        {
+          "id": "faq_cmoo6uylxx6p",
+          "question": "Hoe zorg je ervoor dat iedereen jouw promotie begrijpt?",
+          "answer": "Het is belangrijk dat iedereen begrijpt wat je mag verwachten van de activiteit.\n\n## Duidelijke tekst\n\nBeperk je in je promotie tot de essentie. Gebruik duidelijk Nederlands in je teksten. Zo zijn mensen die nog niet zo goed Nederlands spreken makkelijk mee. Ook voor Nederlandstaligen is het heel fijn dat ze in één oogopslag alle belangrijke info zien.\n\nWil je je teksten snel omzetten naar duidelijke taal? Gebruik de website Schrijf Simpel.\n\n## Beelden\n\nGebruik echte foto's van jouw werking, die laten zien wat er gebeurt tijdens de activiteiten. Zo krijgen mensen een duidelijk en realistisch beeld.\n\n## Informatie\n\nVermeld essentiële informatie, zoals datum en tijdstip, locatie, doelgroep en prijs. Voeg altijd een contactpersoon met e-mailadres en telefoonnummer toe. Whatsapp is een heel toegankelijke communicatiemethode, ook voor deelnemers met beperkte digitale vaardigheden.\n\nOrganiseren jullie initiaties? Geef dat zeker mee in je communicatie!"
+        },
+        {
+          "id": "faq_uu0waufwxx6p",
+          "question": "Hoe laat je mensen kennismaken met jouw werking?",
+          "answer": "Het onbekende maakt het soms moeilijk om zomaar in te schrijven voor een heel jaar. Voor kinderen worden er vaak snuffeldagen georganiseerd. Waarom dan ook geen proeflessen voor volwassenen? Denk eventueel na over een tienbeurtenkaart. Dat maakt het engagement laagdrempeliger en je geeft nadien de mogelijkheid om nog in te schrijven voor het hele jaar.\n\nVeel gemeenten werken ook met toeleiders. Dat zijn medewerkers van het Agentschap Integratie en Inburgering, brugfiguren op school of medewerkers van je gemeente. Zij geven nieuwkomers meer context dan enkel een flyer. Ze beantwoorden ook algemene vragen rond vrije tijd. Breng hen op de hoogte van jouw initiatiemomenten."
+        }
+      ],
+      "deepdives": [
+        {
+          "id": "dd_4ruxqm7exx6p",
+          "title": "Test je boodschap met focusgroepen",
+          "description": "Met de leidraad voor focusgroepen van de VGC en de VVSG verzamel je feedback om je communicatie nog sterker te maken.",
+          "buttonLabel": "Ga naar de leidraad voor focusgroepen",
+          "buttonUrl": "https://www.vvsg.be",
+          "imageUrl": "/images/fa04be68-9b64-4c2a-9942-94ec6234a7fa.jpg",
+          "imageAlt": "focusgroepen"
+        },
+        {
+          "id": "dd_ds55jnf4xx6p",
+          "title": "Volg een vorming",
+          "description": "Wil je meer weten over duidelijke taal en toegankelijke vrije tijd?",
+          "buttonLabel": "Bekijk de kalender met vormingen van AgII",
+          "buttonUrl": "https://www.integratie-inburgering.be",
+          "imageUrl": "/images/1c06c7da-2a5e-41dd-a398-fdd2bf37a1c7.jpg",
+          "imageAlt": "vorming"
+        },
+        {
+          "id": "dd_nidlybwmxx6p",
+          "title": "Werking van Compagnie Cordial",
+          "description": "Wil jij je organisatie versterken met talentvolle nieuwkomers die jouw team diverser en inclusiever maken? Of een workshop op maat volgen? Bij CoCo ben je aan het juiste adres.",
+          "buttonLabel": "Ga naar de website van CoCo",
+          "buttonUrl": "https://www.compagniecordial.be",
+          "imageUrl": "/images/41d038dc-feaa-4529-b1a6-f18a09495d12.jpg",
+          "imageAlt": "Compagnie Cordial"
+        }
+      ]
+    },
+    {
+      "id": "theme_inschrijving",
+      "title": "Inschrijving",
+      "slug": "inschrijving",
+      "intro": "Niet iedereen is handig met digitale tools of heeft voldoende kennis van het Nederlands. Organiseer daarom verschillende inschrijfmogelijkheden. Zo bereik je meer mensen, kiest iedereen wat best past en heet je mensen al vanaf de start welkom.",
+      "imageUrl": "/images/63587b3b-149b-47b8-9f76-2e8bfcd21a80.jpg",
+      "imageAlt": "drie mensen aan tafel",
+      "published": true,
+      "order": 1,
+      "faqs": [
+        {
+          "id": "faq_t86otgq2xx6p",
+          "question": "Hoe organiseer je de inschrijvingen?",
+          "answer": "Om zoveel mogelijk mensen te bereiken, zet je best in op een combinatie van een digitaal inschrijvingsformulier én een fysiek inschrijfmoment.\n\n## Digitaal formulier\n\n- Hou je inschrijvingsformulier zo kort en duidelijk mogelijk.\n- Maak een korte handleiding. Vermeld stap voor stap hoe je het formulier invult. Gebruik duidelijke taal en beelden zodat ook mensen die nog niet zo goed Nederlands spreken het begrijpen. Met de tool Schrijf Simpel kan je snel jouw tekst in duidelijke taal omzetten.\n- Vult de deelnemer niet alles in of gaat er iets fout? Voorzie een duidelijke melding. Zo weet de deelnemer wat te doen om toch succesvol in te schrijven.\n- Vermeld een contactpersoon, e-mailadres en telefoonnummer van jouw organisatie. Als mensen vragen hebben, kunnen ze die persoon mailen of whatsappen.\n\n## Fysiek inschrijfmoment\n\nTijdens het fysieke inschrijfmoment kun je meteen persoonlijk uitleg geven over de werking en een rondleiding geven. Zo verlaag je de drempel en maak je de inschrijving voor iedereen toegankelijk.\n\n- Wanneer? Richt één of meerdere inschrijfmomenten in. Noteer deze data op je flyers en in andere communicatie.\n- Waar? Laat de inschrijving doorgaan waar ook de activiteiten zelf plaatsvinden. Dan voelen nieuwe deelnemers zich al wat meer vertrouwd als ze voor het eerst naar de activiteit komen.\n- Aanspreekpunten aanstellen. Het is fijn als er één of meerdere aanspreekpunten zijn. Maak hen kenbaar door ze bijvoorbeeld een sticker of jas van de organisatie te geven. Idealiter komt deze persoon ook naar een eerste activiteit, zodat nieuwe deelnemers een vertrouwd gezicht zien.\n- Organisatieafspraken meegeven. Noteer alle afspraken over de organisatie en activiteiten zelf. Doe dat op papier, via e-mail en/of via whatsapp. Zo kan iedereen die rustig thuis bekijken, eventueel met de hulp van een ondersteuner of een vertaalapp. Gebruik de sjablonen en voorbeeldbrieven als inspiratie.\n\n## Kort op voorhand inschrijven\n\nVoor veel mensen is het lastig om lang op voorhand te plannen: een cursus Nederlands valt op een ander moment, een nieuwe job of kinderen die van school veranderen, verhuizen ... Daarom is het handig als je niet te lang op voorhand moet inschrijven. Dan is de kans groter dat het in de agenda past en dat mensen effectief komen!"
+        },
+        {
+          "id": "faq_izkssj4ixx6p",
+          "question": "Waarom is de UiTPAS interessant?",
+          "answer": "Met de UiTPAS bied je jouw activiteiten aan een voordeliger tarief aan voor mensen die recht hebben op een verhoogde tegemoetkoming.\n\nDeelnemers met een UiTPAS sparen punten bij elke activiteit. Ze kunnen deze inwisselen voor voordelen zoals korting, gadgets of gratis tickets. Als partner van de UiTPAS kies je zelf welke omruilvoordelen je aanbiedt.\n\nBovendien verschijnen jouw werking en activiteiten op de website van UiT in Vlaanderen, hun nieuwsbrief en sociale media. Op deze manier bereik je een bredere doelgroep en laat je je sociaal engagement zien."
+        },
+        {
+          "id": "faq_m1v4docjxx6p",
+          "question": "Hoe kan je zonder inschrijving of met flexibele deelname werken?",
+          "answer": "Hoe vrijblijvender een activiteit is, hoe toegankelijker. De situatie van anderstalige nieuwkomers maakt dat hun agenda soms veranderlijk is. Bijvoorbeeld door een nieuwe job met verschillende uren, de cursus Nederlands, kinderen die van school veranderen ... De vrijheid om gewoon te kunnen komen, kan mensen motiveren.\n\nDe spontaniteit zorgt er ook voor dat er soms meer of minder mensen komen. Denk er dus goed over na of het een optie voor jullie is en of de infrastructuur het aankan. Is er genoeg materiaal voor een grotere groep mensen? Zijn er voldoende vrijwilligers om de activiteit te begeleiden?\n\nAls tussenoplossing kan je ook korte reeksen of een beurtenkaart aanbieden. Zo heb je meer planningszekerheid en toch voldoende flexibiliteit voor je deelnemers.\n\nBied je in je organisatie enkel een jaarwerking aan? Bekijk dan of het misschien mogelijk is om bijvoorbeeld twee keer per jaar snuffelmomenten (initiaties) in te plannen. Zo leren mensen je werking echt kennen en kunnen ze makkelijker kiezen voor een langer engagement."
+        },
+        {
+          "id": "faq_eib6z2s6xx6p",
+          "question": "Kan je gewoon Nederlands blijven spreken?",
+          "answer": "Voor mensen die Nederlands leren is het belangrijk om ook buiten de les te oefenen in alledaagse situaties.\n\n## Blijf daarom zo veel mogelijk Nederlands praten. Enkele tips:\n\n- Begin en eindig gesprekken altijd in het Nederlands.\n- Een taal oefenen gebeurt best in een positieve omgeving: laat iedereen weten dat het niet erg is als ze iets niet begrijpen of fouten maken.\n- Spreek net iets langzamer en duidelijker dan je gewoon bent, maar overdrijf niet. Dat maakt het makkelijker, maar zal voor Nederlandstaligen ook niet raar aanvoelen.\n- Gebruik je handen, gezichtsuitdrukkingen en voorwerpen. Doe een beweging voor terwijl je ook vertelt wat je aan het doen bent.\n- Geef je een uitleg en heb je het gevoel dat iemand het niet begrijpt? Voor veel mensen is het lastig om toe te geven dat ze iets niet begrijpen, vooral in een groep of met nieuwe gezichten. In een groep kan je beter wachten op een rustig één-op-éénmoment om dingen opnieuw uit te leggen. Probeer je boodschap anders te formuleren.\n\n## Vertaalapps gebruiken\n\nLukt het even niet? Geen paniek, vertaalapps zijn tegenwoordig best handig. Maar let op, soms maken ze nog fouten, zeker bij minder courante talen. Check altijd bij de deelnemer of de vertaling goed is overgekomen.\n\n## Andere talen gebruiken\n\nHet soepele verloop van de activiteit is prioritair! Soms kan het handig zijn om even een andere taal te gebruiken. Maak afspraken over wanneer je een andere taal gebruikt. Bijvoorbeeld in één-op-ééngesprekken of als je even bijpraat. Schakel nadien altijd terug over op het Nederlands."
+        }
+      ],
+      "deepdives": [
+        {
+          "id": "dd_h5bxh090xx6p",
+          "title": "Hoe toegankelijk is jouw vrijetijdsaanbod?",
+          "description": "Ontdek hoe ver jullie al staan op het vlak van toegankelijkheid. En waar je nog mee aan de slag kunt.",
+          "buttonLabel": "Doe de test!",
+          "buttonUrl": "https://www.integratie-inburgering.be",
+          "imageUrl": "/images/833c4689-bb36-4687-a015-faa8f3106a53.jpg",
+          "imageAlt": "toegankelijkheidstest"
+        },
+        {
+          "id": "dd_y3jjpw9axx6p",
+          "title": "Volg een vorming",
+          "description": "Wil je meer weten over duidelijke taal en toegankelijke vrije tijd?",
+          "buttonLabel": "Bekijk de kalender met vormingen van AgII",
+          "buttonUrl": "https://www.integratie-inburgering.be",
+          "imageUrl": "/images/063966c0-f4bf-47d6-bf4a-3cb2dfd5304b.jpg",
+          "imageAlt": "vorming"
+        }
+      ]
+    },
+    {
+      "id": "theme_eerste",
+      "title": "De eerste keren",
+      "slug": "de-eerste-keren",
+      "intro": "De eerste keer naar een nieuwe activiteit gaan is voor iedereen spannend, zowel voor de nieuwe deelnemers als voor de organisatie. Deze tips en tools helpen je om in te spelen op de noden van anderstaligen en nieuwkomers.",
+      "imageUrl": "/images/7343e54b-d84e-4793-a58a-52a973624c81.jpg",
+      "imageAlt": "groep mensen buiten die applaudisseren",
+      "published": true,
+      "order": 2,
+      "faqs": [
+        {
+          "id": "faq_qgtvtlsqxx6p",
+          "question": "Hoe zorg je ervoor dat iedereen zich welkom voelt?",
+          "answer": "Je welkom voelen is afhankelijk van veel factoren. Het begint met een open, vriendelijke en veilige sfeer: een glimlach doet wonderen.\n\n- Laat merken dat je echt interesse hebt in de deelnemers. Vraag bijvoorbeeld hoe hun dag was. Laat voelen dat het niet uitmaakt als je fouten in het Nederlands maakt. Lukt het nog niet om in het Nederlands een heel gesprek te voeren? Gebruik een vertaalapp, praat even in een andere taal of hou het op een korte, hartelijke uitwisseling zonder veel woorden.\n- Geef ook de praktische afspraken mondeling en schriftelijk mee: locatie, tijd en algemene regels, inclusief eventuele ongeschreven regels. Deze ongeschreven regels kunnen soms complex zijn.\n- Een compliment of bedankje zorgt altijd voor een goed gevoel, zoals: \"Leuk dat je meedoet!\". Dat geeft je ook de kans om mensen extra te motiveren om vaker aan te sluiten. Vraag of ze de volgende keer opnieuw komen en of ze al lid zijn van de Whatsappgroep."
+        },
+        {
+          "id": "faq_2b0yu3v4xx6p",
+          "question": "Kan je gewoon Nederlands blijven spreken?",
+          "answer": "Voor mensen die Nederlands leren is het belangrijk om ook buiten de les te oefenen in alledaagse situaties.\n\n## Blijf daarom zo veel mogelijk Nederlands praten. Enkele tips:\n\n- Begin en eindig gesprekken altijd in het Nederlands.\n- Een taal oefenen gebeurt best in een positieve omgeving: laat iedereen weten dat het niet erg is als ze iets niet begrijpen of fouten maken.\n- Spreek net iets langzamer en duidelijker dan je gewoon bent, maar overdrijf niet. Dat maakt het makkelijker, maar zal voor Nederlandstaligen ook niet raar aanvoelen.\n- Gebruik je handen, gezichtsuitdrukkingen en voorwerpen. Doe een beweging voor terwijl je ook vertelt wat je aan het doen bent.\n- Geef je een uitleg en heb je het gevoel dat iemand het niet begrijpt? Voor veel mensen is het lastig om toe te geven dat ze iets niet begrijpen, vooral in een groep of met nieuwe gezichten. In een groep kan je beter wachten op een rustig één-op-éénmoment om dingen opnieuw uit te leggen. Probeer je boodschap anders te formuleren.\n\n## Vertaalapps gebruiken\n\nLukt het even niet? Geen paniek, vertaalapps zijn tegenwoordig best handig. Maar let op, soms maken ze nog fouten, zeker bij minder courante talen. Check altijd bij de deelnemer of de vertaling goed is overgekomen.\n\n## Andere talen gebruiken\n\nHet soepele verloop van de activiteit is prioritair! Soms kan het handig zijn om even een andere taal te gebruiken. Maak afspraken over wanneer je een andere taal gebruikt. Bijvoorbeeld in één-op-ééngesprekken of als je even bijpraat. Schakel nadien altijd terug over op het Nederlands."
+        },
+        {
+          "id": "faq_fzf9oqn3xx6p",
+          "question": "Hoe ontvang je nieuwe deelnemers tijdens de eerste activiteiten?",
+          "answer": "## Zorg voor een aanspreekpunt\n\nBij de eerste activiteiten is het handig dat er iemand aanwezig is die laat zien hoe alles werkt en waar iedereen naartoe moet. Er moet geen aparte vrijwilliger zijn voor anderstalige nieuwkomers: één aanspreekpunt voor alle nieuwe deelnemers volstaat. Maak deze persoon herkenbaar, bijvoorbeeld met een opvallende sticker of jas.\n\n## Geef duidelijke instructies aan het aanspreekpunt\n\nLaat weten dat er anderstalige deelnemers komen en dat zij mogelijk extra uitleg nodig hebben. Vraag om net iets langzamer en duidelijker te spreken, zodat taalleerders goed kunnen volgen. Maak eventueel afspraken over tijdelijk een andere taal gebruiken.\n\n## Maak het contact persoonlijk\n\nHeb je een peter-, meter- of buddysysteem? Koppel nieuwe leden aan een enthousiast, ervaren lid. Persoonlijk contact verlaagt de drempel om vragen te stellen en helpt nieuwkomers om zich sneller thuis te voelen.\n\n## Follow-up na de activiteit\n\nVraag na de activiteit aan de nieuwe deelnemers hoe het gegaan is. Check of ze weten wanneer de volgende bijeenkomst plaatsvindt en of ze toegevoegd zijn aan de Whatsapp- of mailinggroep."
+        },
+        {
+          "id": "faq_e8jq7jxuxx6p",
+          "question": "Moeten andere deelnemers weten dat er anderstalige nieuwkomers gaan meedoen?",
+          "answer": "Nee. Het is wel fijn als je de begeleider van de activiteit of de peter/meter/buddy meeneemt in het verhaal. Geef ze tips over duidelijke taal, vertaalapps of wat je van hen verwacht. Zij kunnen ook de brug naar andere deelnemers zijn. Laat ze weten wie er voor hen klaarstaat als ze zelf vragen hebben.\n\nHeb je het gevoel dat niet iedereen in je organisatie even enthousiast reageert op de nieuwe deelnemers? Spreek hen persoonlijk aan. Bespreek je gevoel met het bestuur of met professionals in je organisatie. Misschien kan je jouw koepelorganisatie om ondersteuning vragen?"
+        }
+      ],
+      "deepdives": [
+        {
+          "id": "dd_28xb41c8xx6p",
+          "title": "Hoe leert een anderstalige Nederlands?",
+          "description": "Waarom leert de ene persoon sneller Nederlands dan de andere? Waarom maakt iemand vaak dezelfde fout?",
+          "buttonLabel": "Bekijk het filmpje",
+          "buttonUrl": "https://www.integratie-inburgering.be",
+          "imageUrl": "/images/b9fb9add-24a5-48db-8b56-3bd82956b895.jpg",
+          "imageAlt": "taalleren"
+        },
+        {
+          "id": "dd_wp1dm17fxx6p",
+          "title": "Communicatiewaaier",
+          "description": "De communicatiewaaier is een praktische tool die hulp- en dienstverleners ondersteunt bij gesprekken met anderstaligen.",
+          "buttonLabel": "Ga naar communicatiewaaier.be",
+          "buttonUrl": "https://www.communicatiewaaier.be",
+          "imageUrl": "/images/a75fe5ff-c7a9-4dd4-bc53-9abab5fc95c9.jpg",
+          "imageAlt": "communicatiewaaier"
+        },
+        {
+          "id": "dd_0p86gb6nxx6p",
+          "title": "Volg een vorming",
+          "description": "Wil je meer weten over duidelijke taal en toegankelijke vrije tijd?",
+          "buttonLabel": "Bekijk de kalender met vormingen van AgII",
+          "buttonUrl": "https://www.integratie-inburgering.be",
+          "imageUrl": "/images/c6297b62-43b7-4b6d-93d7-3ea52e53c5d9.jpg",
+          "imageAlt": "vorming"
+        },
+        {
+          "id": "dd_2z39qddfxx6p",
+          "title": "Meer praktische tips voor een warme ontvangst",
+          "description": "Ontdek enkele ijsbrekers voor een eerste activiteit op diversiteitspraktijk.be.",
+          "buttonLabel": "Lees het artikel",
+          "buttonUrl": "https://www.diversiteitspraktijk.be",
+          "imageUrl": "/images/3f98a6be-3e76-466b-8244-12471f5e8ed3.jpg",
+          "imageAlt": "ijsbrekers"
+        }
+      ]
+    },
+    {
+      "id": "theme_betrokken",
+      "title": "Betrokken deelname",
+      "slug": "betrokken-deelname",
+      "intro": "Een vrijetijdsvereniging heeft betrokken deelnemers nodig om alles draaiende te houden. Hoe vergroot je de betrokkenheid van je leden of deelnemers? Hoe stimuleer je dat ze zich blijven inzetten?",
+      "imageUrl": "/images/e2eedfaa-65b6-4f2a-9f77-0f356b35de97.jpg",
+      "imageAlt": "vier mensen aan tafel in keuken",
+      "published": true,
+      "order": 3,
+      "faqs": [
+        {
+          "id": "faq_6pujrk17xx6p",
+          "question": "Hoe motiveer je deelnemers om te blijven komen?",
+          "answer": "Nieuwe leden haken soms af zonder dat je weet waarom. Vaak heeft het niets te maken met je organisatie, maar verwachtte de deelnemer iets anders. Of misschien zijn er organisatorische uitdagingen, zoals de bereikbaarheid van de locatie of het tijdstip van de activiteit.\n\n## Vraag door\n\nVraag waarom iemand wel of niet terugkomt. Dat getuigt van oprechte interesse en geeft waardevolle inzichten.\nInvesteer in persoonlijk contact: een buddy of een aanspreekpunt die na de activiteit nog eens contact opneemt, zorgt voor extra verbinding.\n\n## Hou het contact warm\n\nEen groot engagement, zoals meteen voor een heel jaar inschrijven, kan afschrikken. Laat daarom altijd de deur op een kier staan: misschien past het nu niet, maar over een paar maanden wel. Stuur af en toe een berichtje over nieuwe activiteiten of nodig voormalige deelnemers uit voor een gezellig zomerfeestje. Whatsapp is de meest toegankelijke manier om te communiceren, ook voor mensen die minder digitaalvaardig zijn.\n\n## Zorg voor een aanspreekpunt\n\nHet aanspreekpunt is de trainer, de begeleider van de activiteit of iemand helemaal anders. Deelnemers kunnen bij het aanspreekpunt:\n\n- vragen stellen,\n- laten weten als ze niet kunnen deelnemen."
+        },
+        {
+          "id": "faq_gur8dg0zxx6p",
+          "question": "Hoe motiveer je deelnemers om mee te draaien in de organisatie?",
+          "answer": "Wie zich verbonden voelt met de organisatie, zal makkelijker meegaan in jouw verhaal. Een warm welkom, een warm contact en een praatje tussendoor leggen een goede basis om later te vragen of ze iets extra willen doen. Dat geldt ook voor de ouders van deelnemende kinderen in jouw vereniging.\n\n## Doseer\n\nOverval mensen niet meteen met grote verwachtingen. Zeg dat er ook kortere, afgebakende taken bestaan, bijvoorbeeld voor één dag, een weekend of een paar weken. Zo kunnen mensen zelf kiezen wat bij hen past en blijft de drempel laag.\n\n## Leg uit\n\n- Vertel concreet wat je verwacht.\n- Deel het werk op in duidelijke, haalbare taken. Voorzie een korte schriftelijke uitleg, liefst met beelden.\n- Geef aan dat perfect Nederlands niet nodig is. Talenten zijn belangrijker dan taalkennis.\n- Vertel dat iedereen binnen de organisatie vrijwilliger is. Voor veel anderstalige nieuwkomers is dit verrassend: pas als ze weten dat alles op vrijwilligers draait, begrijpen ze ook waarom hun hulp zo gewaardeerd is.\n\n## Geef keuze\n\nZorg voor een gevarieerd aanbod aan activiteiten: van technische ondersteuning tot helpen in de cafetaria. Denk samen na over welke taken het beste bij iemand passen. Is Nederlands spreken nog spannend? Dan zijn taken achter de schermen misschien meer geschikt.\n\nVeel lokale besturen hebben een vrijwilligerspunt die je hierbij ondersteunen."
+        }
+      ],
+      "deepdives": [
+        {
+          "id": "dd_n05t55zsxx6p",
+          "title": "Inspiratiegids 'werken met anderstalige vrijwilligers'",
+          "description": "Werken jullie al met anderstalige vrijwilligers? Of willen jullie graag meer anderstalige nieuwkomers als vrijwilliger verwelkomen binnen jullie organisatie? Dan is deze inspiratiegids van FMDO iets voor jou!",
+          "buttonLabel": "Ga naar de inspiratiegids van FMDO",
+          "buttonUrl": "https://www.fmdo.be",
+          "imageUrl": "/images/ccf16716-24b4-499c-91c2-d7233808f67e.jpg",
+          "imageAlt": "inspiratiegids FMDO"
+        },
+        {
+          "id": "dd_q7d410ntxx6p",
+          "title": "Werking van Compagnie Cordial",
+          "description": "Wil jij je organisatie versterken met talentvolle nieuwkomers die jouw team diverser en inclusiever maken? Of een workshop op maat volgen? Bij CoCo ben je aan het juiste adres.",
+          "buttonLabel": "Ga naar de website van CoCo",
+          "buttonUrl": "https://www.compagniecordial.be",
+          "imageUrl": "/images/38ad1254-626a-4870-8d34-0e94605102d2.jpg",
+          "imageAlt": "Compagnie Cordial"
+        },
+        {
+          "id": "dd_7qtr06iwxx6p",
+          "title": "De Vlaamse Sportfederatie",
+          "description": "Als sportclub kan je rekenen op ondersteuning vanuit de Vlaamse Sportfederatie. Maak je lid en krijg toegang tot alle info uit hun kennisdatabank, bijvoorbeeld over vrijwilligersbeleid.",
+          "buttonLabel": "Ga naar de kennisdatabank",
+          "buttonUrl": "https://www.vlaamsesportfederatie.be",
+          "imageUrl": "/images/33c1ecc4-4424-4982-8141-d3c7d700efc4.jpg",
+          "imageAlt": "Vlaamse Sportfederatie"
+        },
+        {
+          "id": "dd_yqmd5wrfxx6p",
+          "title": "De Vrijwilligerscentrale helpt jouw organisatie!",
+          "description": "Zoek je als organisatie vrijwilligers? Heb je specifieke vragen over vrijwilligerswerk? Dan is de Vrijwilligerscentrale de geschikte plaats om even langs te gaan.",
+          "buttonLabel": "Ga naar de Vrijwilligerscentrale",
+          "buttonUrl": "https://www.vrijwilligerswerk.be",
+          "imageUrl": "/images/9544e5ff-b134-4906-a452-9745ff8f0f1f.jpg",
+          "imageAlt": "Vrijwilligerscentrale"
+        }
+      ]
+    }
+  ],
+  "articles": [
+    {
+      "id": "art_c002",
+      "title": "Waar werkt ons netwerk aan",
+      "slug": "waar-werkt-ons-netwerk-aan",
+      "description": "Het netwerk zet in op beeldvorming, ondersteuning van aanbieders en een warm onthaal.",
+      "source": "Gemeente Laarne",
+      "themes": [
+        "Promotie en werving",
+        "De eerste keren",
+        "Betrokken deelname"
+      ],
+      "body": "Nieuwkomers laten deelnemen vraagt inzet op verschillende plekken. Wij doen mee rond Gent bundelt zijn aanpak rond drie uitdagingen: hoe we naar nieuwkomers kijken, hoe organisaties hun aanbod toegankelijk maken en hoe mensen de weg naar dat aanbod vinden.\n\nDe gemeentelijke netwerkpagina beschrijft acties rond getuigenisvideo’s, SamenLezen met Avansa, informatie en ondersteuning voor aanbieders, buddywerkingen en onthaal op maat met PIN vzw. Ook het voortzetten van de samenwerking krijgt aandacht. Lokale praktijken en bruikbare hulpmiddelen maken die aanpak concreet.\n\n[Lees de beschreven netwerkacties](https://www.laarne.be/wij-doen-mee-rond-gent)\n\n**Bron:** Gemeente Laarne. Gebaseerd op Wij doen mee rond Gent / Acties. Eigen samenvatting met verwijzing naar de oorspronkelijke bron.\n",
+      "imageUrl": "",
+      "imageAlt": "",
+      "videoUrl": "",
+      "published": true,
+      "featured": false,
+      "faqs": [],
+      "relatedToolSlugs": [
+        "een-toolkit-voor-werken-met-anderstalige-vrijwilligers",
+        "wegwijzer-over-vluchtelingen-en-vrijwilligerswerk",
+        "hoe-volg-je-verandering-in-een-buddyproject-op",
+        "vind-activiteiten-en-ontmoetingen-via-ikdoemee-be"
+      ],
+      "createdAt": "2026-10-07T12:00:00.000Z",
+      "updatedAt": "2026-10-07T12:00:00.000Z"
+    },
+    {
+      "id": "art_c003",
+      "title": "Brugwacht maakt ruimte voor ontmoeting in Wetteren",
+      "slug": "brugwacht-maakt-ruimte-voor-ontmoeting-in-wetteren",
+      "description": "Een buddyduo ontdekt samen de buurt en krijgt ondersteuning van de gemeente.",
+      "source": "Gemeente Wetteren",
+      "themes": [
+        "De eerste keren",
+        "Betrokken deelname"
+      ],
+      "body": "Bij Brugwacht ontmoet een Nederlandstalige inwoner van Wetteren of omgeving een anderstalige nieuwkomer. Samen kiezen ze activiteiten: wandelen, sporten, de bibliotheek bezoeken of een koffie drinken. Ze spreken minstens twee keer per maand af.\n\nDe gemeente begint met een gesprek over motivatie, verwachtingen en interesses. Daarna zoekt ze een passende match en begeleidt ze de start. Ook tijdens het traject blijft er opvolging. Gelijkwaardigheid staat centraal: een buddy deelt tijd en ervaringen en kan helpen om de weg naar een professionele dienst te vinden. Interesse? De gemeentepagina legt de werking en aanmeldmogelijkheden uit.\n\n[Ontdek Brugwacht in Wetteren](https://www.wetteren.be/buddywerking-brugwacht)\n\n**Bron:** Gemeente Wetteren. Gebaseerd op Brugwacht: buddywerking voor anderstalige nieuwkomers. Eigen samenvatting met verwijzing naar de oorspronkelijke bron.\n",
+      "imageUrl": "",
+      "imageAlt": "",
+      "videoUrl": "",
+      "published": true,
+      "featured": true,
+      "faqs": [],
+      "relatedToolSlugs": [
+        "een-toolkit-voor-werken-met-anderstalige-vrijwilligers",
+        "wegwijzer-over-vluchtelingen-en-vrijwilligerswerk",
+        "hoe-volg-je-verandering-in-een-buddyproject-op",
+        "vind-activiteiten-en-ontmoetingen-via-ikdoemee-be"
+      ],
+      "createdAt": "2026-10-07T12:00:00.000Z",
+      "updatedAt": "2026-10-07T12:00:00.000Z"
+    },
+    {
+      "id": "art_c004",
+      "title": "Brugpijler zoekt vrijwilligerswerk dat bij iemand past",
+      "slug": "brugpijler-zoekt-vrijwilligerswerk-dat-bij-iemand-past",
+      "description": "Wetteren begeleidt nieuwkomers naar vrijwilligerswerk vanuit hun interesses en talenten.",
+      "source": "Gemeente Wetteren",
+      "themes": [
+        "De eerste keren",
+        "Betrokken deelname"
+      ],
+      "body": "Een geschikte vrijwilligersplek begint bij de persoon die wil deelnemen. In Brugpijler bekijkt Wetteren samen met anderstalige nieuwkomers welke interesses en talenten zij willen inzetten. Het traject kan leiden naar een plek binnen gemeentelijke diensten of bij een andere organisatie.\n\nDe begeleiding omvat voorbereiding, persoonlijke ondersteuning en opvolging. Daardoor krijgt zowel de vrijwilliger als de ontvangende organisatie hulp bij de start. Voor aanbieders is dit een bruikbaar praktijkvoorbeeld van toeleiding op maat. Op de gemeentepagina staan meer uitleg, links naar getuigenissen en hulpmiddelen voor het werken met anderstalige vrijwilligers.\n\n[Lees hoe Brugpijler werkt](https://www.wetteren.be/vrijwilligerstraject-brugpijler)\n\n**Bron:** Gemeente Wetteren. Gebaseerd op Brugpijler: vrijwilligerstraject voor anderstalige nieuwkomers. Eigen samenvatting met verwijzing naar de oorspronkelijke bron.\n",
+      "imageUrl": "",
+      "imageAlt": "",
+      "videoUrl": "",
+      "published": true,
+      "featured": true,
+      "faqs": [],
+      "relatedToolSlugs": [
+        "een-toolkit-voor-werken-met-anderstalige-vrijwilligers",
+        "wegwijzer-over-vluchtelingen-en-vrijwilligerswerk",
+        "hoe-volg-je-verandering-in-een-buddyproject-op",
+        "vind-activiteiten-en-ontmoetingen-via-ikdoemee-be"
+      ],
+      "createdAt": "2026-10-07T12:00:00.000Z",
+      "updatedAt": "2026-10-07T12:00:00.000Z"
+    },
+    {
+      "id": "art_c005",
+      "title": "Deinze koppelt buddy’s op basis van gedeelde interesses",
+      "slug": "deinze-koppelt-buddys-op-basis-van-gedeelde-interesses",
+      "description": "Samen iets doen biedt een laagdrempelige aanleiding om elkaar beter te leren kennen.",
+      "source": "Stad Deinze",
+      "themes": [
+        "De eerste keren",
+        "Betrokken deelname"
+      ],
+      "body": "De buddywerking in Deinze brengt nieuwkomers en inwoners met elkaar in contact. Bij het koppelen van duo’s kijkt de stad naar gedeelde interesses. Die kunnen het vertrekpunt zijn voor activiteiten en gesprekken.\n\nVolgens de gemeentepagina spreken de buddy’s minstens twee keer per maand af, gedurende negen maanden. De ontmoeting helpt nieuwkomers om mensen en hun omgeving te leren kennen. Wie zich wil engageren, vindt op de pagina de lokale contactgegevens en een link om zich aan te melden. Voor andere organisaties biedt de aanpak inspiratie om een kennismaking te laten aansluiten bij wat beide deelnemers graag doen.\n\n[Bekijk de buddywerking in Deinze](https://www.deinze.be/buddywerking)\n\n**Bron:** Stad Deinze. Gebaseerd op Buddywerking. Eigen samenvatting met verwijzing naar de oorspronkelijke bron.\n",
+      "imageUrl": "",
+      "imageAlt": "",
+      "videoUrl": "",
+      "published": true,
+      "featured": true,
+      "faqs": [],
+      "relatedToolSlugs": [
+        "een-toolkit-voor-werken-met-anderstalige-vrijwilligers",
+        "wegwijzer-over-vluchtelingen-en-vrijwilligerswerk",
+        "hoe-volg-je-verandering-in-een-buddyproject-op",
+        "vind-activiteiten-en-ontmoetingen-via-ikdoemee-be"
+      ],
+      "createdAt": "2026-10-07T12:00:00.000Z",
+      "updatedAt": "2026-10-07T12:00:00.000Z"
+    },
+    {
+      "id": "art_c006",
+      "title": "Een buddy helpt nieuwkomers hun weg te vinden in Maldegem",
+      "slug": "een-buddy-helpt-nieuwkomers-hun-weg-te-vinden-in-maldegem",
+      "description": "In Maldegem kunnen nieuwkomers met een buddy Nederlands oefenen en het lokale aanbod ontdekken.",
+      "source": "Gemeente Maldegem",
+      "themes": [
+        "De eerste keren",
+        "Betrokken deelname"
+      ],
+      "body": "De buddywerking voor nieuwkomers in Maldegem vertrekt van een kennismaking met de betrokkenen. Een medewerker bespreekt verwachtingen en brengt het duo samen. Vervolgens krijgen de deelnemers tijd om elkaar en de buurt te leren kennen.\n\nDe gemeentepagina beschrijft een engagement van negen maanden en momenten voor uitwisseling. Samen kunnen de buddy’s Nederlands oefenen en vrijetijdsmogelijkheden ontdekken. Wie wil deelnemen, vindt de aanmeldinformatie bij de gemeente. Voor aanbieders is het een voorbeeld van een begeleide start, waarbij persoonlijk contact de brug vormt naar het lokale leven.\n\n[Ontdek het buddyproject in Maldegem](https://www.maldegem.be/buddyproject)\n\n**Bron:** Gemeente Maldegem. Gebaseerd op Buddyproject. Eigen samenvatting met verwijzing naar de oorspronkelijke bron.\n",
+      "imageUrl": "",
+      "imageAlt": "",
+      "videoUrl": "",
+      "published": true,
+      "featured": true,
+      "faqs": [],
+      "relatedToolSlugs": [
+        "een-toolkit-voor-werken-met-anderstalige-vrijwilligers",
+        "wegwijzer-over-vluchtelingen-en-vrijwilligerswerk",
+        "hoe-volg-je-verandering-in-een-buddyproject-op",
+        "vind-activiteiten-en-ontmoetingen-via-ikdoemee-be"
+      ],
+      "createdAt": "2026-10-07T12:00:00.000Z",
+      "updatedAt": "2026-10-07T12:00:00.000Z"
+    },
+    {
+      "id": "art_c007",
+      "title": "In Eeklo zijn beide deelnemers een buddy",
+      "slug": "in-eeklo-zijn-beide-deelnemers-een-buddy",
+      "description": "De buddywerking in Eeklo legt de nadruk op samen activiteiten kiezen en van elkaar leren.",
+      "source": "Stad Eeklo",
+      "themes": [
+        "De eerste keren",
+        "Betrokken deelname"
+      ],
+      "body": "Een Nederlandstalige Eeklonaar en een anderstalige nieuwe inwoner gaan samen op pad. Het duo kiest zelf wat het doet: sporten, een uitstap maken of bijpraten met een koffie. Regelmatig contact biedt ruimte om Nederlands te oefenen en het leven in Eeklo te ontdekken.\n\nEeklo benadrukt dat beide deelnemers iets van elkaar leren. De Nederlandstalige vrijwilliger krijgt ondersteuning van het lokaal bestuur. De huidige gemeentepagina beschrijft een engagement van één jaar, met groepsbijeenkomsten en evaluatie. Kandidaten vinden er een aanmeldlink; anderstalige inwoners kunnen contact opnemen met de taal- en inburgeringscoach.\n\n[Lees meer over Buddy in Eeklo](https://www.eeklo.be/buddywerking)\n\n**Bron:** Stad Eeklo. Gebaseerd op Buddy in Eeklo. Eigen samenvatting met verwijzing naar de oorspronkelijke bron.\n",
+      "imageUrl": "",
+      "imageAlt": "",
+      "videoUrl": "",
+      "published": true,
+      "featured": true,
+      "faqs": [],
+      "relatedToolSlugs": [
+        "een-toolkit-voor-werken-met-anderstalige-vrijwilligers",
+        "wegwijzer-over-vluchtelingen-en-vrijwilligerswerk",
+        "hoe-volg-je-verandering-in-een-buddyproject-op",
+        "vind-activiteiten-en-ontmoetingen-via-ikdoemee-be"
+      ],
+      "createdAt": "2026-10-07T12:00:00.000Z",
+      "updatedAt": "2026-10-07T12:00:00.000Z"
+    },
+    {
+      "id": "art_c008",
+      "title": "SamenLezen opent een gesprek zonder voorbereiding",
+      "slug": "samenlezen-opent-een-gesprek-zonder-voorbereiding",
+      "description": "Een verhaal of gedicht kan een toegankelijke aanleiding zijn om samen te praten en te luisteren.",
+      "source": "Avansa regio Gent",
+      "themes": [
+        "De eerste keren",
+        "Betrokken deelname"
+      ],
+      "body": "Bij SamenLezen leest een begeleider een tekst hardop. Op verschillende momenten is er ruimte voor gesprek: wat valt op, welke gedachten roept de tekst op? Deelnemers mogen meepraten en kunnen ook gewoon luisteren. Vooraf iets lezen of voorbereiden hoeft niet.\n\nAvansa regio Gent ondersteunt deze manier van samenkomen en biedt ook opleiding voor leesbegeleiders. Op de projectpagina staan groepen en praktische informatie. Organisaties die ontmoeting willen organiseren, kunnen er de methodiek leren kennen. Controleer bij de concrete groep welk taalniveau, welke locatie en welke deelnamevoorwaarden van toepassing zijn.\n\n[Ontdek SamenLezen bij Avansa](https://avansa-regiogent.be/projecten/samenlezen-algemeen)\n\n**Bron:** Avansa regio Gent. Gebaseerd op SamenLezen. Eigen samenvatting met verwijzing naar de oorspronkelijke bron.\n",
+      "imageUrl": "",
+      "imageAlt": "",
+      "videoUrl": "",
+      "published": true,
+      "featured": false,
+      "faqs": [],
+      "relatedToolSlugs": [
+        "een-toolkit-voor-werken-met-anderstalige-vrijwilligers",
+        "wegwijzer-over-vluchtelingen-en-vrijwilligerswerk",
+        "hoe-volg-je-verandering-in-een-buddyproject-op",
+        "vind-activiteiten-en-ontmoetingen-via-ikdoemee-be"
+      ],
+      "createdAt": "2026-10-07T12:00:00.000Z",
+      "updatedAt": "2026-10-07T12:00:00.000Z"
+    },
+    {
+      "id": "art_c009",
+      "title": "PIN ondersteunt toeleiding op maat binnen het netwerk",
+      "slug": "pin-ondersteunt-toeleiding-op-maat-binnen-het-netwerk",
+      "description": "Een persoonlijke match kan nieuwkomers helpen om een passende participatiekans te vinden.",
+      "source": "PIN vzw",
+      "themes": [
+        "Inschrijving",
+        "De eerste keren"
+      ],
+      "body": "PIN vzw beschrijft op zijn pagina over de vierde pijler een opdracht voor Wij doen mee rond Gent. De organisatie ondersteunt matching en toeleiding van nieuwkomers, in samenwerking met het Agentschap Integratie en Inburgering.\n\nVoor gemeenten en aanbieders biedt dit een aanknopingspunt wanneer iemand hulp nodig heeft om een activiteit of engagement te vinden dat bij hem of haar past. De partnerpagina licht de werking toe. Wil je weten hoe die ondersteuning in jouw gemeente georganiseerd wordt? Stem de actuele werkwijze en doorverwijzing af met de lokale netwerkcoördinatie.\n\n[Lees over de ondersteuning door PIN](https://pinvzw.be/vierde-pijler)\n\n**Bron:** PIN vzw. Gebaseerd op Vierde pijler. Eigen samenvatting met verwijzing naar de oorspronkelijke bron.\n",
+      "imageUrl": "",
+      "imageAlt": "",
+      "videoUrl": "",
+      "published": true,
+      "featured": false,
+      "faqs": [],
+      "relatedToolSlugs": [
+        "een-toolkit-voor-werken-met-anderstalige-vrijwilligers",
+        "wegwijzer-over-vluchtelingen-en-vrijwilligerswerk",
+        "vind-activiteiten-en-ontmoetingen-via-ikdoemee-be",
+        "zoek-een-vrijwilligersgroep-die-werkt-met-mensen-op-de-vlucht"
+      ],
+      "createdAt": "2026-10-07T12:00:00.000Z",
+      "updatedAt": "2026-10-07T12:00:00.000Z"
+    },
+    {
+      "id": "art_c010",
+      "title": "Verwelkom een nieuwkomer als vrijwilliger in Deinze",
+      "slug": "verwelkom-een-nieuwkomer-als-vrijwilliger-in-deinze",
+      "description": "Deinze nodigt organisaties uit om anderstalige nieuwkomers een vrijwilligersplek te bieden.",
+      "source": "Stad Deinze",
+      "themes": [
+        "Promotie en werving",
+        "Betrokken deelname"
+      ],
+      "body": "Vrijwilligerswerk kan een gelegenheid zijn om mensen te leren kennen en Nederlands te oefenen. Op zijn netwerkpagina vraagt Deinze organisaties om anderstalige nieuwkomers te verwelkomen. De stad kan helpen zoeken naar een kandidaat en een passende taak.\n\nDe pagina noemt onder meer ondersteuning bij kinderopvang, middagactiviteiten op school en logistieke taken in een woonzorgcentrum. Dit zijn voorbeelden om het gesprek te openen over wat haalbaar is in jouw organisatie. De gemeentelijke contactpersoon kan samen met jou bekijken welke match past. De precieze afspraken worden afgestemd op de vrijwilliger en de ontvangende werking.\n\n[Bekijk hoe jouw organisatie kan meedoen in Deinze](https://www.deinze.be/wijdoenmeerondgent)\n\n**Bron:** Stad Deinze. Gebaseerd op Verwelkom een anderstalige nieuwkomer in je organisatie. Eigen samenvatting met verwijzing naar de oorspronkelijke bron.\n",
+      "imageUrl": "",
+      "imageAlt": "",
+      "videoUrl": "",
+      "published": true,
+      "featured": false,
+      "faqs": [],
+      "relatedToolSlugs": [
+        "een-toolkit-voor-werken-met-anderstalige-vrijwilligers",
+        "wegwijzer-over-vluchtelingen-en-vrijwilligerswerk",
+        "hoe-volg-je-verandering-in-een-buddyproject-op",
+        "vind-activiteiten-en-ontmoetingen-via-ikdoemee-be"
+      ],
+      "createdAt": "2026-10-07T12:00:00.000Z",
+      "updatedAt": "2026-10-07T12:00:00.000Z"
+    },
+    {
+      "id": "art_c011",
+      "title": "Lokale vrijwilligers verbinden nieuwkomers met Laarne en Kalken",
+      "slug": "lokale-vrijwilligers-verbinden-nieuwkomers-met-laarne-en-kalken",
+      "description": "Een vrijwilligersgroep combineert ondersteuning van mensen op de vlucht met contact in de gemeente.",
+      "source": "Werkgroep Vluchtelingen Laarne; bron Vluchtelingenwerk Vlaanderen",
+      "themes": [
+        "Promotie en werving",
+        "Betrokken deelname"
+      ],
+      "body": "De Werkgroep Vluchtelingen Laarne biedt volgens de fiche bij Vluchtelingenwerk Vlaanderen materiële, maatschappelijke en persoonlijke ondersteuning aan mensen met een vluchtachtergrond in Laarne en Kalken. De groep betrekt hen ook bij sociaal-culturele activiteiten.\n\nDaarnaast werkt de werkgroep aan bewustmaking bij inwoners en zoekt ze samenwerking met lokale verenigingen en handelaars. De fiche vermeldt samenwerking met de integratiedienst van het OCMW. Dit lokale voorbeeld kan organisaties inspireren om onthaal en deelname met elkaar te verbinden. De bronpagina bevat meer informatie en de contactgegevens van de werking.\n\n[Maak kennis met de werkgroep in Laarne](https://vluchtelingenwerk.be/werkgroep-vluchtelingen-laarne)\n\n**Bron:** Werkgroep Vluchtelingen Laarne; bron Vluchtelingenwerk Vlaanderen. Gebaseerd op Werkgroep Vluchtelingen Laarne. Eigen samenvatting met verwijzing naar de oorspronkelijke bron.\n",
+      "imageUrl": "",
+      "imageAlt": "",
+      "videoUrl": "",
+      "published": true,
+      "featured": false,
+      "faqs": [],
+      "relatedToolSlugs": [
+        "een-toolkit-voor-werken-met-anderstalige-vrijwilligers",
+        "wegwijzer-over-vluchtelingen-en-vrijwilligerswerk",
+        "hoe-volg-je-verandering-in-een-buddyproject-op",
+        "vind-activiteiten-en-ontmoetingen-via-ikdoemee-be"
+      ],
+      "createdAt": "2026-10-07T12:00:00.000Z",
+      "updatedAt": "2026-10-07T12:00:00.000Z"
+    },
+    {
+      "id": "art_c017",
+      "title": "Limburg laat zien hoe lokale en regionale buddybegeleiding samenwerken",
+      "slug": "limburg-laat-zien-hoe-lokale-en-regionale-buddybegeleiding-samenwerken",
+      "description": "Buddies Limburg verdeelt intake, matching en ondersteuning tussen lokale partners en regionale begeleiding.",
+      "source": "Vluchtelingenwerk Vlaanderen en lokale Limburgse partners",
+      "themes": [
+        "De eerste keren",
+        "Betrokken deelname"
+      ],
+      "body": "Buddies Limburg brengt nieuwkomers en vrijwilligers samen om mensen te ontmoeten en de buurt te ontdekken. De projectpagina beschrijft hoe RON en lokale partners, afhankelijk van de gemeente, de intake en matching opnemen. Vluchtelingenwerk Vlaanderen ondersteunt onder meer werving, vorming, intervisie en afstemming.\n\nVoor coördinatoren rond Gent biedt deze rolverdeling inspiratie: wie kent de deelnemers, wie begeleidt de vrijwilliger en wie zorgt voor uitwisseling tussen gemeenten? Het gaat om een Limburgse praktijk. Aanmelden of ondersteuning aanvragen gebeurt bij de daar genoemde partners, volgens hun eigen voorwaarden.\n\n[Lees over Buddies Limburg](https://vluchtelingenwerk.be/project/buddies-limburg)\n\n**Bron:** Vluchtelingenwerk Vlaanderen en lokale Limburgse partners. Gebaseerd op Buddyproject Limburg. Eigen samenvatting met verwijzing naar de oorspronkelijke bron.\n",
+      "imageUrl": "",
+      "imageAlt": "",
+      "videoUrl": "",
+      "published": true,
+      "featured": false,
+      "faqs": [],
+      "relatedToolSlugs": [
+        "een-toolkit-voor-werken-met-anderstalige-vrijwilligers",
+        "wegwijzer-over-vluchtelingen-en-vrijwilligerswerk",
+        "hoe-volg-je-verandering-in-een-buddyproject-op",
+        "vind-activiteiten-en-ontmoetingen-via-ikdoemee-be"
+      ],
+      "createdAt": "2026-10-07T12:00:00.000Z",
+      "updatedAt": "2026-10-07T12:00:00.000Z"
+    },
+    {
+      "id": "art_c022",
+      "title": "Maak de toegankelijkheid van je activiteit zichtbaar",
+      "slug": "maak-de-toegankelijkheid-van-je-activiteit-zichtbaar",
+      "description": "Heldere informatie over taal, voorzieningen en kosten helpt bezoekers hun deelname te plannen.",
+      "source": "publiq",
+      "themes": [
+        "Promotie en werving",
+        "Inschrijving"
+      ],
+      "body": "Toegankelijkheid gaat over verschillende drempels. publiq bundelt informatie over taaloefenkansen, voorzieningen voor mensen met een beperking en vrijetijdsparticipatie voor mensen in armoede.\n\nVoor organisatoren is de pagina een ingang om die informatie ook zichtbaar te maken bij hun aanbod. Denk aan taaliconen in de UiTdatabank en informatie over aanwezige voorzieningen. De pagina verwijst ook naar UiTPAS en sociaal tarief binnen de betrokken regio’s. Bekijk welke mogelijkheden voor jouw organisatie en activiteit gelden. Deel concrete, gecontroleerde informatie, zodat een bezoeker vooraf kan inschatten wat mogelijk is en waar hij of zij terechtkan met een vraag.\n\n[Bekijk de toegankelijkheidsinformatie van publiq](https://www.publiq.be/nl/projecten/uitnetwerk/uitnetwerk-partnerpagina/communicatie-en-promotie/gerichte-uit-communicatie/toegankelijkheid)\n\n**Bron:** publiq. Gebaseerd op Hoe toegankelijk is jouw evenement?. Eigen samenvatting met verwijzing naar de oorspronkelijke bron.\n",
+      "imageUrl": "",
+      "imageAlt": "",
+      "videoUrl": "",
+      "published": true,
+      "featured": false,
+      "faqs": [],
+      "relatedToolSlugs": [
+        "wegwijzer-over-vluchtelingen-en-vrijwilligerswerk",
+        "vind-activiteiten-en-ontmoetingen-via-ikdoemee-be",
+        "zoek-een-vrijwilligersgroep-die-werkt-met-mensen-op-de-vlucht",
+        "gastvrij-netwerk-deelt-ervaring-met-lokale-vrijwilligerswerking"
+      ],
+      "createdAt": "2026-10-07T12:00:00.000Z",
+      "updatedAt": "2026-10-07T12:00:00.000Z"
+    }
+  ],
+  "tools": [
+    {
+      "id": "tool_c012",
+      "title": "Een toolkit voor werken met anderstalige vrijwilligers",
+      "slug": "een-toolkit-voor-werken-met-anderstalige-vrijwilligers",
+      "description": "Deze toolkit helpt organisaties om de start en begeleiding van anderstalige vrijwilligers voor te bereiden.",
+      "themes": [
+        "De eerste keren",
+        "Betrokken deelname"
+      ],
+      "imageUrl": "",
+      "imageAlt": "",
+      "body": "Wil je iemand die Nederlands leert als vrijwilliger verwelkomen? De toolkit van Vrijwilligerswerk Antwerpen en Atlas bespreekt hoe je een passende taak en ondersteuning organiseert. Het materiaal behandelt onder meer kennismaking, duidelijke communicatie, de eerste werkdag en opvolging.\n\nJe vindt er aandachtspunten om verwachtingen bespreekbaar te maken en rekening te houden met het Nederlands dat een taak vraagt. Gebruik de toolkit als hulpmiddel voor je team en stem afspraken af met de vrijwilliger. Wetteren verwijst naar deze externe publicatie vanuit Brugpijler. Via de link lees je de oorspronkelijke pdf van veertig pagina’s.\n\n**Bron / maker:** Vrijwilligerswerk Antwerpen en Atlas. Gebaseerd op Werken met anderstalige vrijwilligers Toolkit. Eigen samenvatting met verwijzing naar de oorspronkelijke bron.\n",
+      "summary": [],
+      "downloadLabel": "Lees de toolkit van Antwerpen en Atlas",
+      "downloadUrl": "https://www.wetteren.be/file/download/009c7f1c-a052-457e-979a-f0c19a94f29d/1gRSYPfju7sEGghC3VnZEuJzeJbxoJfxzN4ITmPouQ3d.pdf",
+      "externalUrl": "",
+      "faqs": [],
+      "published": true,
+      "order": 0
+    },
+    {
+      "id": "tool_c013",
+      "title": "Wegwijzer over vluchtelingen en vrijwilligerswerk",
+      "slug": "wegwijzer-over-vluchtelingen-en-vrijwilligerswerk",
+      "description": "Deze wegwijzer uit 2019 bundelt vragen over het begeleiden van vluchtelingen naar vrijwilligerswerk.",
+      "themes": [
+        "Inschrijving",
+        "Betrokken deelname"
+      ],
+      "imageUrl": "",
+      "imageAlt": "",
+      "body": "De Wegwijzer Vluchtelingen en Vrijwilligerswerk van Arteveldehogeschool is opgebouwd rond vijftien veelgestelde vragen. De publicatie helpt organisaties om praktische aandachtspunten te verkennen wanneer iemand met een vluchtachtergrond wil vrijwilligen.\n\nDe gids bevat ook onderwerpen zoals verblijfsstatuut en vergoeding. Omdat de uitgave uit 2019 dateert, gebruik je die onderdelen als achtergrond en controleer je actuele voorwaarden bij een bevoegde informatiebron. Voor de voorbereiding van een gesprek kan de gids nuttig zijn: welke vragen leven bij de vrijwilliger en welke afspraken moet de organisatie verduidelijken? Lees de oorspronkelijke uitgave via de downloadlink.\n\n**Bron / maker:** Arteveldehogeschool, 2019. Gebaseerd op Wegwijzer Vluchtelingen en Vrijwilligerswerk. Eigen samenvatting met verwijzing naar de oorspronkelijke bron.\n",
+      "summary": [],
+      "downloadLabel": "Lees de wegwijzer uit 2019",
+      "downloadUrl": "https://www.wetteren.be/file/download/2d9cd694-5daf-4d3e-bfa0-88fbdfed4bb8/2WOLFlzwj58L15Z1CXZG8I9zHnAQzG2FcV3kIKYAokI3d.pdf",
+      "externalUrl": "",
+      "faqs": [],
+      "published": true,
+      "order": 1
+    },
+    {
+      "id": "tool_c014",
+      "title": "Hoe volg je verandering in een buddyproject op",
+      "slug": "hoe-volg-je-verandering-in-een-buddyproject-op",
+      "description": "Dit workshopmateriaal helpt om na te denken over doelen, opvolging en evaluatie van buddywerkingen.",
+      "themes": [
+        "Betrokken deelname"
+      ],
+      "imageUrl": "",
+      "imageAlt": "",
+      "body": "Hoe weet je wat een buddywerking betekent voor deelnemers? Jan Van Ongevalle en Peter De Cuyper van HIVA KU Leuven bespreken in dit workshopmateriaal verschillende manieren om verandering op te volgen. Naast vragenlijsten komen kwalitatieve methoden, zoals outcome mapping en het verzamelen van betekenisvolle veranderingen, aan bod.\n\nHet materiaal helpt coördinatoren om eerst hun evaluatievragen en beschikbare capaciteit te bepalen. Het maakt ook duidelijk dat veranderingen verschillende oorzaken kunnen hebben. Gebruik het als startpunt voor een aanpak die bij jouw werking past. Het document is een presentatie en bevat geen kant-en-klare evaluatie van ons netwerk.\n\n**Bron / maker:** HIVA KU Leuven; gepubliceerd via VVSG. Gebaseerd op Hoe meet ik de impact van mijn buddyproject?. Eigen samenvatting met verwijzing naar de oorspronkelijke bron.\n",
+      "summary": [],
+      "downloadLabel": "Bekijk het workshopmateriaal over impactmeting",
+      "downloadUrl": "https://www.vvsg.be/Leden/Diversiteit/Studiediedag%20inclucities/WS%204%20Impactmeting%20buddywerkingen_def.pdf",
+      "externalUrl": "",
+      "faqs": [],
+      "published": true,
+      "order": 2
+    },
+    {
+      "id": "tool_c015",
+      "title": "Vind activiteiten en ontmoetingen via ikdoemee.be",
+      "slug": "vind-activiteiten-en-ontmoetingen-via-ikdoemee-be",
+      "description": "Zoek een activiteit waarmee je Nederlands kunt oefenen, mensen kunt ontmoeten of als vrijwilliger kunt deelnemen.",
+      "themes": [
+        "Promotie en werving",
+        "Inschrijving",
+        "De eerste keren"
+      ],
+      "imageUrl": "",
+      "imageAlt": "",
+      "body": "Op ikdoemee.be kun je zoeken op plaats en op wat je graag wilt doen. Het platform toont onder meer mogelijkheden om Nederlands te oefenen, nieuwe mensen te ontmoeten, vrijwilligerswerk te doen of een buddy te vinden.\n\nBekijk bij elke activiteit de concrete informatie over plaats, datum en taalniveau. Het aanbod verandert, dus controleer altijd de pagina van de activiteit voordat je inschrijft. Ook toeleiders kunnen het platform gebruiken om samen met een nieuwkomer mogelijkheden te verkennen. De link opent de Engelstalige versie van het platform.\n\n**Bron / maker:** ikdoemee.be. Gebaseerd op Ontmoet nieuwe mensen Oefen Nederlands. Eigen samenvatting met verwijzing naar de oorspronkelijke bron.\n",
+      "summary": [],
+      "downloadLabel": "Zoek een activiteit op ikdoemee.be",
+      "downloadUrl": "",
+      "externalUrl": "https://www.ikdoemee.be/en",
+      "faqs": [],
+      "published": true,
+      "order": 3
+    },
+    {
+      "id": "tool_c016",
+      "title": "Zoek een vrijwilligersgroep die werkt met mensen op de vlucht",
+      "slug": "zoek-een-vrijwilligersgroep-die-werkt-met-mensen-op-de-vlucht",
+      "description": "Het overzicht van Vluchtelingenwerk Vlaanderen helpt om lokale vrijwilligersinitiatieven te ontdekken.",
+      "themes": [
+        "Promotie en werving",
+        "De eerste keren"
+      ],
+      "imageUrl": "",
+      "imageAlt": "",
+      "body": "Vrijwilligersgroepen bieden op verschillende plaatsen ontmoeting en ondersteuning aan mensen op de vlucht. Vluchtelingenwerk Vlaanderen bundelt initiatieven in een overzicht met een provinciefilter en links naar hun werking.\n\nSelecteer Oost-Vlaanderen om relevante groepen in de ruimere regio te verkennen. Het overzicht vermeldt onder meer initiatieven in Gent en Laarne. Bekijk daarna de afzonderlijke fiche en neem contact op om te bespreken wat de groep momenteel aanbiedt. Dit is een handige vindplaats voor mogelijke samenwerking of doorverwijzing. De opname in dit overzicht betekent niet automatisch dat een organisatie lid is van Wij doen mee rond Gent.\n\n**Bron / maker:** Vluchtelingenwerk Vlaanderen. Gebaseerd op Vrijwilligersorganisaties voor mensen op de vlucht. Eigen samenvatting met verwijzing naar de oorspronkelijke bron.\n",
+      "summary": [],
+      "downloadLabel": "Zoek een lokale vrijwilligersgroep",
+      "downloadUrl": "",
+      "externalUrl": "https://vluchtelingenwerk.be/vrijwilligersorganisaties",
+      "faqs": [],
+      "published": true,
+      "order": 4
+    },
+    {
+      "id": "tool_c018",
+      "title": "Gastvrij Netwerk deelt ervaring met lokale vrijwilligerswerking",
+      "slug": "gastvrij-netwerk-deelt-ervaring-met-lokale-vrijwilligerswerking",
+      "description": "Deze toolkit uit 2018 bundelt ervaringen over het organiseren van vrijwilligerswerk voor mensen op de vlucht.",
+      "themes": [
+        "Promotie en werving",
+        "Betrokken deelname"
+      ],
+      "imageUrl": "",
+      "imageAlt": "",
+      "body": "Vrijwilligersgroepen zoeken hun plaats naast lokale diensten en andere organisaties. De informatiepagina over de toolkit van Gastvrij Netwerk beschrijft hoofdstukken over die rolverdeling, vrijwilligers werven en behouden, en samenwerking met de samenleving.\n\nDe toolkit bevat ook een checklist en thema’s uit het dagelijkse leven van mensen met een vluchtachtergrond. De tweede uitgave dateert uit 2018. Gebruik haar als bron van ervaring en bespreekvragen; controleer actuele rechten en procedures bij bevoegde diensten. Via de bronpagina kun je de publicatie en aanvullingen terugvinden. De toolkit is beschikbaar via Vluchtelingenwerk Vlaanderen.\n\n**Bron / maker:** Vluchtelingenwerk Vlaanderen en Gastvrij Netwerk. Gebaseerd op Toolkit Gastvrij Netwerk. Eigen samenvatting met verwijzing naar de oorspronkelijke bron.\n",
+      "summary": [],
+      "downloadLabel": "Bekijk de toolkit bij Vluchtelingenwerk",
+      "downloadUrl": "",
+      "externalUrl": "https://vluchtelingenwerk.be/toolkit-gastvrij-netwerk",
+      "faqs": [],
+      "published": true,
+      "order": 5
+    },
+    {
+      "id": "tool_c019",
+      "title": "Tien ingrediënten voor een toegankelijke vrijwilligerswerking",
+      "slug": "tien-ingredienten-voor-een-toegankelijke-vrijwilligerswerking",
+      "description": "Het Vlaams Steunpunt Vrijwilligerswerk biedt een publicatie om je vrijwilligerswerking inclusiever te maken.",
+      "themes": [
+        "Promotie en werving",
+        "De eerste keren",
+        "Betrokken deelname"
+      ],
+      "imageUrl": "",
+      "imageAlt": "",
+      "body": "Hoe maak je ruimte voor vrijwilligers met verschillende achtergronden en mogelijkheden? De publicatie over tien ingrediënten voor een toegankelijke vrijwilligerswerking behandelt volgens het Vlaams Steunpunt Vrijwilligerswerk onder meer visie, communicatie, werving en ondersteuning.\n\nDit aanbod kan je team helpen om vragen over toegankelijkheid te bespreken en verbeterpunten te kiezen. Op de bronpagina staat hoe je de publicatie aanvraagt. Je vindt er ook een verwijzing naar een spel over vooroordelen in vrijwilligerswerk. Bekijk bij de aanbieder wat momenteel beschikbaar is en welke voorwaarden gelden. De hulpmiddelen zijn ontwikkeld door het steunpunt.\n\n**Bron / maker:** Vlaams Steunpunt Vrijwilligerswerk. Gebaseerd op Inclusief vrijwilligerswerk 10 ingrediënten voor een toegankelijke vrijwilligerswerking. Eigen samenvatting met verwijzing naar de oorspronkelijke bron.\n",
+      "summary": [],
+      "downloadLabel": "Bekijk het aanbod voor inclusief vrijwilligerswerk",
+      "downloadUrl": "",
+      "externalUrl": "https://www.vlaanderenvrijwilligt.be/vrijwilligersbeleid/werken-met-vrijwilligers/inclusief-vrijwilligerswerk/",
+      "faqs": [],
+      "published": true,
+      "order": 6
+    },
+    {
+      "id": "tool_c020",
+      "title": "Een checklist voor het eerste gesprek met een vrijwilliger",
+      "slug": "een-checklist-voor-het-eerste-gesprek-met-een-vrijwilliger",
+      "description": "Deze checklist helpt je om verwachtingen en praktische afspraken bij de start te bespreken.",
+      "themes": [
+        "Inschrijving",
+        "De eerste keren"
+      ],
+      "imageUrl": "",
+      "imageAlt": "",
+      "body": "Een kennismakingsgesprek geeft de kandidaat-vrijwilliger en de organisatie ruimte om vragen te stellen. De checklist van het Vlaams Steunpunt Vrijwilligerswerk helpt om dat gesprek voor te bereiden: hoe vond iemand de organisatie, wat wil die doen en welke uitleg is nodig?\n\nDe pdf bevat ook suggesties voor een intakeformulier, zoals interesses, talenten, beschikbaarheid en mogelijke drempels. Voor eenmalige engagementen of een proefmoment staat er een kortere versie in. Gebruik de checklist als houvast en pas het gesprek aan de persoon aan. De oorspronkelijke download telt twee pagina’s.\n\n**Bron / maker:** Vlaams Steunpunt Vrijwilligerswerk. Gebaseerd op Checklist kennismaking en intake. Eigen samenvatting met verwijzing naar de oorspronkelijke bron.\n",
+      "summary": [],
+      "downloadLabel": "Lees de checklist voor kennismaking en intake",
+      "downloadUrl": "https://www.vlaanderenvrijwilligt.be/wp-content/uploads/2025/05/Checklist-kennismakingsgesprek.pdf",
+      "externalUrl": "",
+      "faqs": [],
+      "published": true,
+      "order": 7
+    },
+    {
+      "id": "tool_c021",
+      "title": "Taaliconen helpen deelnemers een passende activiteit kiezen",
+      "slug": "taaliconen-helpen-deelnemers-een-passende-activiteit-kiezen",
+      "description": "Maak duidelijk hoeveel Nederlands iemand nodig heeft om aan jouw activiteit deel te nemen.",
+      "themes": [
+        "Promotie en werving",
+        "Inschrijving"
+      ],
+      "imageUrl": "",
+      "imageAlt": "",
+      "body": "Wie Nederlands leert, zoekt soms een activiteit om de taal buiten de les te oefenen. Taaliconen geven aan hoeveel kennis van het Nederlands een activiteit vraagt. Daarmee kunnen deelnemers beter inschatten of het aanbod bij hen past.\n\npubliq legt uit hoe organisatoren taaliconen gebruiken in de UiTdatabank. De bron vermeldt dat je eerst een vorming over duidelijke taal en taaliconen volgt en verwijst naar een e-learning en een handleiding. Gebruik taaliconen samen met begrijpelijke praktische informatie. Bekijk de actuele instructies bij publiq voordat je iconen toekent aan je aanbod.\n\n**Bron / maker:** publiq in samenwerking met taalpartners. Gebaseerd op Taaliconen cultuur en vrije tijd als taaloefenkans. Eigen samenvatting met verwijzing naar de oorspronkelijke bron.\n",
+      "summary": [],
+      "downloadLabel": "Lees hoe je taaliconen gebruikt",
+      "downloadUrl": "",
+      "externalUrl": "https://www.publiq.be/nl/inzichten-en-praktijk/taaliconen-cultuur-en-vrije-tijd-als-taaloefenkans",
+      "faqs": [],
+      "published": true,
+      "order": 8
+    },
+    {
+      "id": "tool_c023",
+      "title": "Werk stap voor stap aan je vrijwilligersbeleid",
+      "slug": "werk-stap-voor-stap-aan-je-vrijwilligersbeleid",
+      "description": "Het Vlaams Steunpunt Vrijwilligerswerk bundelt hulpmiddelen voor de verschillende momenten in een vrijwilligerswerking.",
+      "themes": [
+        "Promotie en werving",
+        "De eerste keren",
+        "Betrokken deelname"
+      ],
+      "imageUrl": "",
+      "imageAlt": "",
+      "body": "Van vrijwilligers werven tot hen bedanken en een engagement afronden: een werking vraagt aandacht op verschillende momenten. De overzichtspagina van het Vlaams Steunpunt Vrijwilligerswerk verwijst naar thema’s zoals visie, onthaal, waardering, inclusie en talentgericht vrijwilligerswerk.\n\nJe kunt deze wegwijzer gebruiken om te kiezen welk onderdeel jouw organisatie eerst wil verbeteren. Voor een eerste kennismakingsgesprek of inclusieve werving vind je op onze website ook afzonderlijke verwijzingen naar hulpmiddelen van hetzelfde steunpunt. De aanbieder meldt dat oudere publicaties worden vernieuwd. Gebruik daarom bij voorkeur de actuele verwijzingen op de bronpagina.\n\n**Bron / maker:** Vlaams Steunpunt Vrijwilligerswerk. Gebaseerd op Werken met vrijwilligers. Eigen samenvatting met verwijzing naar de oorspronkelijke bron.\n",
+      "summary": [],
+      "downloadLabel": "Bekijk de wegwijzer voor vrijwilligersbeleid",
+      "downloadUrl": "",
+      "externalUrl": "https://www.vlaanderenvrijwilligt.be/vrijwilligersbeleid/werken-met-vrijwilligers/",
+      "faqs": [],
+      "published": true,
+      "order": 9
+    }
+  ],
+  "pages": [
+    {
+      "id": "page_contact",
+      "title": "Contact",
+      "slug": "contact",
+      "type": "custom",
+      "bannerTitle": "Contact",
+      "bannerIntro": "Heb je een vraag? Neem gerust contact op.",
+      "body": "Mail ons via info@wijdoenmee.be.\\n\\nWe antwoorden zo snel mogelijk op werkdagen.\\n\\nWij doen mee, rond Gent helpt organisaties om anderstalige nieuwkomers makkelijker te laten deelnemen aan vrijetijdsactiviteiten.",
+      "published": true,
+      "showInNav": false,
+      "order": 0
+    },
+    {
+      "id": "page_over",
+      "title": "Wij doen mee rond Gent verbindt nieuwkomers en hun buurt",
+      "slug": "over-ons",
+      "type": "custom",
+      "bannerTitle": "Wij doen mee rond Gent verbindt nieuwkomers en hun buurt",
+      "bannerIntro": "Ons netwerk helpt anderstalige nieuwkomers om mensen te ontmoeten en deel te nemen aan het lokale leven.",
+      "body": "Wij doen mee rond Gent brengt zestien lokale besturen en partners samen. Deinze neemt het netwerkleiderschap op. We werken aan een toegankelijk aanbod waarmee anderstalige nieuwkomers hun sociale netwerk kunnen uitbreiden.\n\nDat aanbod kan verschillende vormen aannemen, zoals een buddytraject, vrijwilligerswerk of een activiteit in de buurt. Het netwerk richt zich ook tot nieuwkomers die vrijwillig willen deelnemen. Gemeenten en organisaties verbinden hun kennis en aanbod om de stap naar ontmoeting kleiner te maken.\n\n[Bekijk het netwerk bij Europa WSE](https://www.europawse.be/ons-aanbod/inburgering/wij-doen-mee)\n\n**Bron:** Europa WSE en netwerk Wij doen mee rond Gent. Gebaseerd op Wij doen mee / Regio Gent. Eigen samenvatting met verwijzing naar de oorspronkelijke bron.\n",
+      "published": true,
+      "showInNav": true,
+      "order": 1
+    },
+    {
+      "id": "page_disclaimer",
+      "title": "Disclaimer",
+      "slug": "disclaimer",
+      "type": "custom",
+      "bannerTitle": "Disclaimer",
+      "bannerIntro": "Juridische informatie over deze website.",
+      "body": "De inhoud van deze website is met zorg samengesteld. Toch kunnen we geen volledigheid of actualiteit garanderen.\n\nLinks naar externe sites vallen buiten onze verantwoordelijkheid.\n\nDeze privacyverklaring informeert je over welke persoonsgegevens we verzamelen, waarvoor we deze gebruiken en wat jouw rechten in dit verband zijn.\n\nWe vragen alleen persoonlijke gegevens (e-mailadres) als je het contactformulier invult. Bij jouw bezoek verzamelen we technische informatie via cookies.\n\nJe hebt altijd toegang tot je persoonsgegevens en kan ze laten verbeteren.",
+      "published": true,
+      "showInNav": false,
+      "order": 2
+    },
+    {
+      "id": "page_toegankelijk",
+      "title": "Toegankelijkheidsverklaring",
+      "slug": "toegankelijkheid",
+      "type": "custom",
+      "bannerTitle": "Toegankelijkheidsverklaring",
+      "bannerIntro": "Onze engagementen rond digitale toegankelijkheid.",
+      "body": "We streven ernaar dat deze website toegankelijk is voor iedereen, inclusief mensen met een beperking.\n\nDit doen we in overeenstemming met de Europese richtlijn en het Vlaamse Bestuursdecreet. De richtlijnen die gevolgd worden zijn de Web Content Accessibility Guidelines (WCAG) 2.1 niveau AA.\n\nIedereen moet de informatie op deze website eenvoudig kunnen gebruiken en bekijken, dus ook slechtzienden, blinden, slechthorenden, doven en personen met een andere beperking.\n\nMeld problemen via info@wijdoenmee.be.",
+      "published": true,
+      "showInNav": false,
+      "order": 3
+    }
+  ],
+  "media": [
+    {
+      "id": "media_thema0",
+      "name": "thema0",
+      "url": "/images/9e9b4e51-a717-4587-9957-06d19d265a2d.jpg",
+      "alt": "thema0"
+    },
+    {
+      "id": "media_thema1",
+      "name": "thema1",
+      "url": "/images/63587b3b-149b-47b8-9f76-2e8bfcd21a80.jpg",
+      "alt": "thema1"
+    },
+    {
+      "id": "media_thema2",
+      "name": "thema2",
+      "url": "/images/7343e54b-d84e-4793-a58a-52a973624c81.jpg",
+      "alt": "thema2"
+    },
+    {
+      "id": "media_thema3",
+      "name": "thema3",
+      "url": "/images/e2eedfaa-65b6-4f2a-9f77-0f356b35de97.jpg",
+      "alt": "thema3"
+    },
+    {
+      "id": "media_art0",
+      "name": "art0",
+      "url": "/images/7dfb2392-13f0-460d-b1bf-7361db8613b6.jpg",
+      "alt": "art0"
+    },
+    {
+      "id": "media_art1",
+      "name": "art1",
+      "url": "/images/49663b60-651a-4401-9574-bce482a078c4.jpg",
+      "alt": "art1"
+    },
+    {
+      "id": "media_art2",
+      "name": "art2",
+      "url": "/images/9544e5ff-b134-4906-a452-9745ff8f0f1f.jpg",
+      "alt": "art2"
+    },
+    {
+      "id": "media_art3",
+      "name": "art3",
+      "url": "/images/56f8b53b-1040-4c6e-b339-f91c80d97b49.jpg",
+      "alt": "art3"
+    },
+    {
+      "id": "media_art4",
+      "name": "art4",
+      "url": "/images/3f79c3d2-2dac-428a-b4aa-01b9cb73430a.jpg",
+      "alt": "art4"
+    },
+    {
+      "id": "media_art5",
+      "name": "art5",
+      "url": "/images/ca7bf843-c909-417c-b969-5b3529fb4984.png",
+      "alt": "art5"
+    },
+    {
+      "id": "media_art6",
+      "name": "art6",
+      "url": "/images/d2bf960f-2bd6-4ef3-ba0a-e191dbf78d68.jpg",
+      "alt": "art6"
+    },
+    {
+      "id": "media_art7",
+      "name": "art7",
+      "url": "/images/f037c54a-e4a7-4b20-ba0a-19d6669d1e6d.png",
+      "alt": "art7"
+    },
+    {
+      "id": "media_art8",
+      "name": "art8",
+      "url": "/images/ba5bf100-7bd5-4edc-b735-c23b001a3b05.png",
+      "alt": "art8"
+    },
+    {
+      "id": "media_art9",
+      "name": "art9",
+      "url": "/images/70952f56-2576-4027-80e2-5201877a5180.jpg",
+      "alt": "art9"
+    },
+    {
+      "id": "media_art10",
+      "name": "art10",
+      "url": "/images/3f98a6be-3e76-466b-8244-12471f5e8ed3.jpg",
+      "alt": "art10"
+    },
+    {
+      "id": "media_art11",
+      "name": "art11",
+      "url": "/images/419a4d97-330e-4b6f-91a1-c8aa9bb8ab7f.png",
+      "alt": "art11"
+    },
+    {
+      "id": "media_tool0",
+      "name": "tool0",
+      "url": "/images/ccf16716-24b4-499c-91c2-d7233808f67e.jpg",
+      "alt": "tool0"
+    },
+    {
+      "id": "media_tool1",
+      "name": "tool1",
+      "url": "/images/2bb61f24-ed15-4653-8d95-77529ee6b77a.png",
+      "alt": "tool1"
+    },
+    {
+      "id": "media_tool2",
+      "name": "tool2",
+      "url": "/images/c6297b62-43b7-4b6d-93d7-3ea52e53c5d9.jpg",
+      "alt": "tool2"
+    },
+    {
+      "id": "media_tool3",
+      "name": "tool3",
+      "url": "/images/b9fb9add-24a5-48db-8b56-3bd82956b895.jpg",
+      "alt": "tool3"
+    },
+    {
+      "id": "media_tool4",
+      "name": "tool4",
+      "url": "/images/a75fe5ff-c7a9-4dd4-bc53-9abab5fc95c9.jpg",
+      "alt": "tool4"
+    },
+    {
+      "id": "media_tool5",
+      "name": "tool5",
+      "url": "/images/063966c0-f4bf-47d6-bf4a-3cb2dfd5304b.jpg",
+      "alt": "tool5"
+    },
+    {
+      "id": "media_tool6",
+      "name": "tool6",
+      "url": "/images/833c4689-bb36-4687-a015-faa8f3106a53.jpg",
+      "alt": "tool6"
+    },
+    {
+      "id": "media_tool7",
+      "name": "tool7",
+      "url": "/images/33c1ecc4-4424-4982-8141-d3c7d700efc4.jpg",
+      "alt": "tool7"
+    },
+    {
+      "id": "media_tool8",
+      "name": "tool8",
+      "url": "/images/fa04be68-9b64-4c2a-9942-94ec6234a7fa.jpg",
+      "alt": "tool8"
+    },
+    {
+      "id": "media_tool9",
+      "name": "tool9",
+      "url": "/images/1c06c7da-2a5e-41dd-a398-fdd2bf37a1c7.jpg",
+      "alt": "tool9"
+    },
+    {
+      "id": "media_tool10",
+      "name": "tool10",
+      "url": "/images/41d038dc-feaa-4529-b1a6-f18a09495d12.jpg",
+      "alt": "tool10"
+    },
+    {
+      "id": "media_tool11",
+      "name": "tool11",
+      "url": "/images/38ad1254-626a-4870-8d34-0e94605102d2.jpg",
+      "alt": "tool11"
+    },
+    {
+      "id": "media_femma",
+      "name": "femma",
+      "url": "/images/db6286fb-a27a-4a8a-bbbb-52a58a658502.jpg",
+      "alt": "femma"
+    },
+    {
+      "id": "media_uitpas",
+      "name": "uitpas",
+      "url": "/images/ccf16716-24b4-499c-91c2-d7233808f67e.jpg",
+      "alt": "uitpas"
+    },
+    {
+      "id": "media_steenbrugge",
+      "name": "steenbrugge",
+      "url": "/images/ca7bf843-c909-417c-b969-5b3529fb4984.png",
+      "alt": "steenbrugge"
+    },
+    {
+      "id": "media_concert",
+      "name": "concert",
+      "url": "/images/f037c54a-e4a7-4b20-ba0a-19d6669d1e6d.png",
+      "alt": "concert"
+    },
+    {
+      "id": "media_lili",
+      "name": "lili",
+      "url": "/images/419a4d97-330e-4b6f-91a1-c8aa9bb8ab7f.png",
+      "alt": "lili"
+    }
+  ]
+}

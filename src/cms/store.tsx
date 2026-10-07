@@ -10,8 +10,19 @@ import type {
   Tool,
 } from './types'
 import { createSeedData } from './seed'
+import {
+  CONTENT_MIGRATION_VERSION,
+  OLD_DUMMY_ARTICLE_IDS,
+  OLD_DUMMY_TOOL_IDS,
+  OLD_DUMMY_ARTICLE_TITLES,
+  OLD_DUMMY_TOOL_TITLES,
+  approvedArticles,
+  approvedTools,
+  approvedOverOnsPage,
+} from './approvedContent'
 
 const STORAGE_KEY = 'wijdoenmee_cms_v2'
+const SCHEMA_VERSION = 3
 
 type CmsContextValue = {
   data: CmsData
@@ -23,26 +34,20 @@ type CmsContextValue = {
   updateColors: (patch: Partial<SiteSettings['colors']>) => void
   setNav: (items: NavItem[]) => void
   setFooterLinks: (items: NavItem[]) => void
-  // themes
   saveTheme: (theme: Theme) => void
   deleteTheme: (id: string) => void
-  // articles
   saveArticle: (article: Article) => void
   deleteArticle: (id: string) => void
-  // tools
   saveTool: (tool: Tool) => void
   deleteTool: (id: string) => void
-  // pages
   savePage: (page: CustomPage) => void
   deletePage: (id: string) => void
-  // media
   saveMedia: (item: MediaItem) => void
   deleteMedia: (id: string) => void
 }
 
 const CmsContext = createContext<CmsContextValue | null>(null)
 
-/** Map only known previous default palette values → brand defaults. Custom CMS colours stay. */
 const OLD_PRIMARY = new Set(['#0a6b6b', '#056b40', '#0A6B6B', '#056B40'])
 const OLD_PRIMARY_DARK = new Set(['#085252', '#045130'])
 const OLD_ACCENT = new Set(['#ffe4d6', '#ffdcdc', '#FFE4D6', '#FFDCDC'])
@@ -59,17 +64,128 @@ const BRAND_COLORS: SiteSettings['colors'] = {
 
 function migrateLegacyPalette(colors: SiteSettings['colors']): SiteSettings['colors'] {
   const next = { ...colors }
-  const p = (colors.primary || '').trim()
-  const pd = (colors.primaryDark || '').trim()
-  const a = (colors.accent || '').trim()
-  const s = (colors.secondary || '').trim()
-  const l = (colors.link || '').trim()
-  if (OLD_PRIMARY.has(p)) next.primary = BRAND_COLORS.primary
-  if (OLD_PRIMARY_DARK.has(pd)) next.primaryDark = BRAND_COLORS.primaryDark
-  if (OLD_ACCENT.has(a)) next.accent = BRAND_COLORS.accent
-  if (OLD_SECONDARY.has(s)) next.secondary = BRAND_COLORS.secondary
-  if (OLD_LINK.has(l)) next.link = BRAND_COLORS.link
+  if (OLD_PRIMARY.has((colors.primary || '').trim())) next.primary = BRAND_COLORS.primary
+  if (OLD_PRIMARY_DARK.has((colors.primaryDark || '').trim())) next.primaryDark = BRAND_COLORS.primaryDark
+  if (OLD_ACCENT.has((colors.accent || '').trim())) next.accent = BRAND_COLORS.accent
+  if (OLD_SECONDARY.has((colors.secondary || '').trim())) next.secondary = BRAND_COLORS.secondary
+  if (OLD_LINK.has((colors.link || '').trim())) next.link = BRAND_COLORS.link
   return next
+}
+
+function isValidCms(data: unknown): data is CmsData {
+  if (!data || typeof data !== 'object') return false
+  const d = data as CmsData
+  return !!(d.settings && Array.isArray(d.articles) && Array.isArray(d.tools) && Array.isArray(d.themes))
+}
+
+function migrateApprovedContent(data: CmsData): CmsData {
+  if ((data.contentMigration ?? 0) >= CONTENT_MIGRATION_VERSION) {
+    return data
+  }
+
+  const oldArtIds = new Set<string>(OLD_DUMMY_ARTICLE_IDS as unknown as string[])
+  const oldToolIds = new Set<string>(OLD_DUMMY_TOOL_IDS as unknown as string[])
+
+  let articles = data.articles.filter(
+    (a) => !oldArtIds.has(a.id) && !OLD_DUMMY_ARTICLE_TITLES.has(a.title)
+  )
+  let tools = data.tools.filter(
+    (t) => !oldToolIds.has(t.id) && !OLD_DUMMY_TOOL_TITLES.has(t.title)
+  )
+
+  for (const a of approvedArticles) {
+    const byId = articles.findIndex((x) => x.id === a.id)
+    const bySlug = articles.findIndex((x) => x.slug === a.slug)
+    if (byId >= 0) {
+      articles[byId] = { ...a }
+    } else if (bySlug >= 0) {
+      const existing = articles[bySlug]
+      if (oldArtIds.has(existing.id) || OLD_DUMMY_ARTICLE_TITLES.has(existing.title)) {
+        articles[bySlug] = { ...a }
+      }
+    } else {
+      articles.push({ ...a })
+    }
+  }
+
+  for (const t of approvedTools) {
+    const byId = tools.findIndex((x) => x.id === t.id)
+    const bySlug = tools.findIndex((x) => x.slug === t.slug)
+    if (byId >= 0) {
+      tools[byId] = { ...t }
+    } else if (bySlug >= 0) {
+      const existing = tools[bySlug]
+      if (oldToolIds.has(existing.id) || OLD_DUMMY_TOOL_TITLES.has(existing.title)) {
+        tools[bySlug] = { ...t }
+      }
+    } else {
+      tools.push({ ...t })
+    }
+  }
+
+  const seenArt = new Set<string>()
+  articles = articles.filter((a) => {
+    const sk = `slug:${a.slug}`
+    if (seenArt.has(a.id) || seenArt.has(sk)) return false
+    seenArt.add(a.id)
+    seenArt.add(sk)
+    return true
+  })
+  const seenTool = new Set<string>()
+  tools = tools.filter((t) => {
+    const sk = `slug:${t.slug}`
+    if (seenTool.has(t.id) || seenTool.has(sk)) return false
+    seenTool.add(t.id)
+    seenTool.add(sk)
+    return true
+  })
+
+  let pages = data.pages.map((p) => {
+    if (p.slug !== 'over-ons') return p
+    const looksDummy =
+      p.id === 'page_over' ||
+      p.body.includes('online toolbox') ||
+      (p.bannerIntro || '').includes('Wie zit er achter')
+    if (looksDummy) {
+      return { ...approvedOverOnsPage, id: p.id === 'page_over' ? 'page_c001' : p.id }
+    }
+    return p
+  })
+  if (!pages.some((p) => p.slug === 'over-ons')) {
+    pages = [...pages, { ...approvedOverOnsPage }]
+  }
+
+  return {
+    ...data,
+    version: Math.max(data.version || 0, SCHEMA_VERSION),
+    contentMigration: CONTENT_MIGRATION_VERSION,
+    articles,
+    tools,
+    pages,
+  }
+}
+
+function migrateSettings(data: CmsData): CmsData {
+  let settings = { ...data.settings }
+  if (settings.colors) {
+    settings = { ...settings, colors: migrateLegacyPalette(settings.colors) }
+  }
+  if (settings.footerCredit === 'Gemaakt door Rekall') {
+    settings = { ...settings, footerCredit: 'gemaakt door Lieven :)' }
+  }
+  return { ...data, settings }
+}
+
+function normalizeImported(parsed: CmsData): CmsData {
+  const base = createSeedData()
+  const merged: CmsData = {
+    ...base,
+    ...parsed,
+    settings: { ...base.settings, ...(parsed.settings || {}) },
+    version: Math.max(Number(parsed.version) || 0, SCHEMA_VERSION),
+    contentMigration: Math.max(Number(parsed.contentMigration) || 0, CONTENT_MIGRATION_VERSION),
+  }
+  return migrateApprovedContent(migrateSettings(merged))
 }
 
 function loadData(): CmsData {
@@ -77,25 +193,13 @@ function loadData(): CmsData {
     const raw = localStorage.getItem(STORAGE_KEY)
     if (raw) {
       const parsed = JSON.parse(raw) as CmsData
-      // Force refresh when seed version bumps so full content lands
-      if (parsed && parsed.version >= 2 && parsed.settings && parsed.themes?.[0]?.faqs) {
-        if (parsed.settings.colors) {
-          parsed.settings = {
-            ...parsed.settings,
-            colors: migrateLegacyPalette(parsed.settings.colors),
-          }
-        }
-        // Migrate known default credit only
-        if (parsed.settings.footerCredit === 'Gemaakt door Rekall') {
-          parsed.settings = {
-            ...parsed.settings,
-            footerCredit: 'gemaakt door Lieven :)',
-          }
-        }
-        return parsed
+      if (parsed && parsed.settings && parsed.themes?.[0]?.faqs) {
+        let data = migrateSettings(parsed)
+        data = migrateApprovedContent(data)
+        if ((data.version || 0) < 2) data = { ...data, version: SCHEMA_VERSION }
+        return data
       }
     }
-    // clear stale v1
     localStorage.removeItem('wijdoenmee_cms_v1')
   } catch {
     /* ignore */
@@ -152,8 +256,8 @@ export function CmsProvider({ children }: { children: React.ReactNode }) {
       importJson: (raw) => {
         try {
           const parsed = JSON.parse(raw) as CmsData
-          if (!parsed?.settings || !parsed?.articles) return false
-          setData({ ...createSeedData(), ...parsed, version: 1 })
+          if (!isValidCms(parsed)) return false
+          setData(normalizeImported(parsed))
           return true
         } catch {
           return false
@@ -176,8 +280,7 @@ export function CmsProvider({ children }: { children: React.ReactNode }) {
           else themes.push(theme)
           return { ...d, themes }
         }),
-      deleteTheme: (id) =>
-        update((d) => ({ ...d, themes: d.themes.filter((t) => t.id !== id) })),
+      deleteTheme: (id) => update((d) => ({ ...d, themes: d.themes.filter((t) => t.id !== id) })),
       saveArticle: (article) =>
         update((d) => {
           const i = d.articles.findIndex((a) => a.id === article.id)
@@ -196,8 +299,7 @@ export function CmsProvider({ children }: { children: React.ReactNode }) {
           else tools.push(tool)
           return { ...d, tools }
         }),
-      deleteTool: (id) =>
-        update((d) => ({ ...d, tools: d.tools.filter((t) => t.id !== id) })),
+      deleteTool: (id) => update((d) => ({ ...d, tools: d.tools.filter((t) => t.id !== id) })),
       savePage: (page) =>
         update((d) => {
           const i = d.pages.findIndex((p) => p.id === page.id)
@@ -206,8 +308,7 @@ export function CmsProvider({ children }: { children: React.ReactNode }) {
           else pages.push(page)
           return { ...d, pages }
         }),
-      deletePage: (id) =>
-        update((d) => ({ ...d, pages: d.pages.filter((p) => p.id !== id) })),
+      deletePage: (id) => update((d) => ({ ...d, pages: d.pages.filter((p) => p.id !== id) })),
       saveMedia: (item) =>
         update((d) => {
           const i = d.media.findIndex((m) => m.id === item.id)
@@ -216,8 +317,7 @@ export function CmsProvider({ children }: { children: React.ReactNode }) {
           else media.push(item)
           return { ...d, media }
         }),
-      deleteMedia: (id) =>
-        update((d) => ({ ...d, media: d.media.filter((m) => m.id !== id) })),
+      deleteMedia: (id) => update((d) => ({ ...d, media: d.media.filter((m) => m.id !== id) })),
     }),
     [data, ready, update]
   )
