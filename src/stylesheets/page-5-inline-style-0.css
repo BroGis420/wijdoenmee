@@ -1,0 +1,2 @@
+body { transition: opacity 0.2s ease-in; }
+body[unresolved] { opacity: 0; display: block; overflow: hidden; position: relative; }
