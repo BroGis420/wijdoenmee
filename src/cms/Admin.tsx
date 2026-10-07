@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import { useCms } from './store'
 import type { Article, CustomPage, FaqItem, MediaItem, NavItem, Theme, Tool } from './types'
 import { slugify, uid } from './types'
+import BodyEditor from './BodyEditor'
 
 type Tab =
   | 'dashboard'
@@ -690,12 +691,11 @@ function ArticleEditor() {
               ))}
             </div>
           </Field>
-          <Field label="Body (paragrafen scheiden met lege regel)" tip={'De volledige tekst. Laat een lege regel tussen alinea’s. Je mag ## gebruiken voor tussentitels.'}>
-            <TextArea
-              value={edit.body}
-              onChange={(e) => setEdit({ ...edit, body: e.target.value })}
-              style={{ minHeight: 180 }}
-            />
+                    <Field
+            label="Tekst van het artikel"
+            tip="Schrijf in Word of Docs en plak hier. Alinea’s blijven staan. Voor een tussentitel: cursor op die regel en klik “Regel → tussentitel”."
+          >
+            <BodyEditor value={edit.body} onChange={(body) => setEdit({ ...edit, body })} minHeight={220} />
           </Field>
           <Field label="Afbeelding URL" tip={'Plak de link naar een foto, of kies hieronder een foto uit de mediabibliotheek.'}>
             <TextInput value={edit.imageUrl} onChange={(e) => setEdit({ ...edit, imageUrl: e.target.value })} />
@@ -750,8 +750,15 @@ function ArticleEditor() {
               <Field label="Vraag" tip={'De vraag die bezoekers zien in de FAQ-lijst.'}>
                 <TextInput value={f.question} onChange={(e) => updateFaq(f.id, { question: e.target.value })} />
               </Field>
-              <Field label="Antwoord" tip={'Het antwoord. Mag meerdere alinea’s zijn (lege regel ertussen).'}>
-                <TextArea value={f.answer} onChange={(e) => updateFaq(f.id, { answer: e.target.value })} />
+              <Field
+                label="Antwoord"
+                tip="Plak het antwoord uit Word. Alinea’s en lijstjes worden herkend."
+              >
+                <BodyEditor
+                  value={f.answer}
+                  onChange={(answer) => updateFaq(f.id, { answer })}
+                  minHeight={120}
+                />
               </Field>
               <button
                 type="button"
@@ -875,8 +882,11 @@ function ToolEditor() {
           <Field label="Beschrijving" tip={'Korte tekst op de overzichtskaart. Houd het begrijpelijk.'}>
             <TextArea value={edit.description} onChange={(e) => setEdit({ ...edit, description: e.target.value })} />
           </Field>
-          <Field label="Body (markdown)" tip={'Uitgebreide uitleg. Alinea’s scheiden met een lege regel. ## voor tussentitels.'}>
-            <TextArea value={edit.body || ''} onChange={(e) => setEdit({ ...edit, body: e.target.value })} style={{ minHeight: 140 }} />
+                    <Field
+            label="Uitleg / tekst"
+            tip="Plak tekst uit Word. Alinea’s en opsommingen worden herkend. Geen codes nodig."
+          >
+            <BodyEditor value={edit.body || ''} onChange={(body) => setEdit({ ...edit, body })} minHeight={160} />
           </Field>
           <Field label="Thema's" tip={'Vink de thema’s aan die bij dit item horen. Zo kunnen bezoekers filteren.'}>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
@@ -1050,12 +1060,11 @@ function PageEditor() {
           <Field label="Banner intro" tip={'Korte zin onder de banner-titel.'}>
             <TextArea value={edit.bannerIntro} onChange={(e) => setEdit({ ...edit, bannerIntro: e.target.value })} />
           </Field>
-          <Field label="Inhoud (paragrafen met lege regel)">
-            <TextArea
-              value={edit.body}
-              onChange={(e) => setEdit({ ...edit, body: e.target.value })}
-              style={{ minHeight: 200 }}
-            />
+          <Field
+            label="Inhoud van de pagina"
+            tip="Plak tekst uit Word of Docs. Alinea’s blijven staan. Geen codes of hashtags nodig."
+          >
+            <BodyEditor value={edit.body} onChange={(body) => setEdit({ ...edit, body })} minHeight={200} />
           </Field>
           <Field
             label="Zichtbaar op de website?"
