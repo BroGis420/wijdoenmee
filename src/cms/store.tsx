@@ -42,6 +42,36 @@ type CmsContextValue = {
 
 const CmsContext = createContext<CmsContextValue | null>(null)
 
+/** Map only known previous default palette values → brand defaults. Custom CMS colours stay. */
+const OLD_PRIMARY = new Set(['#0a6b6b', '#056b40', '#0A6B6B', '#056B40'])
+const OLD_PRIMARY_DARK = new Set(['#085252', '#045130'])
+const OLD_ACCENT = new Set(['#ffe4d6', '#ffdcdc', '#FFE4D6', '#FFDCDC'])
+const OLD_SECONDARY = new Set(['#d8f0eb', '#ffeac2', '#D8F0EB', '#FFEAC2'])
+const OLD_LINK = new Set(['#e07a5f', '#0062ff', '#E07A5F', '#0062FF'])
+
+const BRAND_COLORS: SiteSettings['colors'] = {
+  primary: '#188AD1',
+  primaryDark: '#116296',
+  accent: '#FECB01',
+  secondary: '#FFF8DB',
+  link: '#116296',
+}
+
+function migrateLegacyPalette(colors: SiteSettings['colors']): SiteSettings['colors'] {
+  const next = { ...colors }
+  const p = (colors.primary || '').trim()
+  const pd = (colors.primaryDark || '').trim()
+  const a = (colors.accent || '').trim()
+  const s = (colors.secondary || '').trim()
+  const l = (colors.link || '').trim()
+  if (OLD_PRIMARY.has(p)) next.primary = BRAND_COLORS.primary
+  if (OLD_PRIMARY_DARK.has(pd)) next.primaryDark = BRAND_COLORS.primaryDark
+  if (OLD_ACCENT.has(a)) next.accent = BRAND_COLORS.accent
+  if (OLD_SECONDARY.has(s)) next.secondary = BRAND_COLORS.secondary
+  if (OLD_LINK.has(l)) next.link = BRAND_COLORS.link
+  return next
+}
+
 function loadData(): CmsData {
   try {
     const raw = localStorage.getItem(STORAGE_KEY)
@@ -49,6 +79,12 @@ function loadData(): CmsData {
       const parsed = JSON.parse(raw) as CmsData
       // Force refresh when seed version bumps so full content lands
       if (parsed && parsed.version >= 2 && parsed.settings && parsed.themes?.[0]?.faqs) {
+        if (parsed.settings.colors) {
+          parsed.settings = {
+            ...parsed.settings,
+            colors: migrateLegacyPalette(parsed.settings.colors),
+          }
+        }
         return parsed
       }
     }
@@ -92,6 +128,8 @@ export function CmsProvider({ children }: { children: React.ReactNode }) {
     root.style.setProperty('--color-yellow2', c.secondary)
     root.style.setProperty('--color-blue', c.link)
     root.style.setProperty('--color-blue-alpha', `${c.link}30`)
+    root.style.setProperty('--color-black', '#171717')
+    root.style.setProperty('--color-white', '#FFFFFF')
   }, [data.settings.colors, ready])
 
   const update = useCallback((fn: (prev: CmsData) => CmsData) => {

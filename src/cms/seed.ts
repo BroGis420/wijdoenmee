@@ -1152,11 +1152,11 @@ export function createSeedData(): CmsData {
       footerCopyright: '© 2026',
       footerCredit: 'Gemaakt door Rekall',
       colors: {
-        primary: '#0a6b6b',
-        primaryDark: '#085252',
-        accent: '#ffe4d6',
-        secondary: '#d8f0eb',
-        link: '#e07a5f',
+        primary: '#188AD1',
+        primaryDark: '#116296',
+        accent: '#FECB01',
+        secondary: '#FFF8DB',
+        link: '#116296',
       },
     },
     nav: [

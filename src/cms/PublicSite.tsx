@@ -3,9 +3,19 @@ import { useCms } from './store'
 import type { Article, CustomPage, FaqItem, Theme, Tool } from './types'
 import RichText from './RichText'
 
-function NavLink({ to, children, className }: { to: string; children: React.ReactNode; className?: string }) {
+function NavLink({
+  to,
+  children,
+  className,
+  'aria-label': ariaLabel,
+}: {
+  to: string
+  children: React.ReactNode
+  className?: string
+  'aria-label'?: string
+}) {
   return (
-    <a className={className} data-navigate-routes={JSON.stringify([to])}>
+    <a className={className} data-navigate-routes={JSON.stringify([to])} aria-label={ariaLabel}>
       {children}
     </a>
   )
@@ -14,14 +24,33 @@ function NavLink({ to, children, className }: { to: string; children: React.Reac
 function Logo() {
   const { data } = useCms()
   const s = data.settings
+  const descriptor = s.logoLine3 || 'rond Gent'
   return (
-    <NavLink to="/">
+    <NavLink to="/" className="logo-link" aria-label="Wij doen mee rond Gent">
       <span className="logo__text">
-        <span className="logo__line">{s.logoLine1}</span>
-        <span className="logo__line">{s.logoLine2}</span>
-        <span className="logo__sub">{s.logoLine3}</span>
+        <img
+          className="logo__wordmark"
+          src="/brand/wij-doen-mee-wordmark.png"
+          alt=""
+          width={220}
+          height={40}
+          decoding="async"
+        />
+        <span className="logo__sub" aria-hidden="true">
+          {descriptor}
+        </span>
       </span>
     </NavLink>
+  )
+}
+
+/** Inert yellow brand loop — decorative only */
+function BrandLoop({ variant = 'hero' }: { variant?: 'hero' | 'footer' }) {
+  const src = variant === 'footer' ? '/brand/loop-footer.svg' : '/brand/loop-hero.svg'
+  return (
+    <div className={`brand-loop brand-loop--${variant}`} aria-hidden="true">
+      <img src={src} alt="" decoding="async" />
+    </div>
   )
 }
 
@@ -92,7 +121,8 @@ function SiteFooter() {
   const col2 = links.slice(mid)
 
   return (
-    <footer className="full-bleed">
+    <footer className="full-bleed footer--brand">
+      <BrandLoop variant="footer" />
       <div className="content">
         <div className="footer__links">
           <nav className="nav__footer">
@@ -223,6 +253,7 @@ function HomePage() {
       <div id="block-rekall-theme-content">
         <div className="bg-color-pink">
           <div className="banner__home">
+            <BrandLoop variant="hero" />
             <div className="content">
               <div className="banner__body">
                 <h1 className="banner__title">{s.homeTitle}</h1>
@@ -763,27 +794,7 @@ export default function PublicSite() {
         <SiteFooter />
       </div>
       <NavLink to="/admin">
-        <span
-          className="cms-fab"
-          style={{
-            position: 'fixed',
-            right: 16,
-            bottom: 16,
-            zIndex: 9999,
-            background: 'var(--color-green)',
-            color: '#fff',
-            borderRadius: 50,
-            padding: '0.75rem 1.25rem',
-            fontWeight: 700,
-            fontSize: 14,
-            boxShadow: '0 4px 16px rgba(0,0,0,0.2)',
-            cursor: 'pointer',
-            fontFamily: 'var(--font-bold)',
-            display: 'inline-block',
-          }}
-        >
-          CMS beheer
-        </span>
+        <span className="cms-fab">CMS beheer</span>
       </NavLink>
     </body>
   )
