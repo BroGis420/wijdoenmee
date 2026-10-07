@@ -18,15 +18,15 @@ const shell: React.CSSProperties = {
   display: 'flex',
   minHeight: '100vh',
   fontFamily: '"Plus Jakarta Sans", system-ui, sans-serif',
-  background: '#f4f6f8',
-  color: '#1a1a1a',
+  background: '#EAF5FC',
+  color: '#171717',
 }
 
 const sidebar: React.CSSProperties = {
-  width: 240,
-  background: '#0a6b6b',
+  width: 260,
+  background: '#116296',
   color: '#fff',
-  padding: '1.5rem 0',
+  padding: '1.25rem 0',
   flexShrink: 0,
   display: 'flex',
   flexDirection: 'column',
@@ -35,7 +35,7 @@ const sidebar: React.CSSProperties = {
 
 const main: React.CSSProperties = {
   flex: 1,
-  padding: '1.5rem 2rem',
+  padding: '1.75rem 2rem 3rem',
   overflow: 'auto',
   maxHeight: '100vh',
 }
@@ -43,35 +43,47 @@ const main: React.CSSProperties = {
 const card: React.CSSProperties = {
   background: '#fff',
   borderRadius: 16,
-  padding: '1.25rem 1.5rem',
-  boxShadow: '0 1px 3px rgba(0,0,0,0.06)',
+  padding: '1.35rem 1.5rem',
+  boxShadow: '0 8px 24px rgba(17, 98, 150, 0.08)',
   marginBottom: '1rem',
+  border: '1px solid rgba(24, 138, 209, 0.1)',
 }
 
 const inputStyle: React.CSSProperties = {
   width: '100%',
-  padding: '0.6rem 0.75rem',
-  borderRadius: 10,
-  border: '1px solid #d0d5dd',
+  padding: '0.7rem 0.85rem',
+  borderRadius: 12,
+  border: '1.5px solid rgba(23, 23, 23, 0.12)',
   fontFamily: 'inherit',
   fontSize: 14,
   boxSizing: 'border-box',
+  background: '#fff',
+  color: '#171717',
 }
 
 const labelStyle: React.CSSProperties = {
   display: 'block',
   fontSize: 13,
-  fontWeight: 600,
+  fontWeight: 700,
   marginBottom: 6,
-  color: '#444',
+  color: '#171717',
+}
+
+const hintStyle: React.CSSProperties = {
+  display: 'block',
+  fontSize: 12,
+  fontWeight: 500,
+  color: '#595959',
+  marginTop: 4,
+  lineHeight: 1.4,
 }
 
 const btnPrimary: React.CSSProperties = {
-  background: '#0a6b6b',
-  color: '#fff',
-  border: 'none',
+  background: '#FECB01',
+  color: '#171717',
+  border: '1.5px solid #171717',
   borderRadius: 50,
-  padding: '0.55rem 1.1rem',
+  padding: '0.6rem 1.2rem',
   fontWeight: 700,
   cursor: 'pointer',
   fontFamily: 'inherit',
@@ -79,11 +91,11 @@ const btnPrimary: React.CSSProperties = {
 }
 
 const btnGhost: React.CSSProperties = {
-  background: 'transparent',
-  color: '#0a6b6b',
-  border: '1px solid #0a6b6b',
+  background: '#fff',
+  color: '#116296',
+  border: '1.5px solid rgba(17, 98, 150, 0.35)',
   borderRadius: 50,
-  padding: '0.5rem 1rem',
+  padding: '0.55rem 1.05rem',
   fontWeight: 600,
   cursor: 'pointer',
   fontFamily: 'inherit',
@@ -93,7 +105,7 @@ const btnGhost: React.CSSProperties = {
 const btnDanger: React.CSSProperties = {
   ...btnGhost,
   color: '#b42318',
-  borderColor: '#b42318',
+  borderColor: 'rgba(180, 35, 24, 0.45)',
 }
 
 const table: React.CSSProperties = {
@@ -104,15 +116,18 @@ const table: React.CSSProperties = {
 
 function Field({
   label,
+  hint,
   children,
 }: {
   label: string
+  hint?: string
   children: React.ReactNode
 }) {
   return (
     <div style={{ marginBottom: 14 }}>
       <label style={labelStyle}>{label}</label>
       {children}
+      {hint ? <span style={hintStyle}>{hint}</span> : null}
     </div>
   )
 }
@@ -145,67 +160,73 @@ function SettingsEditor() {
   const s = data.settings
   return (
     <div>
-      <h1 style={{ marginTop: 0 }}>Site-instellingen</h1>
+      <h1 style={{ marginTop: 0, color: '#116296' }}>Site-instellingen</h1>
+      <p style={{ color: '#595959', marginTop: -4, maxWidth: 560 }}>
+        Hier pas je de vaste teksten en kleuren van de website aan. Alles wordt meteen bewaard in je browser.
+      </p>
       <div style={card}>
-        <h3>Identiteit</h3>
-        <Field label="Sitenaam">
+        <h3 style={{ marginTop: 0 }}>Identiteit</h3>
+        <Field label="Sitenaam" hint="Verschijnt in de browser-tab en als titel van dit CMS.">
           <TextInput value={s.siteName} onChange={(e) => updateSettings({ siteName: e.target.value })} />
         </Field>
         <Row>
           <div style={{ flex: 1, minWidth: 140 }}>
-            <Field label="Logo regel 1">
+            <Field label="Logo-tekst (regel 1)" hint="Alleen als backup; de site toont het echte logo-beeld.">
               <TextInput value={s.logoLine1} onChange={(e) => updateSettings({ logoLine1: e.target.value })} />
             </Field>
           </div>
           <div style={{ flex: 1, minWidth: 140 }}>
-            <Field label="Logo regel 2">
+            <Field label="Logo-tekst (regel 2)">
               <TextInput value={s.logoLine2} onChange={(e) => updateSettings({ logoLine2: e.target.value })} />
             </Field>
           </div>
           <div style={{ flex: 1, minWidth: 140 }}>
-            <Field label="Logo regel 3">
+            <Field label="Ondertitel bij logo" hint='Bijv. "rond Gent" — gele chip onder het logo.'>
               <TextInput value={s.logoLine3} onChange={(e) => updateSettings({ logoLine3: e.target.value })} />
             </Field>
           </div>
         </Row>
       </div>
       <div style={card}>
-        <h3>Homepage</h3>
-        <Field label="Hero titel">
+        <h3 style={{ marginTop: 0 }}>Homepage</h3>
+        <Field label="Grote titel bovenaan" hint="De hoofdvraag of boodschap op de home.">
           <TextInput value={s.homeTitle} onChange={(e) => updateSettings({ homeTitle: e.target.value })} />
         </Field>
-        <Field label="Hero intro (regels met Enter)">
+        <Field label="Korte uitleg eronder" hint="Elke Enter = nieuwe regel.">
           <TextArea value={s.homeIntro} onChange={(e) => updateSettings({ homeIntro: e.target.value })} />
         </Field>
-        <Field label="Sectietitel inspiratie">
+        <Field label="Titel van de inspiratie-sectie">
           <TextInput value={s.homeSectionTitle} onChange={(e) => updateSettings({ homeSectionTitle: e.target.value })} />
         </Field>
         <Row>
           <div style={{ flex: 1 }}>
-            <Field label="CTA-tekst">
+            <Field label="Knoptekst “meer lezen”">
               <TextInput value={s.homeSectionCta} onChange={(e) => updateSettings({ homeSectionCta: e.target.value })} />
             </Field>
           </div>
           <div style={{ flex: 1 }}>
-            <Field label="CTA-route">
+            <Field label="Link van die knop" hint="Meestal /inspiratie">
               <TextInput value={s.homeSectionCtaRoute} onChange={(e) => updateSettings({ homeSectionCtaRoute: e.target.value })} />
             </Field>
           </div>
         </Row>
       </div>
       <div style={card}>
-        <h3>Kleuren</h3>
+        <h3 style={{ marginTop: 0 }}>Kleuren</h3>
+        <p style={{ ...hintStyle, marginBottom: 12 }}>
+          Tip: blauw = hoofdkleur, geel = accent. Wijzig alleen als je zeker bent — de huisstijl is al ingesteld.
+        </p>
         <Row>
           {(
             [
-              ['primary', 'Primair'],
-              ['primaryDark', 'Primair donker'],
-              ['accent', 'Accent'],
-              ['secondary', 'Secundair'],
-              ['link', 'Link'],
+              ['primary', 'Hoofdkleur (blauw)'],
+              ['primaryDark', 'Donkerblauw'],
+              ['accent', 'Accent (geel)'],
+              ['secondary', 'Lichte achtergrond'],
+              ['link', 'Linkkleur'],
             ] as const
           ).map(([key, label]) => (
-            <div key={key} style={{ minWidth: 120 }}>
+            <div key={key} style={{ minWidth: 140 }}>
               <Field label={label}>
                 <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
                   <input
@@ -226,11 +247,11 @@ function SettingsEditor() {
         </Row>
       </div>
       <div style={card}>
-        <h3>Footer</h3>
-        <Field label="Copyright">
+        <h3 style={{ marginTop: 0 }}>Footer</h3>
+        <Field label="Copyright-regel">
           <TextInput value={s.footerCopyright} onChange={(e) => updateSettings({ footerCopyright: e.target.value })} />
         </Field>
-        <Field label="Credit">
+        <Field label="Credit-regel" hint='Bijv. "gemaakt door Lieven :)" — feestelijke hover op de site.'>
           <TextInput value={s.footerCredit} onChange={(e) => updateSettings({ footerCredit: e.target.value })} />
         </Field>
       </div>
@@ -249,7 +270,7 @@ function NavEditor({ kind }: { kind: 'nav' | 'footer' }) {
 
   return (
     <div>
-      <h1 style={{ marginTop: 0 }}>{kind === 'nav' ? 'Hoofdnavigatie' : 'Footer-links'}</h1>
+      <h1 style={{ marginTop: 0, color: '#116296' }}>{kind === 'nav' ? 'Menu bovenaan' : 'Links onderaan (footer)'}</h1>
       <div style={card}>
         <table style={table}>
           <thead>
@@ -325,7 +346,7 @@ function ThemeEditor() {
 
   return (
     <div>
-      <h1 style={{ marginTop: 0 }}>Thema&apos;s</h1>
+      <h1 style={{ marginTop: 0, color: '#116296' }}>Thema&apos;s</h1>
       {!edit ? (
         <div style={card}>
           <Row>
@@ -479,7 +500,7 @@ function ArticleEditor() {
 
   return (
     <div>
-      <h1 style={{ marginTop: 0 }}>Artikels / Inspiratie</h1>
+      <h1 style={{ marginTop: 0, color: '#116296' }}>Artikels / Inspiratie</h1>
       {!edit ? (
         <div style={card}>
           <button type="button" style={btnPrimary} onClick={() => setEdit(blank())}>
@@ -677,7 +698,7 @@ function ToolEditor() {
 
   return (
     <div>
-      <h1 style={{ marginTop: 0 }}>Tools</h1>
+      <h1 style={{ marginTop: 0, color: '#116296' }}>Tools</h1>
       {!edit ? (
         <div style={card}>
           <button type="button" style={btnPrimary} onClick={() => setEdit(blank())}>
@@ -838,7 +859,7 @@ function PageEditor() {
 
   return (
     <div>
-      <h1 style={{ marginTop: 0 }}>Pagina&apos;s</h1>
+      <h1 style={{ marginTop: 0, color: '#116296' }}>Pagina&apos;s</h1>
       <p style={{ color: '#666', marginTop: -8 }}>
         Custom pagina&apos;s verschijnen op <code>/pagina/jouw-slug</code>. Koppel ze via navigatie of footer.
       </p>
@@ -944,7 +965,7 @@ function MediaEditor() {
 
   return (
     <div>
-      <h1 style={{ marginTop: 0 }}>Media</h1>
+      <h1 style={{ marginTop: 0, color: '#116296' }}>Media</h1>
       <p style={{ color: '#666' }}>
         Voeg afbeeldings-URL&apos;s toe (bestaande <code>/images/...</code> of externe links). Upload naar een host en plak de URL.
       </p>
@@ -1038,7 +1059,7 @@ function ExportPanel() {
 
   return (
     <div>
-      <h1 style={{ marginTop: 0 }}>Import / Export</h1>
+      <h1 style={{ marginTop: 0, color: '#116296' }}>Import / Export</h1>
       <div style={card}>
         <h3>Export</h3>
         <p>Download alle content als JSON-backup.</p>
@@ -1085,7 +1106,7 @@ function ExportPanel() {
             Reset naar standaard
           </button>
         </Row>
-        {msg ? <p style={{ color: '#0a6b6b', fontWeight: 600 }}>{msg}</p> : null}
+        {msg ? <p style={{ color: '#116296', fontWeight: 600 }}>{msg}</p> : null}
       </div>
     </div>
   )
@@ -1102,42 +1123,69 @@ function Dashboard() {
   ]
   return (
     <div>
-      <h1 style={{ marginTop: 0 }}>CMS Dashboard</h1>
-      <p style={{ color: '#555' }}>
-        Beheer de volledige website: content, navigatie, kleuren en pagina&apos;s. Wijzigingen worden direct opgeslagen in
-        je browser (localStorage).
+      <h1 style={{ marginTop: 0, color: '#116296' }}>Welkom in je CMS</h1>
+      <p style={{ color: '#595959', maxWidth: 620, lineHeight: 1.55 }}>
+        Dit is de bediening van <strong>Wij doen mee rond Gent</strong>. Je hoeft niks te installeren:
+        open een onderdeel links, pas tekst of foto&apos;s aan, en kijk meteen op de website.
+        Alles wordt automatisch bewaard in deze browser.
       </p>
+      <div
+        style={{
+          ...card,
+          background: 'linear-gradient(135deg, #EAF5FC 0%, #FFF8DB 100%)',
+          border: '1.5px solid rgba(254, 203, 1, 0.55)',
+        }}
+      >
+        <strong style={{ color: '#116296' }}>Hoe begin je?</strong>
+        <ol style={{ margin: '0.75rem 0 0', paddingLeft: 20, lineHeight: 1.75, color: '#171717' }}>
+          <li>
+            Klik <strong>Artikels</strong> of <strong>Tools</strong> om content te bewerken.
+          </li>
+          <li>
+            Zet bij een artikel het vinkje <strong>Featured</strong> aan om het op de homepage te tonen.
+          </li>
+          <li>
+            Gebruik <strong>Media</strong> om afbeeldingen te beheren (URL of upload).
+          </li>
+          <li>
+            Klaar? Druk op <strong>Naar website</strong> om het resultaat te zien.
+          </li>
+        </ol>
+      </div>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))', gap: 12 }}>
         {stats.map((s) => (
           <div key={s.label} style={{ ...card, textAlign: 'center', marginBottom: 0 }}>
-            <div style={{ fontSize: 28, fontWeight: 800, color: '#0a6b6b' }}>{s.value}</div>
-            <div style={{ fontSize: 13, color: '#666' }}>{s.label}</div>
+            <div style={{ fontSize: 28, fontWeight: 800, color: '#116296' }}>{s.value}</div>
+            <div style={{ fontSize: 13, color: '#595959', fontWeight: 600 }}>{s.label}</div>
           </div>
         ))}
       </div>
       <div style={{ ...card, marginTop: 16 }}>
-        <h3>Snel starten</h3>
-        <ul style={{ lineHeight: 1.8, margin: 0, paddingLeft: 18 }}>
+        <h3 style={{ marginTop: 0 }}>Snelkoppelingen</h3>
+        <ul style={{ lineHeight: 1.9, margin: 0, paddingLeft: 18 }}>
           <li>
-            <strong>Artikels</strong> — schrijf inspiratieverhalen, zet op homepage via “Featured”
+            <strong>Artikels</strong> — inspiratieverhalen schrijven en op home zetten
           </li>
           <li>
-            <strong>Tools</strong> — voeg downloads en hulpmiddelen toe
+            <strong>Tools</strong> — downloads en hulpmiddelen toevoegen
           </li>
           <li>
-            <strong>Thema&apos;s</strong> — beheer de 4 (of meer) thema-kaarten op home
+            <strong>Thema&apos;s</strong> — de 4 kaarten op de home (Promotie, Inschrijving, …)
           </li>
           <li>
-            <strong>Pagina&apos;s</strong> — maak Contact, Over ons, of eender welke custom pagina
+            <strong>Pagina&apos;s</strong> — Contact, Over ons, of een nieuwe pagina
           </li>
           <li>
-            <strong>Navigatie</strong> — pas menu en footer-links aan
+            <strong>Navigatie</strong> — menu bovenaan en links onderaan
           </li>
           <li>
-            <strong>Instellingen</strong> — logo, kleuren, homepage-teksten
+            <strong>Instellingen</strong> — titel, kleuren, homepage-teksten
+          </li>
+          <li>
+            <strong>Import/Export</strong> — backup maken of content terugzetten
           </li>
         </ul>
-        <div style={{ marginTop: 16 }}>
+        <div style={{ marginTop: 16, display: 'flex', gap: 10, flexWrap: 'wrap' }}>
           <button type="button" style={btnPrimary} onClick={goPublic}>
             Bekijk website →
           </button>
@@ -1147,16 +1195,16 @@ function Dashboard() {
   )
 }
 
-const TABS: { id: Tab; label: string }[] = [
-  { id: 'dashboard', label: 'Dashboard' },
-  { id: 'settings', label: 'Instellingen' },
-  { id: 'nav', label: 'Navigatie' },
-  { id: 'themes', label: "Thema's" },
-  { id: 'articles', label: 'Artikels' },
-  { id: 'tools', label: 'Tools' },
-  { id: 'pages', label: "Pagina's" },
-  { id: 'media', label: 'Media' },
-  { id: 'export', label: 'Import/Export' },
+const TABS: { id: Tab; label: string; blurb: string }[] = [
+  { id: 'dashboard', label: 'Start', blurb: 'Overzicht' },
+  { id: 'articles', label: 'Artikels', blurb: 'Verhalen' },
+  { id: 'tools', label: 'Tools', blurb: 'Downloads' },
+  { id: 'themes', label: "Thema's", blurb: 'Home-kaarten' },
+  { id: 'pages', label: "Pagina's", blurb: 'Contact e.d.' },
+  { id: 'nav', label: 'Menu', blurb: 'Navigatie' },
+  { id: 'media', label: 'Media', blurb: 'Beelden' },
+  { id: 'settings', label: 'Instellingen', blurb: 'Tekst & kleur' },
+  { id: 'export', label: 'Backup', blurb: 'Import/export' },
 ]
 
 export default function Admin() {
@@ -1203,7 +1251,7 @@ export default function Admin() {
         <aside style={sidebar}>
           <div style={{ padding: '0 1.25rem 1.25rem', borderBottom: '1px solid rgba(255,255,255,0.15)' }}>
             <div style={{ fontWeight: 800, fontSize: 15, lineHeight: 1.3 }}>{data.settings.siteName}</div>
-            <div style={{ fontSize: 12, opacity: 0.75, marginTop: 4 }}>Content Management</div>
+            <div style={{ fontSize: 12, opacity: 0.85, marginTop: 6 }}>Eenvoudig content beheren</div>
           </div>
           {TABS.map((t) => (
             <button
@@ -1211,18 +1259,22 @@ export default function Admin() {
               type="button"
               onClick={() => setTab(t.id)}
               style={{
-                background: tab === t.id ? 'rgba(255,255,255,0.18)' : 'transparent',
-                color: '#fff',
+                background: tab === t.id ? 'rgba(254, 203, 1, 0.95)' : 'transparent',
+                color: tab === t.id ? '#171717' : '#fff',
                 border: 'none',
                 textAlign: 'left',
-                padding: '0.7rem 1.25rem',
+                padding: '0.75rem 1.25rem',
                 cursor: 'pointer',
                 fontFamily: 'inherit',
                 fontSize: 14,
-                fontWeight: tab === t.id ? 700 : 500,
+                fontWeight: tab === t.id ? 800 : 500,
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 2,
               }}
             >
-              {t.label}
+              <span>{t.label}</span>
+              <span style={{ fontSize: 11, opacity: tab === t.id ? 0.75 : 0.65, fontWeight: 500 }}>{t.blurb}</span>
             </button>
           ))}
           <div style={{ marginTop: 'auto', padding: '1rem 1.25rem' }}>
@@ -1231,12 +1283,12 @@ export default function Admin() {
               onClick={goPublic}
               style={{
                 width: '100%',
-                background: '#ffe4d6',
-                color: '#000',
-                border: 'none',
+                background: '#FECB01',
+                color: '#171717',
+                border: '1.5px solid #171717',
                 borderRadius: 50,
-                padding: '0.65rem',
-                fontWeight: 700,
+                padding: '0.7rem',
+                fontWeight: 800,
                 cursor: 'pointer',
                 fontFamily: 'inherit',
               }}

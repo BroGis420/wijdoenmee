@@ -394,16 +394,19 @@ function SiteFooter() {
 function CreditCelebrate({ text }: { text: string }) {
   const pieces = React.useMemo(
     () =>
-      Array.from({ length: 28 }, (_, i) => ({
-        id: i,
-        // spread in a wide arc upward
-        dx: (i % 2 === 0 ? 1 : -1) * (12 + (i * 7) % 70),
-        dy: -(40 + (i * 11) % 90),
-        rot: (i * 47) % 360,
-        delay: (i % 8) * 0.03,
-        size: 5 + (i % 5),
-        kind: i % 5, // 0 square, 1 rect, 2 circle, 3 star-ish, 4 ribbon
-      })),
+      Array.from({ length: 48 }, (_, i) => {
+        const angle = (i / 48) * Math.PI * 2 + (i % 3) * 0.2
+        const dist = 70 + (i % 9) * 22
+        return {
+          id: i,
+          dx: Math.round(Math.cos(angle) * dist * (0.85 + (i % 5) * 0.08)),
+          dy: Math.round(Math.sin(angle) * dist * 0.55 - (55 + (i % 7) * 18)),
+          rot: (i * 53) % 720 - 360,
+          delay: (i % 12) * 0.025,
+          size: 8 + (i % 7) * 2,
+          kind: i % 5,
+        }
+      }),
     []
   )
 
