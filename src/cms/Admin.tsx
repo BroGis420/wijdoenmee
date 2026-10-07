@@ -1116,158 +1116,132 @@ function ExportPanel() {
 
 function Dashboard({ onNavigate }: { onNavigate: (tab: Tab) => void }) {
   const { data } = useCms()
-  const stats: { label: string; value: number; tab: Tab; hint: string }[] = [
-    { label: 'Artikels', value: data.articles.length, tab: 'articles', hint: 'Verhalen bewerken' },
-    { label: 'Tools', value: data.tools.length, tab: 'tools', hint: 'Downloads beheren' },
-    { label: "Thema's", value: data.themes.length, tab: 'themes', hint: 'Home-kaarten' },
-    { label: "Pagina's", value: data.pages.length, tab: 'pages', hint: 'Vaste pagina\'s' },
-    { label: 'Media', value: data.media.length, tab: 'media', hint: 'Beelden & bestanden' },
+  const primary = [
+    {
+      tab: 'articles' as Tab,
+      title: 'Artikels',
+      count: data.articles.length,
+      text: 'Schrijf of pas inspiratieverhalen aan.',
+    },
+    {
+      tab: 'tools' as Tab,
+      title: 'Tools',
+      count: data.tools.length,
+      text: 'Beheer downloads en hulpmiddelen.',
+    },
+    {
+      tab: 'themes' as Tab,
+      title: "Thema's",
+      count: data.themes.length,
+      text: 'De kaarten op de homepage.',
+    },
   ]
-  return (
-    <div>
-      <div
-        style={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          alignItems: 'flex-end',
-          justifyContent: 'space-between',
-          gap: 16,
-          marginBottom: 20,
-        }}
-      >
-        <div>
-          <h1 style={{ margin: '0 0 8px', color: '#116296', fontSize: 28 }}>Welkom in je CMS</h1>
-          <p style={{ color: '#595959', maxWidth: 520, lineHeight: 1.55, margin: 0 }}>
-            Beheer <strong style={{ color: '#171717' }}>Wij doen mee rond Gent</strong> zonder technische kennis.
-            Klik een kaart hieronder of kies links in het menu. Alles wordt automatisch bewaard.
-          </p>
-        </div>
-        <button type="button" style={btnPrimary} onClick={goPublic}>
-          Bekijk website →
-        </button>
-      </div>
 
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))',
-          gap: 14,
-          marginBottom: 20,
-        }}
-      >
-        {stats.map((s) => (
+  return (
+    <div style={{ maxWidth: 720 }}>
+      <h1 style={{ margin: '0 0 10px', color: '#116296', fontSize: 26, fontWeight: 800 }}>Hallo 👋</h1>
+      <p style={{ color: '#595959', lineHeight: 1.6, margin: '0 0 28px', fontSize: 16 }}>
+        Wat wil je vandaag doen? Kies één van de drie. Meer opties staan links in het menu.
+      </p>
+
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 28 }}>
+        {primary.map((item) => (
           <button
-            key={s.label}
+            key={item.tab}
             type="button"
-            onClick={() => onNavigate(s.tab)}
+            onClick={() => onNavigate(item.tab)}
             style={{
-              ...card,
-              marginBottom: 0,
-              textAlign: 'left',
-              cursor: 'pointer',
-              borderLeft: '4px solid #FECB01',
-              transition: 'transform 0.2s ease, box-shadow 0.2s ease',
-              fontFamily: 'inherit',
+              display: 'flex',
+              alignItems: 'center',
+              gap: 18,
               width: '100%',
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = 'translateY(-4px)'
-              e.currentTarget.style.boxShadow = '0 14px 32px rgba(17, 98, 150, 0.14)'
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = 'translateY(0)'
-              e.currentTarget.style.boxShadow = card.boxShadow as string
+              textAlign: 'left',
+              background: '#fff',
+              border: '1px solid rgba(24, 138, 209, 0.12)',
+              borderRadius: 16,
+              padding: '1.15rem 1.35rem',
+              cursor: 'pointer',
+              fontFamily: 'inherit',
+              boxShadow: '0 4px 16px rgba(17, 98, 150, 0.06)',
             }}
           >
-            <div style={{ fontSize: 32, fontWeight: 800, color: '#116296', lineHeight: 1 }}>{s.value}</div>
-            <div style={{ fontSize: 15, color: '#171717', fontWeight: 700, marginTop: 8 }}>{s.label}</div>
-            <div style={{ fontSize: 12, color: '#595959', marginTop: 4, fontWeight: 500 }}>{s.hint} →</div>
+            <div
+              style={{
+                minWidth: 52,
+                height: 52,
+                borderRadius: 14,
+                background: '#EAF5FC',
+                color: '#116296',
+                fontWeight: 800,
+                fontSize: 20,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              {item.count}
+            </div>
+            <div style={{ flex: 1 }}>
+              <div style={{ fontWeight: 800, fontSize: 17, color: '#171717' }}>{item.title}</div>
+              <div style={{ fontSize: 14, color: '#595959', marginTop: 2 }}>{item.text}</div>
+            </div>
+            <div style={{ color: '#116296', fontWeight: 700, fontSize: 18 }}>→</div>
           </button>
         ))}
       </div>
 
-      <div style={{ ...card, borderTop: '3px solid #FECB01' }}>
-        <h3 style={{ marginTop: 0, color: '#116296' }}>Hoe begin je?</h3>
-        <ol style={{ margin: 0, paddingLeft: 20, lineHeight: 1.85, color: '#171717' }}>
-          <li>
-            Open <strong>Artikels</strong> of <strong>Tools</strong> via de kaarten hierboven.
-          </li>
-          <li>
-            Bij een artikel: vink <strong>Featured</strong> aan om het op de homepage te tonen.
-          </li>
-          <li>
-            Voeg beelden toe via <strong>Media</strong> (URL plakken of uploaden).
-          </li>
-          <li>
-            Klik <strong>Bekijk website</strong> om je wijzigingen live te zien.
-          </li>
-        </ol>
-      </div>
-
-      <div style={{ ...card, marginTop: 4 }}>
-        <h3 style={{ marginTop: 0, color: '#116296' }}>Alle onderdelen</h3>
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
-            gap: 10,
-          }}
-        >
-          {(
-            [
-              ['articles', 'Artikels', 'Inspiratieverhalen schrijven'],
-              ['tools', 'Tools', 'Downloads & hulpmiddelen'],
-              ['themes', "Thema's", 'Kaarten op de home'],
-              ['pages', "Pagina's", 'Contact, Over ons, …'],
-              ['nav', 'Menu', 'Navigatie boven & onder'],
-              ['media', 'Media', 'Foto’s en bestanden'],
-              ['settings', 'Instellingen', 'Teksten en kleuren'],
-              ['export', 'Backup', 'Importeren of exporteren'],
-            ] as const
-          ).map(([id, title, desc]) => (
-            <button
-              key={id}
-              type="button"
-              onClick={() => onNavigate(id)}
-              style={{
-                textAlign: 'left',
-                background: '#EAF5FC',
-                border: '1px solid rgba(24, 138, 209, 0.15)',
-                borderRadius: 14,
-                padding: '0.9rem 1rem',
-                cursor: 'pointer',
-                fontFamily: 'inherit',
-              }}
-            >
-              <div style={{ fontWeight: 800, color: '#116296', marginBottom: 4 }}>{title}</div>
-              <div style={{ fontSize: 12, color: '#595959', fontWeight: 500 }}>{desc}</div>
-            </button>
-          ))}
-        </div>
+      <div
+        style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          gap: 10,
+          alignItems: 'center',
+          paddingTop: 8,
+          borderTop: '1px solid rgba(23, 23, 23, 0.08)',
+        }}
+      >
+        <button type="button" style={btnPrimary} onClick={goPublic}>
+          Bekijk website
+        </button>
+        <button type="button" style={btnGhost} onClick={() => onNavigate('pages')}>
+          Pagina&apos;s
+        </button>
+        <button type="button" style={btnGhost} onClick={() => onNavigate('settings')}>
+          Instellingen
+        </button>
       </div>
     </div>
   )
 }
 
-const TABS: { id: Tab; label: string; blurb: string }[] = [
-  { id: 'dashboard', label: 'Start', blurb: 'Overzicht' },
-  { id: 'articles', label: 'Artikels', blurb: 'Verhalen' },
-  { id: 'tools', label: 'Tools', blurb: 'Downloads' },
-  { id: 'themes', label: "Thema's", blurb: 'Home-kaarten' },
-  { id: 'pages', label: "Pagina's", blurb: 'Contact e.d.' },
-  { id: 'nav', label: 'Menu', blurb: 'Navigatie' },
-  { id: 'media', label: 'Media', blurb: 'Beelden' },
-  { id: 'settings', label: 'Instellingen', blurb: 'Tekst & kleur' },
-  { id: 'export', label: 'Backup', blurb: 'Import/export' },
+/** Primary nav first; secondary only when needed */
+const NAV_PRIMARY: { id: Tab; label: string }[] = [
+  { id: 'dashboard', label: 'Start' },
+  { id: 'articles', label: 'Artikels' },
+  { id: 'tools', label: 'Tools' },
+  { id: 'themes', label: "Thema's" },
+  { id: 'pages', label: "Pagina's" },
+]
+
+const NAV_MORE: { id: Tab; label: string }[] = [
+  { id: 'media', label: 'Media' },
+  { id: 'nav', label: 'Menu & footer' },
+  { id: 'settings', label: 'Instellingen' },
+  { id: 'export', label: 'Backup' },
 ]
 
 export default function Admin() {
   const [tab, setTab] = useState<Tab>('dashboard')
+  const [showMore, setShowMore] = useState(false)
   const { data } = useCms()
 
   React.useEffect(() => {
     document.title = `CMS — ${data.settings.siteName}`
   }, [data.settings.siteName])
+
+  React.useEffect(() => {
+    if (NAV_MORE.some((t) => t.id === tab)) setShowMore(true)
+  }, [tab])
 
   const body = useMemo(() => {
     switch (tab) {
@@ -1279,6 +1253,7 @@ export default function Admin() {
         return (
           <>
             <NavEditor kind="nav" />
+            <div style={{ height: 16 }} />
             <NavEditor kind="footer" />
           </>
         )
@@ -1299,38 +1274,63 @@ export default function Admin() {
     }
   }, [tab])
 
+  const navBtn = (t: { id: Tab; label: string }) => (
+    <button
+      key={t.id}
+      type="button"
+      onClick={() => setTab(t.id)}
+      style={{
+        background: tab === t.id ? '#FECB01' : 'transparent',
+        color: tab === t.id ? '#171717' : '#fff',
+        border: 'none',
+        textAlign: 'left',
+        padding: '0.7rem 1.25rem',
+        cursor: 'pointer',
+        fontFamily: 'inherit',
+        fontSize: 15,
+        fontWeight: tab === t.id ? 800 : 500,
+        borderRadius: 0,
+      }}
+    >
+      {t.label}
+    </button>
+  )
+
   return (
     <body style={{ margin: 0 }}>
       <div style={shell}>
         <aside style={sidebar}>
-          <div style={{ padding: '0 1.25rem 1.25rem', borderBottom: '1px solid rgba(255,255,255,0.15)' }}>
-            <div style={{ fontWeight: 800, fontSize: 15, lineHeight: 1.3 }}>{data.settings.siteName}</div>
-            <div style={{ fontSize: 12, opacity: 0.85, marginTop: 6 }}>Eenvoudig content beheren</div>
+          <div style={{ padding: '0.25rem 1.25rem 1.25rem', borderBottom: '1px solid rgba(255,255,255,0.12)' }}>
+            <div style={{ fontWeight: 800, fontSize: 14, lineHeight: 1.35, opacity: 0.95 }}>Wij doen mee</div>
+            <div style={{ fontSize: 12, opacity: 0.7, marginTop: 4 }}>rond Gent · CMS</div>
           </div>
-          {TABS.map((t) => (
+
+          <div style={{ paddingTop: 8 }}>{NAV_PRIMARY.map(navBtn)}</div>
+
+          <div style={{ marginTop: 12, padding: '0 1.25rem' }}>
             <button
-              key={t.id}
               type="button"
-              onClick={() => setTab(t.id)}
+              onClick={() => setShowMore((v) => !v)}
               style={{
-                background: tab === t.id ? 'rgba(254, 203, 1, 0.95)' : 'transparent',
-                color: tab === t.id ? '#171717' : '#fff',
+                width: '100%',
+                background: 'rgba(255,255,255,0.08)',
+                color: '#fff',
                 border: 'none',
-                textAlign: 'left',
-                padding: '0.75rem 1.25rem',
+                borderRadius: 10,
+                padding: '0.55rem 0.75rem',
                 cursor: 'pointer',
                 fontFamily: 'inherit',
-                fontSize: 14,
-                fontWeight: tab === t.id ? 800 : 500,
-                display: 'flex',
-                flexDirection: 'column',
-                gap: 2,
+                fontSize: 13,
+                fontWeight: 600,
+                textAlign: 'left',
               }}
             >
-              <span>{t.label}</span>
-              <span style={{ fontSize: 11, opacity: tab === t.id ? 0.75 : 0.65, fontWeight: 500 }}>{t.blurb}</span>
+              {showMore ? 'Minder ▲' : 'Meer… ▼'}
             </button>
-          ))}
+          </div>
+
+          {showMore ? <div style={{ paddingTop: 6 }}>{NAV_MORE.map(navBtn)}</div> : null}
+
           <div style={{ marginTop: 'auto', padding: '1rem 1.25rem' }}>
             <button
               type="button"
@@ -1345,9 +1345,10 @@ export default function Admin() {
                 fontWeight: 800,
                 cursor: 'pointer',
                 fontFamily: 'inherit',
+                fontSize: 14,
               }}
             >
-              ← Naar website
+              ← Website
             </button>
           </div>
         </aside>
