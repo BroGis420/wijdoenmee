@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from 'react'
+import ReactDOM from 'react-dom'
 import { useCms } from './store'
 import type { Article, CustomPage, FaqItem, MediaItem, NavItem, Theme, Tool } from './types'
 import { slugify, uid } from './types'
@@ -117,12 +118,10 @@ const table: React.CSSProperties = {
 }
 
 const tipBubble: React.CSSProperties = {
-  position: 'absolute',
-  left: '50%',
-  top: 'calc(100% + 8px)',
-  transform: 'translateX(-50%)',
-  zIndex: 50,
-  width: 'min(300px, 72vw)',
+  position: 'fixed',
+  zIndex: 10000,
+  width: 'min(300px, calc(100vw - 24px))',
+  maxWidth: 320,
   background: '#116296',
   color: '#fff',
   borderRadius: 12,
@@ -130,7 +129,7 @@ const tipBubble: React.CSSProperties = {
   fontSize: 13,
   fontWeight: 500,
   lineHeight: 1.45,
-  boxShadow: '0 12px 28px rgba(17, 98, 150, 0.3)',
+  boxShadow: '0 16px 40px rgba(17, 98, 150, 0.35)',
   pointerEvents: 'none',
   textAlign: 'left',
 }
@@ -149,22 +148,50 @@ function Field({
   children: React.ReactNode
 }) {
   const [open, setOpen] = useState(false)
+  const [pos, setPos] = useState<{ top: number; left: number }>({ top: 0, left: 0 })
+  const btnRef = React.useRef<HTMLButtonElement>(null)
   const help = tip || hint
+
+  const placeTip = () => {
+    const el = btnRef.current
+    if (!el) return
+    const r = el.getBoundingClientRect()
+    const tipW = Math.min(300, window.innerWidth - 24)
+    // Prefer to the right of the icon (content area); flip if near right edge
+    let left = r.right + 10
+    if (left + tipW > window.innerWidth - 12) {
+      left = Math.max(12, r.left - tipW - 10)
+    }
+    // Prefer below; flip above if near bottom
+    let top = r.bottom + 8
+    const estH = 88
+    if (top + estH > window.innerHeight - 12) {
+      top = Math.max(12, r.top - estH - 8)
+    }
+    setPos({ top, left })
+  }
+
+  const show = () => {
+    placeTip()
+    setOpen(true)
+  }
+  const hide = () => setOpen(false)
+
   return (
     <div style={{ marginBottom: 16 }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6, position: 'relative' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
         <label style={{ ...labelStyle, marginBottom: 0 }}>{label}</label>
         {help ? (
-          <span
-            style={{ position: 'relative', display: 'inline-flex' }}
-            onMouseEnter={() => setOpen(true)}
-            onMouseLeave={() => setOpen(false)}
-          >
+          <>
             <button
+              ref={btnRef}
               type="button"
               aria-label={`Uitleg over: ${label}`}
-              onFocus={() => setOpen(true)}
-              onBlur={() => setOpen(false)}
+              aria-expanded={open}
+              onMouseEnter={show}
+              onMouseLeave={hide}
+              onFocus={show}
+              onBlur={hide}
               style={{
                 width: 20,
                 height: 20,
@@ -184,12 +211,22 @@ function Field({
             >
               i
             </button>
-            {open ? (
-              <span role="tooltip" style={tipBubble}>
-                {help}
-              </span>
-            ) : null}
-          </span>
+            {open
+              ? ReactDOM.createPortal(
+                  <span
+                    role="tooltip"
+                    style={{
+                      ...tipBubble,
+                      top: pos.top,
+                      left: pos.left,
+                    }}
+                  >
+                    {help}
+                  </span>,
+                  document.body
+                )
+              : null}
+          </>
         ) : null}
       </div>
       {children}
