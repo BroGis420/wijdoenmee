@@ -1141,7 +1141,7 @@ function Dashboard({ onNavigate }: { onNavigate: (tab: Tab) => void }) {
     <div style={{ maxWidth: 720 }}>
       <h1 style={{ margin: '0 0 10px', color: '#116296', fontSize: 26, fontWeight: 800 }}>Hallo 👋</h1>
       <p style={{ color: '#595959', lineHeight: 1.6, margin: '0 0 28px', fontSize: 16 }}>
-        Wat wil je vandaag doen? Kies één van de drie. Meer opties staan links in het menu.
+        Wat wil je vandaag doen? Kies hieronder of gebruik het menu links.
       </p>
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 28 }}>
@@ -1214,16 +1214,12 @@ function Dashboard({ onNavigate }: { onNavigate: (tab: Tab) => void }) {
   )
 }
 
-/** Primary nav first; secondary only when needed */
-const NAV_PRIMARY: { id: Tab; label: string }[] = [
+const NAV_ITEMS: { id: Tab; label: string }[] = [
   { id: 'dashboard', label: 'Start' },
   { id: 'articles', label: 'Artikels' },
   { id: 'tools', label: 'Tools' },
   { id: 'themes', label: "Thema's" },
   { id: 'pages', label: "Pagina's" },
-]
-
-const NAV_MORE: { id: Tab; label: string }[] = [
   { id: 'media', label: 'Media' },
   { id: 'nav', label: 'Menu & footer' },
   { id: 'settings', label: 'Instellingen' },
@@ -1232,16 +1228,11 @@ const NAV_MORE: { id: Tab; label: string }[] = [
 
 export default function Admin() {
   const [tab, setTab] = useState<Tab>('dashboard')
-  const [showMore, setShowMore] = useState(false)
   const { data } = useCms()
 
   React.useEffect(() => {
     document.title = `CMS — ${data.settings.siteName}`
   }, [data.settings.siteName])
-
-  React.useEffect(() => {
-    if (NAV_MORE.some((t) => t.id === tab)) setShowMore(true)
-  }, [tab])
 
   const body = useMemo(() => {
     switch (tab) {
@@ -1274,28 +1265,6 @@ export default function Admin() {
     }
   }, [tab])
 
-  const navBtn = (t: { id: Tab; label: string }) => (
-    <button
-      key={t.id}
-      type="button"
-      onClick={() => setTab(t.id)}
-      style={{
-        background: tab === t.id ? '#FECB01' : 'transparent',
-        color: tab === t.id ? '#171717' : '#fff',
-        border: 'none',
-        textAlign: 'left',
-        padding: '0.7rem 1.25rem',
-        cursor: 'pointer',
-        fontFamily: 'inherit',
-        fontSize: 15,
-        fontWeight: tab === t.id ? 800 : 500,
-        borderRadius: 0,
-      }}
-    >
-      {t.label}
-    </button>
-  )
-
   return (
     <body style={{ margin: 0 }}>
       <div style={shell}>
@@ -1305,31 +1274,28 @@ export default function Admin() {
             <div style={{ fontSize: 12, opacity: 0.7, marginTop: 4 }}>rond Gent · CMS</div>
           </div>
 
-          <div style={{ paddingTop: 8 }}>{NAV_PRIMARY.map(navBtn)}</div>
-
-          <div style={{ marginTop: 12, padding: '0 1.25rem' }}>
-            <button
-              type="button"
-              onClick={() => setShowMore((v) => !v)}
-              style={{
-                width: '100%',
-                background: 'rgba(255,255,255,0.08)',
-                color: '#fff',
-                border: 'none',
-                borderRadius: 10,
-                padding: '0.55rem 0.75rem',
-                cursor: 'pointer',
-                fontFamily: 'inherit',
-                fontSize: 13,
-                fontWeight: 600,
-                textAlign: 'left',
-              }}
-            >
-              {showMore ? 'Minder ▲' : 'Meer… ▼'}
-            </button>
-          </div>
-
-          {showMore ? <div style={{ paddingTop: 6 }}>{NAV_MORE.map(navBtn)}</div> : null}
+          <nav style={{ paddingTop: 8, display: 'flex', flexDirection: 'column', gap: 2 }} aria-label="CMS-menu">
+            {NAV_ITEMS.map((t) => (
+              <button
+                key={t.id}
+                type="button"
+                onClick={() => setTab(t.id)}
+                style={{
+                  background: tab === t.id ? '#FECB01' : 'transparent',
+                  color: tab === t.id ? '#171717' : '#fff',
+                  border: 'none',
+                  textAlign: 'left',
+                  padding: '0.7rem 1.25rem',
+                  cursor: 'pointer',
+                  fontFamily: 'inherit',
+                  fontSize: 15,
+                  fontWeight: tab === t.id ? 800 : 500,
+                }}
+              >
+                {t.label}
+              </button>
+            ))}
+          </nav>
 
           <div style={{ marginTop: 'auto', padding: '1rem 1.25rem' }}>
             <button
