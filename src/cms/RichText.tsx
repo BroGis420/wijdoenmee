@@ -1,10 +1,22 @@
 import React from 'react'
 
-/** Renders simple markdown: ## h2, ### h3, - bullets, **bold**, paragraphs */
+/**
+ * Renders plain/Word-friendly text:
+ * - blank line = new paragraph
+ * - ## / ### headings (auto-inserted when pasting Word titles)
+ * - lines starting with - * • = list
+ * - **bold** and [text](url) optional
+ */
 export default function RichText({ text }: { text: string }) {
   if (!text?.trim()) return null
 
-  const blocks = text.replace(/\r\n/g, '\n').split(/\n\n+/)
+  const normalized = text
+    .replace(/\r\n/g, '\n')
+    .replace(/\r/g, '\n')
+    .replace(/\u00a0/g, ' ')
+    .replace(/^[ \t]+/gm, '')
+
+  const blocks = normalized.split(/\n\n+/)
 
   return (
     <>
@@ -27,14 +39,16 @@ export default function RichText({ text }: { text: string }) {
           )
         }
 
-        const isList = lines.every((l) => !l.trim() || l.trim().startsWith('- ') || l.trim().startsWith('* '))
-        if (isList && lines.some((l) => l.trim().startsWith('- ') || l.trim().startsWith('* '))) {
+        const isList = lines.every(
+          (l) => !l.trim() || /^[-*•●]\s+/.test(l.trim()) || /^\d+[.)]\s+/.test(l.trim())
+        )
+        if (isList && lines.some((l) => /^[-*•●]\s+/.test(l.trim()) || /^\d+[.)]\s+/.test(l.trim()))) {
           return (
             <ul key={bi}>
               {lines
                 .filter((l) => l.trim())
                 .map((l, li) => (
-                  <li key={li}>{inline(l.trim().replace(/^[-*]\s+/, ''))}</li>
+                  <li key={li}>{inline(l.trim().replace(/^([-*•●]|\d+[.)])\s+/, ''))}</li>
                 ))}
             </ul>
           )
@@ -56,7 +70,6 @@ export default function RichText({ text }: { text: string }) {
 }
 
 function inline(s: string): React.ReactNode {
-  // links [text](url) and **bold**
   const parts: React.ReactNode[] = []
   const re = /(\*\*[^*]+\*\*|\[([^\]]+)\]\(([^)]+)\))/g
   let last = 0
