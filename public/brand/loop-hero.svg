@@ -1,6 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 180" fill="none" aria-hidden="true">
-  <path d="M-20 140 C40 40, 120 20, 180 70 C220 105, 200 150, 250 145 C310 138, 340 60, 400 40" stroke="#FECB01" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M385 28 C400 22, 415 35, 408 52 C402 66, 385 70, 375 58 C368 48, 375 32, 385 28Z" fill="#FECB01"/>
-  <path d="M398 48 C410 55, 418 70, 408 78" stroke="#FECB01" stroke-width="8" stroke-linecap="round"/>
-  <path d="M392 55 C404 62, 410 74, 400 80" stroke="#FECB01" stroke-width="7" stroke-linecap="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 280" fill="none" aria-hidden="true" preserveAspectRatio="xMaxYMin meet">
+  <!-- Enters from top-right off-canvas, loops once, exits bottom-right off-canvas -->
+  <path d="M700 -40
+           C620 20, 560 100, 480 120
+           C390 145, 330 60, 270 85
+           C210 110, 250 185, 340 190
+           C430 196, 500 140, 570 165
+           C620 185, 660 230, 720 280"
+        stroke="#FECB01" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+  <path d="M220 40 C160 10, 80 40, 70 100 C60 160, 120 190, 170 150 C210 120, 190 70, 230 60"
+        stroke="#FECB01" stroke-width="20" stroke-linecap="round"/>
+  <g transform="translate(225 55) rotate(25)">
+    <ellipse cx="0" cy="0" rx="12" ry="10" fill="#FECB01"/>
+    <path d="M5 -4 C14 -12, 20 -2, 12 6" stroke="#FECB01" stroke-width="6" stroke-linecap="round"/>
+  </g>
+</svg>
