@@ -1150,7 +1150,7 @@ export function createSeedData(): CmsData {
       homeSectionCta: 'Bekijk meer inspiraties',
       homeSectionCtaRoute: '/inspiratie',
       footerCopyright: '© 2026',
-      footerCredit: 'Gemaakt door Rekall',
+      footerCredit: 'gemaakt door Lieven :)',
       colors: {
         primary: '#188AD1',
         primaryDark: '#116296',

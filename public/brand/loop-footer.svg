@@ -1,10 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 200" fill="none" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
-  <!-- Full continuous wave: both ends intentionally off-canvas -->
-  <path d="M-120 160
-           C-40 40, 80 -10, 180 70
-           C250 120, 240 170, 330 155
-           C430 135, 470 40, 580 55
-           C670 68, 700 140, 820 120
-           C880 110, 940 80, 1020 100"
-        stroke="#FECB01" stroke-width="28" stroke-linecap="round" stroke-linejoin="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 80" fill="none" aria-hidden="true" preserveAspectRatio="none">
+  <path d="M-40 50
+           C180 10, 360 75, 540 45
+           C720 15, 900 70, 1080 40
+           C1220 18, 1340 55, 1480 35"
+        stroke="#FECB01" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>

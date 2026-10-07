@@ -85,6 +85,13 @@ function loadData(): CmsData {
             colors: migrateLegacyPalette(parsed.settings.colors),
           }
         }
+        // Migrate known default credit only
+        if (parsed.settings.footerCredit === 'Gemaakt door Rekall') {
+          parsed.settings = {
+            ...parsed.settings,
+            footerCredit: 'gemaakt door Lieven :)',
+          }
+        }
         return parsed
       }
     }
