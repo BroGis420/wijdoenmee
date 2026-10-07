@@ -153,10 +153,51 @@ function SiteFooter() {
         <div className="footer__partners" />
         <div className="footer__copyright">
           <p>{data.settings.footerCopyright}</p>
-          <p>{data.settings.footerCredit}</p>
+          <CreditCelebrate text={data.settings.footerCredit} />
         </div>
       </div>
     </footer>
+  )
+}
+
+/** Celebratory credit — confetti burst + dancing text on hover */
+function CreditCelebrate({ text }: { text: string }) {
+  const pieces = React.useMemo(
+    () =>
+      Array.from({ length: 28 }, (_, i) => ({
+        id: i,
+        // spread in a wide arc upward
+        dx: (i % 2 === 0 ? 1 : -1) * (12 + (i * 7) % 70),
+        dy: -(40 + (i * 11) % 90),
+        rot: (i * 47) % 360,
+        delay: (i % 8) * 0.03,
+        size: 5 + (i % 5),
+        kind: i % 5, // 0 square, 1 rect, 2 circle, 3 star-ish, 4 ribbon
+      })),
+    []
+  )
+
+  return (
+    <p className="credit-celebrate" tabIndex={0} role="text">
+      <span className="credit-celebrate__burst" aria-hidden="true">
+        {pieces.map((p) => (
+          <span
+            key={p.id}
+            className={`credit-celebrate__piece credit-celebrate__piece--${p.kind}`}
+            style={
+              {
+                '--dx': `${p.dx}px`,
+                '--dy': `${p.dy}px`,
+                '--rot': `${p.rot}deg`,
+                '--delay': `${p.delay}s`,
+                '--size': `${p.size}px`,
+              } as React.CSSProperties
+            }
+          />
+        ))}
+      </span>
+      <span className="credit-celebrate__text">{text}</span>
+    </p>
   )
 }
 
