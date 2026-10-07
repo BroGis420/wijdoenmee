@@ -1352,6 +1352,62 @@ a.button:active,
 }
 
 
+
+/* Homepage “Bekijk meer inspiraties” CTA */
+.dialog-off-canvas-main-canvas .section__cta a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-bold);
+  font-weight: 700;
+  font-size: var(--font-size-small, 0.95rem);
+  color: var(--brand-ink) !important;
+  background: var(--color-pink, var(--brand-yellow));
+  border: 1.5px solid var(--brand-ink);
+  border-radius: 50px;
+  padding: 0.55rem 1.15rem;
+  text-decoration: none !important;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.08);
+  transition:
+    transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.28s cubic-bezier(0.34, 1.56, 0.64, 1),
+    background-color 0.2s ease,
+    border-radius 0.28s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+  transform-origin: center center;
+}
+
+.dialog-off-canvas-main-canvas .section__cta a::after {
+  content: "→";
+  font-size: 1.05em;
+  transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.dialog-off-canvas-main-canvas .section__cta a:hover {
+  animation: btn-pop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  background: var(--color-green, var(--brand-blue)) !important;
+  color: var(--brand-ink) !important;
+  border-radius: 28px 50px 28px 50px !important;
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.12), 0 10px 20px rgba(24, 138, 209, 0.18);
+}
+
+.dialog-off-canvas-main-canvas .section__cta a:hover::after {
+  transform: translateX(4px);
+}
+
+.dialog-off-canvas-main-canvas .section__cta a:active {
+  animation: btn-squish 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dialog-off-canvas-main-canvas .section__cta a,
+  .dialog-off-canvas-main-canvas .section__cta a:hover,
+  .dialog-off-canvas-main-canvas .section__cta a:active {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
 /* ── Credit celebrate: big confetti + dancing text ── */
 .footer--brand,
 .footer__copyright {
