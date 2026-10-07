@@ -764,6 +764,7 @@ export default function PublicSite() {
       </div>
       <NavLink to="/admin">
         <span
+          className="cms-fab"
           style={{
             position: 'fixed',
             right: 16,
@@ -778,6 +779,7 @@ export default function PublicSite() {
             boxShadow: '0 4px 16px rgba(0,0,0,0.2)',
             cursor: 'pointer',
             fontFamily: 'var(--font-bold)',
+            display: 'inline-block',
           }}
         >
           CMS beheer

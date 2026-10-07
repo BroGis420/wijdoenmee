@@ -244,6 +244,196 @@ main a.external-link::after {
   -webkit-mask: var(--icon-linkedin);
 }
 
+/* ── Speelse knop-animaties (anders dan teaser-lift) ── */
+@keyframes btn-pop {
+  0% { transform: scale(1) rotate(0deg); }
+  40% { transform: scale(1.08) rotate(-2deg); }
+  70% { transform: scale(0.96) rotate(1.5deg); }
+  100% { transform: scale(1.04) rotate(-0.5deg); }
+}
+
+@keyframes btn-squish {
+  0% { transform: scale(1, 1); }
+  40% { transform: scale(0.92, 1.06); }
+  70% { transform: scale(1.05, 0.94); }
+  100% { transform: scale(0.97, 1.02); }
+}
+
+@keyframes btn-wiggle {
+  0%, 100% { transform: translateX(0) rotate(0deg); }
+  25% { transform: translateX(-2px) rotate(-3deg); }
+  75% { transform: translateX(2px) rotate(3deg); }
+}
+
+.button,
+.button--primary,
+.teaser__cta.button,
+.menu__toggle,
+.deepdive__btn,
+input.button,
+.cm-btn,
+.nav__main ul a,
+#filterToggleContainer button,
+.filter__results__label-item,
+.footer__socials a,
+.pagination a,
+.pager a,
+.block__button-group .button,
+.cms-fab,
+a.button {
+  transition:
+    transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.28s cubic-bezier(0.34, 1.56, 0.64, 1),
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    border-radius 0.28s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+.button:hover,
+.button--primary:hover,
+.teaser__cta.button:hover,
+.deepdive__btn:hover,
+input.button:hover,
+.cm-btn:hover,
+.block__button-group .button:hover,
+a.button:hover {
+  animation: btn-pop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.12), 0 10px 20px rgba(10, 107, 107, 0.15);
+  border-radius: 28px 50px 28px 50px !important;
+}
+
+.menu__toggle:hover {
+  animation: btn-wiggle 0.4s ease both;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.1);
+  transform: scale(1.06);
+}
+
+.nav__main ul a:hover {
+  transform: translateY(-3px) scale(1.05) rotate(-1deg);
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.08);
+}
+
+#filterToggleContainer button:hover,
+.filter__results__label-item:hover {
+  animation: btn-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+.footer__socials a:hover {
+  transform: scale(1.2) rotate(8deg);
+}
+
+.pagination a:hover,
+.pager a:hover {
+  transform: scale(1.12) translateY(-2px);
+}
+
+.button:active,
+.button--primary:active,
+.teaser__cta.button:active,
+.menu__toggle:active,
+.deepdive__btn:active,
+input.button:active,
+.cm-btn:active,
+.nav__main ul a:active,
+#filterToggleContainer button:active,
+.filter__results__label-item:active,
+.block__button-group .button:active,
+a.button:active,
+.pagination a:active,
+.pager a:active {
+  animation: btn-squish 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+  transition-duration: 0.08s !important;
+}
+
+/* CMS-fab + plain buttons */
+.cms-fab {
+  transition:
+    transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.3s ease !important;
+}
+.cms-fab:hover {
+  transform: scale(1.08) rotate(-2deg);
+  box-shadow: 0 8px 24px rgba(10, 107, 107, 0.35) !important;
+  animation: btn-wiggle 0.45s ease both;
+}
+.cms-fab:active {
+  animation: btn-squish 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+button[type="button"]:not(.link):not(.menu__toggle):hover {
+  transform: scale(1.05) rotate(-1deg);
+  filter: brightness(1.05);
+}
+button[type="button"]:not(.link):not(.menu__toggle):active {
+  animation: btn-squish 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* FAQ summaries — extra bounce boven bestaande lift */
+.faq__item summary {
+  transition:
+    transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1),
+    background-color 0.2s ease,
+    border-radius 0.28s ease !important;
+}
+.faq__item summary:hover {
+  transform: translateY(-0.5rem) scale(1.02) !important;
+  box-shadow: 0 8px 16px rgba(10, 107, 107, 0.2);
+}
+.faq__item summary:active {
+  animation: btn-squish 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* Logo — iets speelser op klik */
+.logo__text {
+  transition:
+    transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+    border-radius 0.3s ease,
+    box-shadow 0.3s ease !important;
+}
+.logo__text:active {
+  animation: btn-squish 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* Tags / breadcrumb links */
+.tags a:hover {
+  transform: translateX(4px);
+}
+.breadcrumb a:hover {
+  transform: scale(1.05);
+  display: inline-block;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .button,
+  .button--primary,
+  .teaser__cta.button,
+  .menu__toggle,
+  .deepdive__btn,
+  input.button,
+  .cm-btn,
+  .nav__main ul a,
+  #filterToggleContainer button,
+  .filter__results__label-item,
+  .footer__socials a,
+  .pagination a,
+  .pager a,
+  .block__button-group .button,
+  a.button,
+  button[type="button"],
+  .faq__item summary,
+  .logo__text {
+    animation: none !important;
+    transition: background-color 0.15s ease, color 0.15s ease !important;
+    transform: none !important;
+  }
+}
+
 /* Plus Jakarta Sans — real woff2 files in /public/fonts */
 @font-face { font-family: font-regular; src: url("/fonts/7c8bfd9f-a067-4b55-991a-71aaa1cc62d3.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
 @font-face { font-family: font-italic; src: url("/fonts/9e0341c0-3a0c-4a3d-8964-6b5d67c7aab7.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
