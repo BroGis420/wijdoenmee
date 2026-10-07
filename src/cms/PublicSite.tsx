@@ -275,12 +275,23 @@ function HomePage() {
               <div className="thema__container">
                 {themes.map((t) => (
                   <div className="thema" key={t.id}>
-                    {t.imageUrl ? <img loading="lazy" alt={t.imageAlt || t.title} width={552} height={276} src={t.imageUrl} /> : null}
-                    <h2 className="thema__title">
-                      <NavLink to={`/themas/${t.slug}`}>
-                        <span>{t.title}</span>
-                      </NavLink>
-                    </h2>
+                    <NavLink to={`/themas/${t.slug}`} className="thema__card">
+                      {t.imageUrl ? (
+                        <img
+                          className="thema__media"
+                          loading="lazy"
+                          alt={t.imageAlt || t.title}
+                          width={552}
+                          height={276}
+                          src={t.imageUrl}
+                        />
+                      ) : (
+                        <div className="thema__media thema__media--empty" aria-hidden="true" />
+                      )}
+                      <span className="thema__label">
+                        <span className="thema__label-text">{t.title}</span>
+                      </span>
+                    </NavLink>
                   </div>
                 ))}
               </div>
