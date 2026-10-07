@@ -1434,7 +1434,7 @@ a.button:active,
 .credit-celebrate__piece--4 {
   width: calc(var(--size, 10px) * 0.5);
   height: calc(var(--size, 10px) * 2.6);
-  background: linear-gradient(180deg, var(--brand-yellow), var(--brand-blue));
+  background: var(--brand-yellow);
   border-radius: 3px;
 }
 

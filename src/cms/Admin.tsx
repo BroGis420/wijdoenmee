@@ -18,7 +18,7 @@ const shell: React.CSSProperties = {
   display: 'flex',
   minHeight: '100vh',
   fontFamily: '"Plus Jakarta Sans", system-ui, sans-serif',
-  background: '#EAF5FC',
+  background: '#FFFFFF',
   color: '#171717',
 }
 
@@ -31,13 +31,15 @@ const sidebar: React.CSSProperties = {
   display: 'flex',
   flexDirection: 'column',
   gap: 4,
+  boxShadow: '8px 0 32px rgba(17, 98, 150, 0.12)',
 }
 
 const main: React.CSSProperties = {
   flex: 1,
-  padding: '1.75rem 2rem 3rem',
+  padding: '2rem 2.25rem 3rem',
   overflow: 'auto',
   maxHeight: '100vh',
+  background: 'linear-gradient(180deg, #EAF5FC 0%, #FFFFFF 28%)',
 }
 
 const card: React.CSSProperties = {
@@ -1112,83 +1114,135 @@ function ExportPanel() {
   )
 }
 
-function Dashboard() {
+function Dashboard({ onNavigate }: { onNavigate: (tab: Tab) => void }) {
   const { data } = useCms()
-  const stats = [
-    { label: 'Artikels', value: data.articles.length },
-    { label: 'Tools', value: data.tools.length },
-    { label: "Thema's", value: data.themes.length },
-    { label: "Pagina's", value: data.pages.length },
-    { label: 'Media', value: data.media.length },
+  const stats: { label: string; value: number; tab: Tab; hint: string }[] = [
+    { label: 'Artikels', value: data.articles.length, tab: 'articles', hint: 'Verhalen bewerken' },
+    { label: 'Tools', value: data.tools.length, tab: 'tools', hint: 'Downloads beheren' },
+    { label: "Thema's", value: data.themes.length, tab: 'themes', hint: 'Home-kaarten' },
+    { label: "Pagina's", value: data.pages.length, tab: 'pages', hint: 'Vaste pagina\'s' },
+    { label: 'Media', value: data.media.length, tab: 'media', hint: 'Beelden & bestanden' },
   ]
   return (
     <div>
-      <h1 style={{ marginTop: 0, color: '#116296' }}>Welkom in je CMS</h1>
-      <p style={{ color: '#595959', maxWidth: 620, lineHeight: 1.55 }}>
-        Dit is de bediening van <strong>Wij doen mee rond Gent</strong>. Je hoeft niks te installeren:
-        open een onderdeel links, pas tekst of foto&apos;s aan, en kijk meteen op de website.
-        Alles wordt automatisch bewaard in deze browser.
-      </p>
       <div
         style={{
-          ...card,
-          background: 'linear-gradient(135deg, #EAF5FC 0%, #FFF8DB 100%)',
-          border: '1.5px solid rgba(254, 203, 1, 0.55)',
+          display: 'flex',
+          flexWrap: 'wrap',
+          alignItems: 'flex-end',
+          justifyContent: 'space-between',
+          gap: 16,
+          marginBottom: 20,
         }}
       >
-        <strong style={{ color: '#116296' }}>Hoe begin je?</strong>
-        <ol style={{ margin: '0.75rem 0 0', paddingLeft: 20, lineHeight: 1.75, color: '#171717' }}>
+        <div>
+          <h1 style={{ margin: '0 0 8px', color: '#116296', fontSize: 28 }}>Welkom in je CMS</h1>
+          <p style={{ color: '#595959', maxWidth: 520, lineHeight: 1.55, margin: 0 }}>
+            Beheer <strong style={{ color: '#171717' }}>Wij doen mee rond Gent</strong> zonder technische kennis.
+            Klik een kaart hieronder of kies links in het menu. Alles wordt automatisch bewaard.
+          </p>
+        </div>
+        <button type="button" style={btnPrimary} onClick={goPublic}>
+          Bekijk website →
+        </button>
+      </div>
+
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))',
+          gap: 14,
+          marginBottom: 20,
+        }}
+      >
+        {stats.map((s) => (
+          <button
+            key={s.label}
+            type="button"
+            onClick={() => onNavigate(s.tab)}
+            style={{
+              ...card,
+              marginBottom: 0,
+              textAlign: 'left',
+              cursor: 'pointer',
+              borderLeft: '4px solid #FECB01',
+              transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+              fontFamily: 'inherit',
+              width: '100%',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-4px)'
+              e.currentTarget.style.boxShadow = '0 14px 32px rgba(17, 98, 150, 0.14)'
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)'
+              e.currentTarget.style.boxShadow = card.boxShadow as string
+            }}
+          >
+            <div style={{ fontSize: 32, fontWeight: 800, color: '#116296', lineHeight: 1 }}>{s.value}</div>
+            <div style={{ fontSize: 15, color: '#171717', fontWeight: 700, marginTop: 8 }}>{s.label}</div>
+            <div style={{ fontSize: 12, color: '#595959', marginTop: 4, fontWeight: 500 }}>{s.hint} →</div>
+          </button>
+        ))}
+      </div>
+
+      <div style={{ ...card, borderTop: '3px solid #FECB01' }}>
+        <h3 style={{ marginTop: 0, color: '#116296' }}>Hoe begin je?</h3>
+        <ol style={{ margin: 0, paddingLeft: 20, lineHeight: 1.85, color: '#171717' }}>
           <li>
-            Klik <strong>Artikels</strong> of <strong>Tools</strong> om content te bewerken.
+            Open <strong>Artikels</strong> of <strong>Tools</strong> via de kaarten hierboven.
           </li>
           <li>
-            Zet bij een artikel het vinkje <strong>Featured</strong> aan om het op de homepage te tonen.
+            Bij een artikel: vink <strong>Featured</strong> aan om het op de homepage te tonen.
           </li>
           <li>
-            Gebruik <strong>Media</strong> om afbeeldingen te beheren (URL of upload).
+            Voeg beelden toe via <strong>Media</strong> (URL plakken of uploaden).
           </li>
           <li>
-            Klaar? Druk op <strong>Naar website</strong> om het resultaat te zien.
+            Klik <strong>Bekijk website</strong> om je wijzigingen live te zien.
           </li>
         </ol>
       </div>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))', gap: 12 }}>
-        {stats.map((s) => (
-          <div key={s.label} style={{ ...card, textAlign: 'center', marginBottom: 0 }}>
-            <div style={{ fontSize: 28, fontWeight: 800, color: '#116296' }}>{s.value}</div>
-            <div style={{ fontSize: 13, color: '#595959', fontWeight: 600 }}>{s.label}</div>
-          </div>
-        ))}
-      </div>
-      <div style={{ ...card, marginTop: 16 }}>
-        <h3 style={{ marginTop: 0 }}>Snelkoppelingen</h3>
-        <ul style={{ lineHeight: 1.9, margin: 0, paddingLeft: 18 }}>
-          <li>
-            <strong>Artikels</strong> — inspiratieverhalen schrijven en op home zetten
-          </li>
-          <li>
-            <strong>Tools</strong> — downloads en hulpmiddelen toevoegen
-          </li>
-          <li>
-            <strong>Thema&apos;s</strong> — de 4 kaarten op de home (Promotie, Inschrijving, …)
-          </li>
-          <li>
-            <strong>Pagina&apos;s</strong> — Contact, Over ons, of een nieuwe pagina
-          </li>
-          <li>
-            <strong>Navigatie</strong> — menu bovenaan en links onderaan
-          </li>
-          <li>
-            <strong>Instellingen</strong> — titel, kleuren, homepage-teksten
-          </li>
-          <li>
-            <strong>Import/Export</strong> — backup maken of content terugzetten
-          </li>
-        </ul>
-        <div style={{ marginTop: 16, display: 'flex', gap: 10, flexWrap: 'wrap' }}>
-          <button type="button" style={btnPrimary} onClick={goPublic}>
-            Bekijk website →
-          </button>
+
+      <div style={{ ...card, marginTop: 4 }}>
+        <h3 style={{ marginTop: 0, color: '#116296' }}>Alle onderdelen</h3>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
+            gap: 10,
+          }}
+        >
+          {(
+            [
+              ['articles', 'Artikels', 'Inspiratieverhalen schrijven'],
+              ['tools', 'Tools', 'Downloads & hulpmiddelen'],
+              ['themes', "Thema's", 'Kaarten op de home'],
+              ['pages', "Pagina's", 'Contact, Over ons, …'],
+              ['nav', 'Menu', 'Navigatie boven & onder'],
+              ['media', 'Media', 'Foto’s en bestanden'],
+              ['settings', 'Instellingen', 'Teksten en kleuren'],
+              ['export', 'Backup', 'Importeren of exporteren'],
+            ] as const
+          ).map(([id, title, desc]) => (
+            <button
+              key={id}
+              type="button"
+              onClick={() => onNavigate(id)}
+              style={{
+                textAlign: 'left',
+                background: '#EAF5FC',
+                border: '1px solid rgba(24, 138, 209, 0.15)',
+                borderRadius: 14,
+                padding: '0.9rem 1rem',
+                cursor: 'pointer',
+                fontFamily: 'inherit',
+              }}
+            >
+              <div style={{ fontWeight: 800, color: '#116296', marginBottom: 4 }}>{title}</div>
+              <div style={{ fontSize: 12, color: '#595959', fontWeight: 500 }}>{desc}</div>
+            </button>
+          ))}
         </div>
       </div>
     </div>
@@ -1218,7 +1272,7 @@ export default function Admin() {
   const body = useMemo(() => {
     switch (tab) {
       case 'dashboard':
-        return <Dashboard />
+        return <Dashboard onNavigate={setTab} />
       case 'settings':
         return <SettingsEditor />
       case 'nav':
