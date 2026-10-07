@@ -116,20 +116,83 @@ const table: React.CSSProperties = {
   fontSize: 14,
 }
 
+const tipBubble: React.CSSProperties = {
+  position: 'absolute',
+  left: '50%',
+  top: 'calc(100% + 8px)',
+  transform: 'translateX(-50%)',
+  zIndex: 50,
+  width: 'min(300px, 72vw)',
+  background: '#116296',
+  color: '#fff',
+  borderRadius: 12,
+  padding: '0.75rem 0.9rem',
+  fontSize: 13,
+  fontWeight: 500,
+  lineHeight: 1.45,
+  boxShadow: '0 12px 28px rgba(17, 98, 150, 0.3)',
+  pointerEvents: 'none',
+  textAlign: 'left',
+}
+
 function Field({
   label,
+  tip,
   hint,
   children,
 }: {
   label: string
+  /** Shown via (i) icon on hover/focus */
+  tip?: string
+  /** Fallback tip text if tip is omitted */
   hint?: string
   children: React.ReactNode
 }) {
+  const [open, setOpen] = useState(false)
+  const help = tip || hint
   return (
-    <div style={{ marginBottom: 14 }}>
-      <label style={labelStyle}>{label}</label>
+    <div style={{ marginBottom: 16 }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6, position: 'relative' }}>
+        <label style={{ ...labelStyle, marginBottom: 0 }}>{label}</label>
+        {help ? (
+          <span
+            style={{ position: 'relative', display: 'inline-flex' }}
+            onMouseEnter={() => setOpen(true)}
+            onMouseLeave={() => setOpen(false)}
+          >
+            <button
+              type="button"
+              aria-label={`Uitleg over: ${label}`}
+              onFocus={() => setOpen(true)}
+              onBlur={() => setOpen(false)}
+              style={{
+                width: 20,
+                height: 20,
+                borderRadius: '50%',
+                border: '1.5px solid #116296',
+                background: open ? '#116296' : '#EAF5FC',
+                color: open ? '#fff' : '#116296',
+                fontSize: 11,
+                fontWeight: 800,
+                fontFamily: 'Georgia, serif',
+                fontStyle: 'italic',
+                cursor: 'help',
+                padding: 0,
+                lineHeight: '18px',
+                flexShrink: 0,
+              }}
+            >
+              i
+            </button>
+            {open ? (
+              <span role="tooltip" style={tipBubble}>
+                {help}
+              </span>
+            ) : null}
+          </span>
+        ) : null}
+      </div>
       {children}
-      {hint ? <span style={hintStyle}>{hint}</span> : null}
     </div>
   )
 }
@@ -168,22 +231,22 @@ function SettingsEditor() {
       </p>
       <div style={card}>
         <h3 style={{ marginTop: 0 }}>Identiteit</h3>
-        <Field label="Sitenaam" hint="Verschijnt in de browser-tab en als titel van dit CMS.">
+        <Field label="Sitenaam" tip={'Dit is de naam van de site. Bezoekers zien hem o.a. in het browsertabblad.'}>
           <TextInput value={s.siteName} onChange={(e) => updateSettings({ siteName: e.target.value })} />
         </Field>
         <Row>
           <div style={{ flex: 1, minWidth: 140 }}>
-            <Field label="Logo-tekst (regel 1)" hint="Alleen als backup; de site toont het echte logo-beeld.">
+            <Field label="Logo-tekst (regel 1)" tip={'Backup-tekst. Op de site staat het echte logo-beeld; dit veld is zelden nodig.'}>
               <TextInput value={s.logoLine1} onChange={(e) => updateSettings({ logoLine1: e.target.value })} />
             </Field>
           </div>
           <div style={{ flex: 1, minWidth: 140 }}>
-            <Field label="Logo-tekst (regel 2)">
+            <Field label="Logo-tekst (regel 2)" tip={'Optionele tweede regel bij het tekstlogo (meestal leeg laten).'}>
               <TextInput value={s.logoLine2} onChange={(e) => updateSettings({ logoLine2: e.target.value })} />
             </Field>
           </div>
           <div style={{ flex: 1, minWidth: 140 }}>
-            <Field label="Ondertitel bij logo" hint='Bijv. "rond Gent" — gele chip onder het logo.'>
+            <Field label="Ondertitel bij logo" tip={'Tekst in het gele pillotje onder het logo, bijv. “rond Gent”.'}>
               <TextInput value={s.logoLine3} onChange={(e) => updateSettings({ logoLine3: e.target.value })} />
             </Field>
           </div>
@@ -191,23 +254,23 @@ function SettingsEditor() {
       </div>
       <div style={card}>
         <h3 style={{ marginTop: 0 }}>Homepage</h3>
-        <Field label="Grote titel bovenaan" hint="De hoofdvraag of boodschap op de home.">
+        <Field label="Grote titel bovenaan" tip={'De grote titel bovenaan de homepage. Houd hem kort en uitnodigend.'}>
           <TextInput value={s.homeTitle} onChange={(e) => updateSettings({ homeTitle: e.target.value })} />
         </Field>
-        <Field label="Korte uitleg eronder" hint="Elke Enter = nieuwe regel.">
+        <Field label="Korte uitleg eronder" tip={'Uitleg onder de titel op de home. Druk op Enter voor een nieuwe regel.'}>
           <TextArea value={s.homeIntro} onChange={(e) => updateSettings({ homeIntro: e.target.value })} />
         </Field>
-        <Field label="Titel van de inspiratie-sectie">
+        <Field label="Titel van de inspiratie-sectie" tip={'Kop boven de inspiratie-artikels op de homepage, bijv. “Laat je inspireren”.'}>
           <TextInput value={s.homeSectionTitle} onChange={(e) => updateSettings({ homeSectionTitle: e.target.value })} />
         </Field>
         <Row>
           <div style={{ flex: 1 }}>
-            <Field label="Knoptekst “meer lezen”">
+            <Field label="Knoptekst “meer lezen”" tip={'Tekst op de knop naast die sectie, bijv. “Bekijk meer inspiraties”.'}>
               <TextInput value={s.homeSectionCta} onChange={(e) => updateSettings({ homeSectionCta: e.target.value })} />
             </Field>
           </div>
           <div style={{ flex: 1 }}>
-            <Field label="Link van die knop" hint="Meestal /inspiratie">
+            <Field label="Link van die knop" tip={'Waar die knop naartoe gaat. Meestal /inspiratie.'}>
               <TextInput value={s.homeSectionCtaRoute} onChange={(e) => updateSettings({ homeSectionCtaRoute: e.target.value })} />
             </Field>
           </div>
@@ -250,10 +313,10 @@ function SettingsEditor() {
       </div>
       <div style={card}>
         <h3 style={{ marginTop: 0 }}>Footer</h3>
-        <Field label="Copyright-regel">
+        <Field label="Copyright-regel" tip={'Kleine tekst onderaan, bijv. © 2026.'}>
           <TextInput value={s.footerCopyright} onChange={(e) => updateSettings({ footerCopyright: e.target.value })} />
         </Field>
-        <Field label="Credit-regel" hint='Bijv. "gemaakt door Lieven :)" — feestelijke hover op de site.'>
+        <Field label="Credit-regel" tip={'Tweede regel onderaan (bijv. “gemaakt door Lieven :)”). Op de site speelt confetti bij hover.'}>
           <TextInput value={s.footerCredit} onChange={(e) => updateSettings({ footerCredit: e.target.value })} />
         </Field>
       </div>
@@ -273,6 +336,11 @@ function NavEditor({ kind }: { kind: 'nav' | 'footer' }) {
   return (
     <div>
       <h1 style={{ marginTop: 0, color: '#116296' }}>{kind === 'nav' ? 'Menu bovenaan' : 'Links onderaan (footer)'}</h1>
+      <p style={{ color: '#595959', marginTop: -4, maxWidth: 560, lineHeight: 1.5 }}>
+        {kind === 'nav'
+          ? 'Dit is het menu rechtsboven op de website (Home, Tools, …). Label = knoptekst, Route = pagina-link.'
+          : 'Dit zijn de links onderaan de website. Label = knoptekst, Route = pagina-link (bijv. /pagina/contact).'}
+      </p>
       <div style={card}>
         <table style={table}>
           <thead>
@@ -390,7 +458,7 @@ function ThemeEditor() {
         </div>
       ) : (
         <div style={card}>
-          <Field label="Titel">
+          <Field label="Titel" tip={'De naam die bezoekers zien. Kies iets duidelijk en herkenbaar.'}>
             <TextInput
               value={edit.title}
               onChange={(e) => {
@@ -399,17 +467,17 @@ function ThemeEditor() {
               }}
             />
           </Field>
-          <Field label="Slug (URL)">
+          <Field label="Slug (URL)" tip={'Het stukje in de web-link. Wordt meestal automatisch uit de titel gezet.'}>
             <TextInput value={edit.slug} onChange={(e) => setEdit({ ...edit, slug: slugify(e.target.value) })} />
           </Field>
-          <Field label="Intro">
+          <Field label="Intro" tip={'Korte introductietekst die bezoekers te zien krijgen op deze pagina.'}>
             <TextArea value={edit.intro} onChange={(e) => setEdit({ ...edit, intro: e.target.value })} />
           </Field>
-          <Field label="Afbeelding URL">
+          <Field label="Afbeelding URL" tip={'Plak de link naar een foto, of kies hieronder een foto uit de mediabibliotheek.'}>
             <TextInput value={edit.imageUrl} onChange={(e) => setEdit({ ...edit, imageUrl: e.target.value })} />
           </Field>
           {data.media.length ? (
-            <Field label="Of kies uit mediabibliotheek">
+            <Field label="Of kies uit mediabibliotheek" tip={'Kies een foto die je eerder in Media hebt toegevoegd.'}>
               <Select value={edit.imageUrl} onChange={(e) => setEdit({ ...edit, imageUrl: e.target.value })}>
                 <option value="">—</option>
                 {data.media.map((m) => (
@@ -420,24 +488,29 @@ function ThemeEditor() {
               </Select>
             </Field>
           ) : null}
-          <Field label="Alt-tekst">
+          <Field label="Alt-tekst" tip={'Korte beschrijving van de foto voor blinden en als de foto niet laadt. Bijv. “groep mensen in een park”.'}>
             <TextInput value={edit.imageAlt} onChange={(e) => setEdit({ ...edit, imageAlt: e.target.value })} />
           </Field>
-          <Field label="Volgorde">
+          <Field label="Volgorde" tip={'Bepaalt de volgorde op de site. Lagere nummers komen eerst (0, 1, 2…).'}>
             <TextInput
               type="number"
               value={edit.order}
               onChange={(e) => setEdit({ ...edit, order: Number(e.target.value) })}
             />
           </Field>
-          <label style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 16 }}>
-            <input
-              type="checkbox"
-              checked={edit.published}
-              onChange={(e) => setEdit({ ...edit, published: e.target.checked })}
-            />
-            Gepubliceerd
-          </label>
+          <Field
+            label="Zichtbaar op de website?"
+            tip="Aan = bezoekers kunnen dit zien. Uit = concept, alleen in het CMS zichtbaar."
+          >
+            <label style={{ display: 'flex', gap: 8, alignItems: 'center', fontWeight: 600 }}>
+              <input
+                type="checkbox"
+                checked={edit.published}
+                onChange={(e) => setEdit({ ...edit, published: e.target.checked })}
+              />
+              Ja, publiceer dit item
+            </label>
+          </Field>
           <Row>
             <button
               type="button"
@@ -540,7 +613,7 @@ function ArticleEditor() {
         </div>
       ) : (
         <div style={card}>
-          <Field label="Titel">
+          <Field label="Titel" tip={'De naam die bezoekers zien. Kies iets duidelijk en herkenbaar.'}>
             <TextInput
               value={edit.title}
               onChange={(e) => {
@@ -549,16 +622,16 @@ function ArticleEditor() {
               }}
             />
           </Field>
-          <Field label="Slug → /inspiratie/...">
+          <Field label="Slug → /inspiratie/..." tip={'Webadres van dit artikel, bijv. /inspiratie/mijn-verhaal. Meestal automatisch.'}>
             <TextInput value={edit.slug} onChange={(e) => setEdit({ ...edit, slug: slugify(e.target.value) })} />
           </Field>
-          <Field label="Korte beschrijving (teaser)">
+          <Field label="Korte beschrijving (teaser)" tip={'Korte tekst op de overzichtskaart. 1–3 zinnen is ideaal.'}>
             <TextArea value={edit.description} onChange={(e) => setEdit({ ...edit, description: e.target.value })} />
           </Field>
-          <Field label="Bron / organisatie">
+          <Field label="Bron / organisatie" tip={'Naam van de organisatie of bron, bijv. “Concertgebouw Brugge”.'}>
             <TextInput value={edit.source} onChange={(e) => setEdit({ ...edit, source: e.target.value })} />
           </Field>
-          <Field label="Thema's">
+          <Field label="Thema's" tip={'Vink de thema’s aan die bij dit item horen. Zo kunnen bezoekers filteren.'}>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
               {themeNames.map((name) => (
                 <label
@@ -580,17 +653,17 @@ function ArticleEditor() {
               ))}
             </div>
           </Field>
-          <Field label="Body (paragrafen scheiden met lege regel)">
+          <Field label="Body (paragrafen scheiden met lege regel)" tip={'De volledige tekst. Laat een lege regel tussen alinea’s. Je mag ## gebruiken voor tussentitels.'}>
             <TextArea
               value={edit.body}
               onChange={(e) => setEdit({ ...edit, body: e.target.value })}
               style={{ minHeight: 180 }}
             />
           </Field>
-          <Field label="Afbeelding URL">
+          <Field label="Afbeelding URL" tip={'Plak de link naar een foto, of kies hieronder een foto uit de mediabibliotheek.'}>
             <TextInput value={edit.imageUrl} onChange={(e) => setEdit({ ...edit, imageUrl: e.target.value })} />
           </Field>
-          <Field label="Mediabibliotheek">
+          <Field label="Mediabibliotheek" tip={'Kies een bestaande foto uit Media in plaats van zelf een link te plakken.'}>
             <Select value={edit.imageUrl} onChange={(e) => setEdit({ ...edit, imageUrl: e.target.value })}>
               <option value="">—</option>
               {data.media.map((m) => (
@@ -600,37 +673,47 @@ function ArticleEditor() {
               ))}
             </Select>
           </Field>
-          <Field label="Alt-tekst">
+          <Field label="Alt-tekst" tip={'Korte beschrijving van de foto voor blinden en als de foto niet laadt. Bijv. “groep mensen in een park”.'}>
             <TextInput value={edit.imageAlt} onChange={(e) => setEdit({ ...edit, imageAlt: e.target.value })} />
           </Field>
-          <Field label="Video URL (optioneel)">
+          <Field label="Video URL (optioneel)" tip={'Optioneel: link naar een YouTube- of Vimeo-filmpje.'}>
             <TextInput value={edit.videoUrl} onChange={(e) => setEdit({ ...edit, videoUrl: e.target.value })} />
           </Field>
           <Row>
-            <label style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-              <input
-                type="checkbox"
-                checked={edit.published}
-                onChange={(e) => setEdit({ ...edit, published: e.target.checked })}
-              />
-              Gepubliceerd
-            </label>
-            <label style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-              <input
-                type="checkbox"
-                checked={edit.featured}
-                onChange={(e) => setEdit({ ...edit, featured: e.target.checked })}
-              />
-              Op homepage
-            </label>
+            <Field
+              label="Zichtbaar op de website?"
+              tip="Aan = bezoekers kunnen dit artikel lezen. Uit = concept."
+            >
+              <label style={{ display: 'flex', gap: 8, alignItems: 'center', fontWeight: 600 }}>
+                <input
+                  type="checkbox"
+                  checked={edit.published}
+                  onChange={(e) => setEdit({ ...edit, published: e.target.checked })}
+                />
+                Ja, publiceer
+              </label>
+            </Field>
+            <Field
+              label="Op de homepage tonen?"
+              tip="Aan = dit artikel verschijnt in de sectie “Laat je inspireren” op de home. Kies er max. een paar."
+            >
+              <label style={{ display: 'flex', gap: 8, alignItems: 'center', fontWeight: 600 }}>
+                <input
+                  type="checkbox"
+                  checked={edit.featured}
+                  onChange={(e) => setEdit({ ...edit, featured: e.target.checked })}
+                />
+                Ja, featured
+              </label>
+            </Field>
           </Row>
           <h3 style={{ marginTop: 24 }}>FAQ&apos;s</h3>
           {edit.faqs.map((f) => (
             <div key={f.id} style={{ border: '1px solid #eee', borderRadius: 12, padding: 12, marginBottom: 10 }}>
-              <Field label="Vraag">
+              <Field label="Vraag" tip={'De vraag die bezoekers zien in de FAQ-lijst.'}>
                 <TextInput value={f.question} onChange={(e) => updateFaq(f.id, { question: e.target.value })} />
               </Field>
-              <Field label="Antwoord">
+              <Field label="Antwoord" tip={'Het antwoord. Mag meerdere alinea’s zijn (lege regel ertussen).'}>
                 <TextArea value={f.answer} onChange={(e) => updateFaq(f.id, { answer: e.target.value })} />
               </Field>
               <button
@@ -740,7 +823,7 @@ function ToolEditor() {
         </div>
       ) : (
         <div style={card}>
-          <Field label="Titel">
+          <Field label="Titel" tip={'De naam die bezoekers zien. Kies iets duidelijk en herkenbaar.'}>
             <TextInput
               value={edit.title}
               onChange={(e) => {
@@ -749,16 +832,16 @@ function ToolEditor() {
               }}
             />
           </Field>
-          <Field label="Slug → /tools/...">
+          <Field label="Slug → /tools/..." tip={'Webadres van deze tool, bijv. /tools/checklist. Meestal automatisch.'}>
             <TextInput value={edit.slug} onChange={(e) => setEdit({ ...edit, slug: slugify(e.target.value) })} />
           </Field>
-          <Field label="Beschrijving">
+          <Field label="Beschrijving" tip={'Korte tekst op de overzichtskaart. Houd het begrijpelijk.'}>
             <TextArea value={edit.description} onChange={(e) => setEdit({ ...edit, description: e.target.value })} />
           </Field>
-          <Field label="Body (markdown)">
+          <Field label="Body (markdown)" tip={'Uitgebreide uitleg. Alinea’s scheiden met een lege regel. ## voor tussentitels.'}>
             <TextArea value={edit.body || ''} onChange={(e) => setEdit({ ...edit, body: e.target.value })} style={{ minHeight: 140 }} />
           </Field>
-          <Field label="Thema's">
+          <Field label="Thema's" tip={'Vink de thema’s aan die bij dit item horen. Zo kunnen bezoekers filteren.'}>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
               {themeNames.map((name) => (
                 <label
@@ -790,10 +873,10 @@ function ToolEditor() {
               ))}
             </div>
           </Field>
-          <Field label="Afbeelding URL">
+          <Field label="Afbeelding URL" tip={'Plak de link naar een foto, of kies hieronder een foto uit de mediabibliotheek.'}>
             <TextInput value={edit.imageUrl} onChange={(e) => setEdit({ ...edit, imageUrl: e.target.value })} />
           </Field>
-          <Field label="Mediabibliotheek">
+          <Field label="Mediabibliotheek" tip={'Kies een bestaande foto uit Media in plaats van zelf een link te plakken.'}>
             <Select value={edit.imageUrl} onChange={(e) => setEdit({ ...edit, imageUrl: e.target.value })}>
               <option value="">—</option>
               {data.media.map((m) => (
@@ -803,24 +886,29 @@ function ToolEditor() {
               ))}
             </Select>
           </Field>
-          <Field label="Externe link (optioneel)">
+          <Field label="Externe link (optioneel)" tip={'Link naar een download of externe website (https://…). Laat leeg als er geen is.'}>
             <TextInput value={edit.externalUrl} onChange={(e) => setEdit({ ...edit, externalUrl: e.target.value })} />
           </Field>
-          <Field label="Volgorde">
+          <Field label="Volgorde" tip={'Bepaalt de volgorde op de site. Lagere nummers komen eerst (0, 1, 2…).'}>
             <TextInput
               type="number"
               value={edit.order}
               onChange={(e) => setEdit({ ...edit, order: Number(e.target.value) })}
             />
           </Field>
-          <label style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 16 }}>
-            <input
-              type="checkbox"
-              checked={edit.published}
-              onChange={(e) => setEdit({ ...edit, published: e.target.checked })}
-            />
-            Gepubliceerd
-          </label>
+          <Field
+            label="Zichtbaar op de website?"
+            tip="Aan = bezoekers kunnen dit zien. Uit = concept, alleen in het CMS zichtbaar."
+          >
+            <label style={{ display: 'flex', gap: 8, alignItems: 'center', fontWeight: 600 }}>
+              <input
+                type="checkbox"
+                checked={edit.published}
+                onChange={(e) => setEdit({ ...edit, published: e.target.checked })}
+              />
+              Ja, publiceer dit item
+            </label>
+          </Field>
           <Row>
             <button
               type="button"
@@ -902,7 +990,7 @@ function PageEditor() {
         </div>
       ) : (
         <div style={card}>
-          <Field label="Titel">
+          <Field label="Titel" tip={'De naam die bezoekers zien. Kies iets duidelijk en herkenbaar.'}>
             <TextInput
               value={edit.title}
               onChange={(e) => {
@@ -916,13 +1004,13 @@ function PageEditor() {
               }}
             />
           </Field>
-          <Field label="Slug">
+          <Field label="Slug" tip={'Het webadres, bijv. /pagina/contact. Gebruik kleine letters en streepjes.'}>
             <TextInput value={edit.slug} onChange={(e) => setEdit({ ...edit, slug: slugify(e.target.value) })} />
           </Field>
-          <Field label="Banner titel">
+          <Field label="Banner titel" tip={'Grote titel bovenaan deze pagina. Mag gelijk zijn aan de paginatitel.'}>
             <TextInput value={edit.bannerTitle} onChange={(e) => setEdit({ ...edit, bannerTitle: e.target.value })} />
           </Field>
-          <Field label="Banner intro">
+          <Field label="Banner intro" tip={'Korte zin onder de banner-titel.'}>
             <TextArea value={edit.bannerIntro} onChange={(e) => setEdit({ ...edit, bannerIntro: e.target.value })} />
           </Field>
           <Field label="Inhoud (paragrafen met lege regel)">
@@ -932,14 +1020,19 @@ function PageEditor() {
               style={{ minHeight: 200 }}
             />
           </Field>
-          <label style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 16 }}>
-            <input
-              type="checkbox"
-              checked={edit.published}
-              onChange={(e) => setEdit({ ...edit, published: e.target.checked })}
-            />
-            Gepubliceerd
-          </label>
+          <Field
+            label="Zichtbaar op de website?"
+            tip="Aan = bezoekers kunnen dit zien. Uit = concept, alleen in het CMS zichtbaar."
+          >
+            <label style={{ display: 'flex', gap: 8, alignItems: 'center', fontWeight: 600 }}>
+              <input
+                type="checkbox"
+                checked={edit.published}
+                onChange={(e) => setEdit({ ...edit, published: e.target.checked })}
+              />
+              Ja, publiceer dit item
+            </label>
+          </Field>
           <Row>
             <button
               type="button"
@@ -981,10 +1074,10 @@ function MediaEditor() {
         </button>
         {edit ? (
           <div style={{ marginTop: 16, borderTop: '1px solid #eee', paddingTop: 16 }}>
-            <Field label="Naam">
+            <Field label="Naam" tip={'Een herkenbare naam voor jezelf, bijv. “foto-concert”. Bezoekers zien dit niet.'}>
               <TextInput value={edit.name} onChange={(e) => setEdit({ ...edit, name: e.target.value })} />
             </Field>
-            <Field label="URL">
+            <Field label="URL" tip={'De link naar het bestand. Mag /images/... zijn of een volledige https://-link.'}>
               <TextInput value={edit.url} onChange={(e) => setEdit({ ...edit, url: e.target.value })} />
             </Field>
             <Field label="Alt">
